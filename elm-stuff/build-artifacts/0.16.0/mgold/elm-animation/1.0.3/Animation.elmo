@@ -1,0 +1,158 @@
+Elm.Animation = Elm.Animation || {};
+Elm.Animation.make = function (_elm) {
+   "use strict";
+   _elm.Animation = _elm.Animation || {};
+   if (_elm.Animation.values) return _elm.Animation.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $Time = Elm.Time.make(_elm);
+   var _op = {};
+   var isScheduled = F2(function (t,_p0) {    var _p1 = _p0;return _U.cmp(t,_p1._0.start + _p1._0.delay) < 1;});
+   var getTo = function (_p2) {    var _p3 = _p2;return _p3._0.to;};
+   var getFrom = function (_p4) {    var _p5 = _p4;return _p5._0.from;};
+   var getEase = function (_p6) {    var _p7 = _p6;return _p7._0.ease;};
+   var getDelay = function (_p8) {    var _p9 = _p8;return _p9._0.delay;};
+   var getStart = function (_p10) {    var _p11 = _p10;return _p11._0.start;};
+   var timeElapsed = F2(function (t,_p12) {    var _p13 = _p12;return A2($Basics.max,0,t - (_p13._0.start + _p13._0.delay));});
+   var defaultEase = function (x) {    return (1 - $Basics.cos($Basics.pi * x)) / 2;};
+   var spd = F3(function (dos,from,to) {
+      var _p14 = dos;
+      if (_p14.ctor === "Duration") {
+            return $Basics.abs(to - from) / _p14._0;
+         } else {
+            return _p14._0;
+         }
+   });
+   var getSpeed = function (_p15) {    var _p16 = _p15;return A3(spd,_p16._0.dos,_p16._0.from,_p16._0.to);};
+   var dur = F3(function (dos,from,to) {
+      var _p17 = dos;
+      if (_p17.ctor === "Duration") {
+            return _p17._0;
+         } else {
+            return $Basics.abs(to - from) / _p17._0;
+         }
+   });
+   var animate = F2(function (t,_p18) {
+      var _p19 = _p18;
+      var _p23 = _p19._0.to;
+      var _p22 = _p19._0.start;
+      var _p21 = _p19._0.from;
+      var duration = A3(dur,_p19._0.dos,_p21,_p23);
+      var fr = A3($Basics.clamp,0,1,(t - _p22 - _p19._0.delay) / duration);
+      var eased = _p19._0.ease(fr);
+      var correction = function () {
+         var _p20 = _p19._0.ramp;
+         if (_p20.ctor === "Nothing") {
+               return 0;
+            } else {
+               var from$ = _p20._0 * (t - _p22);
+               var eased$ = defaultEase(fr);
+               return from$ - from$ * eased$;
+            }
+      }();
+      return _p21 + (_p23 - _p21) * eased + correction;
+   });
+   var velocity = F2(function (t,u) {    var forwDiff = A2(animate,t + 10,u);var backDiff = A2(animate,t - 10,u);return (forwDiff - backDiff) / 20;});
+   var timeRemaining = F2(function (t,_p24) {
+      var _p25 = _p24;
+      var duration = A3(dur,_p25._0.dos,_p25._0.from,_p25._0.to);
+      return A2($Basics.max,0,_p25._0.start + _p25._0.delay + duration - t);
+   });
+   var getDuration = function (_p26) {    var _p27 = _p26;return A3(dur,_p27._0.dos,_p27._0.from,_p27._0.to);};
+   var equals = F2(function (_p29,_p28) {
+      var _p30 = _p29;
+      var _p33 = _p30._0;
+      var _p31 = _p28;
+      var _p32 = _p31._0;
+      return _U.eq(_p33.start + _p33.delay,_p32.start + _p32.delay) && (_U.eq(_p33.from,_p32.from) && (_U.eq(_p33.to,_p32.to) && (_U.eq(_p33.ramp,
+      _p32.ramp) && ((_U.eq(_p33.dos,_p32.dos) || _U.cmp(1.0e-3,
+      $Basics.abs(A3(dur,_p33.dos,_p33.from,_p33.to) - A3(dur,_p32.dos,_p32.from,_p32.to))) > -1) && A2($List.all,
+      function (t) {
+         return _U.eq(_p33.ease(t),_p32.ease(t));
+      },
+      _U.list([0.1,0.3,0.7,0.9]))))));
+   });
+   var isRunning = F2(function (t,_p34) {
+      var _p35 = _p34;
+      var _p37 = _p35._0.start;
+      var _p36 = _p35._0.delay;
+      var duration = A3(dur,_p35._0.dos,_p35._0.from,_p35._0.to);
+      return _U.cmp(t,_p37 + _p36) > 0 && _U.cmp(t,_p37 + _p36 + duration) < 0;
+   });
+   var isDone = F2(function (t,_p38) {
+      var _p39 = _p38;
+      var duration = A3(dur,_p39._0.dos,_p39._0.from,_p39._0.to);
+      return _U.cmp(t,_p39._0.start + _p39._0.delay + duration) > -1;
+   });
+   var A = function (a) {    return {ctor: "A",_0: a};};
+   var undo = F2(function (t,_p40) {
+      var _p41 = _p40;
+      var _p42 = _p41._0;
+      return A(_U.update(_p42,
+      {from: _p42.to,to: _p42.from,start: t,delay: 0 - A2(timeRemaining,t,_p41),ramp: $Maybe.Nothing,ease: function (t) {    return 1 - _p42.ease(1 - t);}}));
+   });
+   var delay = F2(function (x,_p43) {    var _p44 = _p43;return A(_U.update(_p44._0,{delay: x}));});
+   var ease = F2(function (x,_p45) {    var _p46 = _p45;return A(_U.update(_p46._0,{ease: x}));});
+   var from = F2(function (x,_p47) {    var _p48 = _p47;return A(_U.update(_p48._0,{from: x,ramp: $Maybe.Nothing}));});
+   var to = F2(function (x,_p49) {    var _p50 = _p49;return A(_U.update(_p50._0,{to: x,ramp: $Maybe.Nothing}));});
+   var AnimRecord = F7(function (a,b,c,d,e,f,g) {    return {start: a,delay: b,dos: c,ramp: d,ease: e,from: f,to: g};});
+   var Speed = function (a) {    return {ctor: "Speed",_0: a};};
+   var speed = F2(function (x,_p51) {    var _p52 = _p51;return A(_U.update(_p52._0,{dos: Speed($Basics.abs(x))}));});
+   var Duration = function (a) {    return {ctor: "Duration",_0: a};};
+   var defaultDuration = Duration(750 * $Time.millisecond);
+   var animation = function (t) {    return A(A7(AnimRecord,t,0,defaultDuration,$Maybe.Nothing,defaultEase,0,1));};
+   var retarget = F3(function (t,newTo,_p53) {
+      var _p54 = _p53;
+      var _p57 = _p54;
+      var _p56 = _p54._0;
+      if (_U.eq(newTo,_p56.to)) return _p57; else if (_U.eq(_p56.from,_p56.to)) return A(_U.update(_p56,
+            {start: t,to: newTo,dos: defaultDuration,ramp: $Maybe.Nothing})); else if (A2(isScheduled,t,_p57)) return A(_U.update(_p56,
+               {to: newTo,ramp: $Maybe.Nothing})); else if (A2(isDone,t,_p57)) return A(_U.update(_p56,
+                  {start: t,delay: 0,from: _p56.to,to: newTo,ramp: $Maybe.Nothing})); else {
+                     var newSpeed = function () {
+                        var _p55 = _p56.dos;
+                        if (_p55.ctor === "Speed") {
+                              return _p56.dos;
+                           } else {
+                              return Speed(A3(spd,_p56.dos,_p56.from,_p56.to));
+                           }
+                     }();
+                     var pos = A2(animate,t,_p57);
+                     var vel = A2(velocity,t,_p57);
+                     return A(A7(AnimRecord,t,0,newSpeed,$Maybe.Just(vel),_p56.ease,pos,newTo));
+                  }
+   });
+   var $static = function (x) {    return A(A7(AnimRecord,0,0,Duration(0),$Maybe.Nothing,defaultEase,x,x));};
+   var duration = F2(function (x,_p58) {    var _p59 = _p58;return A(_U.update(_p59._0,{dos: Duration(x)}));});
+   return _elm.Animation.values = {_op: _op
+                                  ,animation: animation
+                                  ,$static: $static
+                                  ,animate: animate
+                                  ,duration: duration
+                                  ,speed: speed
+                                  ,delay: delay
+                                  ,ease: ease
+                                  ,from: from
+                                  ,to: to
+                                  ,undo: undo
+                                  ,retarget: retarget
+                                  ,getStart: getStart
+                                  ,getDuration: getDuration
+                                  ,getSpeed: getSpeed
+                                  ,getDelay: getDelay
+                                  ,getEase: getEase
+                                  ,getFrom: getFrom
+                                  ,getTo: getTo
+                                  ,equals: equals
+                                  ,velocity: velocity
+                                  ,timeElapsed: timeElapsed
+                                  ,timeRemaining: timeRemaining
+                                  ,isScheduled: isScheduled
+                                  ,isRunning: isRunning
+                                  ,isDone: isDone};
+};

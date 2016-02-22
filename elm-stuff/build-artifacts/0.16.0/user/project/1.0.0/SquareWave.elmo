@@ -1,0 +1,33 @@
+Elm.SquareWave = Elm.SquareWave || {};
+Elm.SquareWave.make = function (_elm) {
+   "use strict";
+   _elm.SquareWave = _elm.SquareWave || {};
+   if (_elm.SquareWave.values) return _elm.SquareWave.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Graphing = Elm.Graphing.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $Time = Elm.Time.make(_elm);
+   var _op = {};
+   var graphStyle = function (x) {
+      return _U.update($Graphing.defaultGraph,
+      {width: 1000
+      ,height: 100
+      ,yInterval: {ctor: "_Tuple2",_0: 0,_1: 1.5}
+      ,xInterval: {ctor: "_Tuple2",_0: 1.0e-3 * x,_1: 10 + 1.0e-3 * x}
+      ,margin: 3
+      ,axisWidth: 0});
+   };
+   var func3 = $Graphing.wrapFunc(function (x) {    return _U.eq(A2($Basics._op["%"],$Basics.round(x),2),0) ? 0 : 1;});
+   var main = A2($Signal.map,
+   function (x) {
+      return A2($Graphing.graph,_U.list([{ctor: "_Tuple2",_0: func3,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#D2527F"})}]),graphStyle(x));
+   },
+   A3($Signal.foldp,F2(function (x,y) {    return x + y;}),0,$Time.fps(40)));
+   return _elm.SquareWave.values = {_op: _op,func3: func3,graphStyle: graphStyle,main: main};
+};

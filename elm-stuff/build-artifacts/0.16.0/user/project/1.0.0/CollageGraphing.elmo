@@ -1,0 +1,20 @@
+Elm.CollageGraphing = Elm.CollageGraphing || {};
+Elm.CollageGraphing.make = function (_elm) {
+   "use strict";
+   _elm.CollageGraphing = _elm.CollageGraphing || {};
+   if (_elm.CollageGraphing.values) return _elm.CollageGraphing.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Graphics$Element = Elm.Graphics.Element.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var graph = F2(function (a,b) {    return $Signal.constant($Graphics$Element.show(0));});
+   var GraphAttributes = F7(function (a,b,c,d,e,f,g) {    return {width: a,height: b,ticks: c,margin: d,xInterval: e,yInterval: f,backgroundColor: g};});
+   var Data = function (a) {    return {ctor: "Data",_0: a};};
+   var Func = function (a) {    return {ctor: "Func",_0: a};};
+   return _elm.CollageGraphing.values = {_op: _op,Func: Func,Data: Data,GraphAttributes: GraphAttributes,graph: graph};
+};

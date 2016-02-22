@@ -1,0 +1,130 @@
+Elm.FourierSeries = Elm.FourierSeries || {};
+Elm.FourierSeries.make = function (_elm) {
+   "use strict";
+   _elm.FourierSeries = _elm.FourierSeries || {};
+   if (_elm.FourierSeries.values) return _elm.FourierSeries.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Graphing = Elm.Graphing.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $Html$Lazy = Elm.Html.Lazy.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $ParseInt = Elm.ParseInt.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm);
+   var _op = {};
+   var lastTermImg = function (n) {
+      return A2($Html.img,
+      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
+              ,$Html$Attributes.$class("eqnImg last-term")]),
+      _U.list([]));
+   };
+   var equationTermImg = function (n) {
+      return A2($Html.img,
+      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
+              ,$Html$Attributes.$class("eqnImg middle-term")]),
+      _U.list([]));
+   };
+   var equationImg = function (n) {
+      var closeParen = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(end).svg"),$Html$Attributes.$class("eqnImg closeParen")]),_U.list([]));
+      var leadingFactor = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(start).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
+      var plus = _U.cmp(n,1) > 0 ? A2($Html.img,
+      _U.list([$Html$Attributes.src("equations/CodeCogsEqn(plus).svg"),$Html$Attributes.$class("plus")]),
+      _U.list([])) : A2($Html.img,_U.list([]),_U.list([]));
+      var fx = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(fx).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
+      return A2($Html.div,
+      _U.list([]),
+      $List.concat(_U.list([_U.list([fx])
+                           ,_U.list([leadingFactor])
+                           ,A2($List.intersperse,plus,A2($List.map,equationTermImg,_U.range(1,n - 1)))
+                           ,_U.list([plus])
+                           ,_U.list([lastTermImg(n)])
+                           ,_U.list([closeParen])])));
+   };
+   var addFunc = F3(function (x,y,z) {    return x(z) + y(z);});
+   var unsafeToInt = function (x) {
+      var _p0 = $ParseInt.parseInt(x);
+      if (_p0.ctor === "Ok") {
+            return _p0._0;
+         } else {
+            return _U.crashCase("FourierSeries",{start: {line: 72,column: 17},end: {line: 74,column: 58}},_p0)("unsafeToInt called on a bad string");
+         }
+   };
+   var mailbox = $Signal.mailbox("1");
+   var graphStyle = function (x) {
+      return _U.update($Graphing.defaultGraph,
+      {width: 800
+      ,height: 300
+      ,yInterval: {ctor: "_Tuple2",_0: -1.5,_1: 1.5}
+      ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 4}
+      ,margin: 15
+      ,axisColor: "#fff"
+      ,axisWidth: 0});
+   };
+   var nthSin = F3(function (period,n,x) {    return 4 / $Basics.pi * (1 / n) * $Basics.sin(n * $Basics.pi * x / period);});
+   var componentSinusoids = F2(function (period,n) {    return A2($List.map,$Graphing.wrapFunc,A2($List.map,nthSin(period),_U.range(1,n)));});
+   var sineWavesAtN = F2(function (period,n) {
+      return $Graphing.wrapFunc(A3($List.foldr,
+      addFunc,
+      function (x) {
+         return 0;
+      },
+      A2($List.map,nthSin(period),A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n)))));
+   });
+   var squareWave = $Graphing.wrapFunc(function (x) {    return _U.eq(A2($Basics._op["%"],$Basics.round(x + 0.5),2),0) ? -1 : 1;});
+   var view = function (v) {
+      var event = A3($Html$Events.on,"input",$Html$Events.targetValue,$Signal.message(mailbox.address));
+      var x = v;
+      return A2($Html.div,
+      _U.list([$Html$Attributes.$class("centered-content")]),
+      _U.list([A2($Graphing.graph,
+              $List.concat(_U.list([A3($List.map2,
+                                   F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),
+                                   A2(componentSinusoids,1,x),
+                                   A2($List.repeat,$Basics.round(x),_U.update($Graphing.defaultPlot,{strokeColor: "#eee"})))
+                                   ,_U.list([{ctor: "_Tuple2"
+                                             ,_0: $Graphing.wrapFunc(A2(nthSin,1,x))
+                                             ,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#bbb"})}])
+                                   ,_U.list([{ctor: "_Tuple2",_0: squareWave,_1: $Graphing.defaultPlot}
+                                            ,{ctor: "_Tuple2",_0: A2(sineWavesAtN,1,x),_1: _U.update($Graphing.defaultPlot,{strokeColor: "#D2527F"})}])])),
+              graphStyle(0))
+              ,A2($Html.div,_U.list([$Html$Attributes.$class("centered cm")]),_U.list([$Html.text(A2($String.append,"n = ",$Basics.toString(x)))]))
+              ,A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))
+              ,A2($Html.div,
+              _U.list([$Html$Attributes.$class("auto-margin limited-width")]),
+              _U.list([A2($Html.input,
+              _U.list([$Html$Attributes.type$("range")
+                      ,$Html$Attributes.min("1")
+                      ,$Html$Attributes.max("20")
+                      ,$Html$Attributes.value($Basics.toString(x))
+                      ,event
+                      ,$Html$Attributes.$class("slider")
+                      ,$Html$Attributes.style(_U.list([{ctor: "_Tuple2",_0: "width",_1: "100%"},{ctor: "_Tuple2",_0: "max-width",_1: "800px"}]))]),
+              _U.list([]))]))
+              ,A2($Html.div,_U.list([$Html$Attributes.$class("double-spacer")]),_U.list([]))
+              ,A2($Html.div,
+              _U.list([$Html$Attributes.$class("centered limited-width")]),
+              _U.list([A2($Html.div,_U.list([$Html$Attributes.$class("inline-block auto-margin")]),_U.list([equationImg(x)]))]))
+              ,A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))]));
+   };
+   var main = A2($Signal.map,$Html$Lazy.lazy(view),A2($Signal.map,function (_p2) {    return $Basics.toFloat(unsafeToInt(_p2));},mailbox.signal));
+   return _elm.FourierSeries.values = {_op: _op
+                                      ,squareWave: squareWave
+                                      ,sineWavesAtN: sineWavesAtN
+                                      ,nthSin: nthSin
+                                      ,graphStyle: graphStyle
+                                      ,componentSinusoids: componentSinusoids
+                                      ,mailbox: mailbox
+                                      ,view: view
+                                      ,main: main
+                                      ,unsafeToInt: unsafeToInt
+                                      ,addFunc: addFunc
+                                      ,equationTermImg: equationTermImg
+                                      ,lastTermImg: lastTermImg
+                                      ,equationImg: equationImg};
+};

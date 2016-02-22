@@ -1,0 +1,8 @@
+{
+    "evancz/virtual-dom": "2.1.0",
+    "fredcy/elm-parseint": "1.1.1",
+    "mgold/elm-animation": "1.0.3",
+    "evancz/elm-html": "4.0.2",
+    "evancz/elm-svg": "2.0.1",
+    "elm-lang/core": "3.0.0"
+}

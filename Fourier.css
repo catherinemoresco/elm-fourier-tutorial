@@ -1,0 +1,269 @@
+@font-face {
+	font-family: 'Computer Modern';
+	src: url(assets/cmunti.ttf);
+	font-style: italic, oblique;
+}
+
+@font-face {
+	font-family: 'Computer Modern';
+	src: url(assets/cmunrm.ttf);;
+}
+
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Patua One', sans-serif;
+	font-weight: normal;
+}
+
+body{
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+}
+
+.cm-it {
+	font-family: 'Computer Modern';
+	font-style: italic;
+}
+
+.cm {
+	font-family: 'Computer Modern';
+}
+
+.wrapper {
+	width: 70vw;
+	min-width:400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.spacer {
+	height: 15px;
+	width: 100%;
+}
+
+.double-spacer{
+	height: 30px;
+	width: 100%;
+}
+
+.centered {
+	text-align: center;
+}
+
+.centered-content svg, .centered-content a, .centered-content > div, .centered-content input {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	float: none;
+	position: relative;
+}
+
+.auto-margin {
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	float: none;
+	position: relative;
+}
+
+.page-title {
+	font-size: 5em;
+	margin-bottom: 0px;
+}
+
+.page {
+/*	height: 100vh;
+*/	width: 100vw;
+	min-height: 400px;
+	min-width: 450px;
+	overflow: auto;
+	position: relative;
+}
+
+.padded {
+	padding: 15px;
+}
+
+.limited-width {
+	max-width: 800px;
+}
+
+.page-content {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.gray {
+	background-color: #ececec;
+}
+
+.white {
+	background-color: #fff;
+}
+
+.white-text, .white-text div {
+	color: white;
+}
+
+.shadow{
+	box-shadow: 0px 2px 12px -1px #999;
+}
+
+.background-img {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+.fourier {
+	background-image: url('assets/joseph-fourier-2.jpg');
+	background-size: contain;
+	width: 50vw;
+	z-index: -1;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	opacity: .1;
+}
+
+.emph {
+	/*font-family: 'Patua One', sans-serif;*/
+	color: #D2527F;
+}
+
+.right-align {
+	text-align: right;
+}
+
+.bottom-align {
+	position: absolute;
+	bottom: 0px;
+}
+
+.three-quarters {
+	width: 75%;
+}
+
+.float-right {
+	float: right;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+/* FourierSeries.elm specific*/
+.eqnImg {
+	diplay: inline-block;
+	height: 30px;
+	/*margin: 5px;*/
+	fill: #eee;
+}
+
+.plus {
+	margin:5px;
+	margin-bottom: 10px;
+	opacity: .25;
+}
+
+.closeParen {
+	height: 21px;
+	margin-bottom: 3px;
+	margin-left: 0px;
+}
+
+.middle-term{
+	opacity: .25;
+}
+
+.last-term {
+	opacity: .6;
+}
+
+/* SLIDER STYLES */
+/* much of this is from https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/ */
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 100%; /* Specific width is required for Firefox. */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; /* Hides the slider so custom styles can be added */
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  box-shadow: 0px 2px 3px -1px #999;
+  height: 18px;
+  width: 18px;
+  border-radius: 100px;
+  background: #D2527F;
+  cursor: pointer;
+  margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  -webkit-appearance: none;
+  box-shadow: 0px 2px 10px -1px #999;
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+  background: #D2527F;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 0px 2px 3px -1px #999;
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+  background: #D2527F;
+  cursor: pointer;
+}
+
+/*	Slider track*/
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: #777;
+  border-radius: 5px;
+  /*border: 1px solid #888;*/
+  box-shadow: 0px 2px 3px -1px #999;
+
+}
+
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: #ddd;
+  border-radius: 5px;
+  border: 1px solid #888;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: #ddd;
+  border-radius: 5px;
+  border: 1px solid #888;
+}

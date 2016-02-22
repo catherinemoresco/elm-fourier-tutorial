@@ -1,0 +1,30 @@
+Elm.Main = Elm.Main || {};
+Elm.Main.make = function (_elm) {
+   "use strict";
+   _elm.Main = _elm.Main || {};
+   if (_elm.Main.values) return _elm.Main.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $Html$Attributes = Elm.Html.Attributes.make(_elm),
+   $Html$Events = Elm.Html.Events.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var mbox = $Signal.mailbox("0");
+   var view = function (i) {
+      var evth = A3($Html$Events.on,"change",$Html$Events.targetValue,$Signal.message(mbox.address));
+      var v = i;
+      return A2($Html.div,
+      _U.list([]),
+      _U.list([A2($Html.input,
+              _U.list([$Html$Attributes.type$("range"),$Html$Attributes.min("0"),$Html$Attributes.max("20"),$Html$Attributes.value(v),evth]),
+              _U.list([]))
+              ,A2($Html.input,_U.list([$Html$Attributes.type$("text"),$Html$Attributes.value(v),evth]),_U.list([]))]));
+   };
+   var main = A2($Signal.map,view,mbox.signal);
+   return _elm.Main.values = {_op: _op,mbox: mbox,view: view,main: main};
+};

@@ -1,0 +1,165 @@
+Elm.Graphing = Elm.Graphing || {};
+Elm.Graphing.make = function (_elm) {
+   "use strict";
+   _elm.Graphing = _elm.Graphing || {};
+   if (_elm.Graphing.values) return _elm.Graphing.values;
+   var _U = Elm.Native.Utils.make(_elm),
+   $Animation = Elm.Animation.make(_elm),
+   $Basics = Elm.Basics.make(_elm),
+   $Debug = Elm.Debug.make(_elm),
+   $Html = Elm.Html.make(_elm),
+   $List = Elm.List.make(_elm),
+   $Maybe = Elm.Maybe.make(_elm),
+   $Result = Elm.Result.make(_elm),
+   $Signal = Elm.Signal.make(_elm),
+   $String = Elm.String.make(_elm),
+   $Svg = Elm.Svg.make(_elm),
+   $Svg$Attributes = Elm.Svg.Attributes.make(_elm),
+   $Time = Elm.Time.make(_elm);
+   var _op = {};
+   var clock = A3($Signal.foldp,F2(function (x,y) {    return x + y;}),0,$Time.fps(40));
+   var radiusAnimation = A2($Animation.duration,4 * $Time.second,A2($Animation.to,10,A2($Animation.from,0,$Animation.animation(0))));
+   var radius = A2($Signal.map,function (x) {    return A2($Animation.animate,x,radiusAnimation);},clock);
+   var defaultMax = 100;
+   var defaultPlot = {strokeColor: "#000",strokeWidth: "2px"};
+   var defaultGraph = {width: 400
+                      ,height: 400
+                      ,ticks: 0
+                      ,backgroundColor: "#f5f5f5"
+                      ,axisColor: "#555"
+                      ,margin: 25
+                      ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 10}
+                      ,yInterval: {ctor: "_Tuple2",_0: 0,_1: 10}
+                      ,axisWidth: 2};
+   var lerp = F5(function (x0,x,x1,y0,y1) {    return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));});
+   var linearSpace = F2(function (_p0,numPoints) {
+      var _p1 = _p0;
+      var _p2 = _p1._0;
+      var size = _p1._1 - _p2;
+      var stepSize = size / numPoints;
+      return A2($List.map,function (x) {    return x * stepSize + _p2;},_U.range(0,numPoints - 1));
+   });
+   var convertCoords = F4(function (_p6,_p5,_p4,_p3) {
+      var _p7 = _p6;
+      var _p8 = _p5;
+      var _p9 = _p4;
+      var _p10 = _p3;
+      return {ctor: "_Tuple2",_0: A5(lerp,_p7._0,_p10._0,_p7._1,0,_p9._0),_1: A5(lerp,_p8._1,_p10._1,_p8._0,0,_p9._1)};
+   });
+   var pathFromCoords = F2(function (pa,coords) {
+      var addPt = function (samples) {
+         var _p11 = samples;
+         if (_p11.ctor === "[]") {
+               return "";
+            } else {
+               return $String.concat(_U.list([" L",$Basics.toString(_p11._0._0)," ",$Basics.toString(_p11._0._1)," ",addPt(_p11._1)]));
+            }
+      };
+      var _p12 = function () {    var _p13 = coords;if (_p13.ctor === "[]") {    return {ctor: "_Tuple2",_0: 0,_1: 0};} else {    return _p13._0;}}();
+      var x = _p12._0;
+      var y = _p12._1;
+      return A2($Svg.path,
+      _U.list([$Svg$Attributes.d($String.concat(_U.list(["M",$Basics.toString(x)," ",$Basics.toString(y),addPt(A2($List.drop,1,coords))])))
+              ,$Svg$Attributes.stroke(pa.strokeColor)
+              ,$Svg$Attributes.strokeWidth(pa.strokeWidth)
+              ,$Svg$Attributes.fill("none")]),
+      _U.list([]));
+   });
+   var makePath = F4(function (ga,pa,_p14,func) {
+      var _p15 = _p14;
+      var samples = A2(linearSpace,ga.xInterval,700);
+      var coordinates = A3($List.map2,F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),samples,A2($List.map,func,samples));
+      return A2(pathFromCoords,pa,A2($List.map,A3(convertCoords,ga.xInterval,ga.yInterval,{ctor: "_Tuple2",_0: _p15._0,_1: _p15._1}),coordinates));
+   });
+   var funcPlot = F3(function (ga,pa,func) {
+      var h = ga.height - 2 * ga.margin;
+      var w = ga.width - 2 * ga.margin;
+      return A2($Svg.g,_U.list([]),_U.list([A4(makePath,ga,pa,{ctor: "_Tuple2",_0: w,_1: h},func)]));
+   });
+   var makeDots = F2(function (dimensions,data) {
+      var makeDot = function (_p16) {
+         var _p17 = _p16;
+         return A2($Svg.circle,
+         _U.list([$Svg$Attributes.cx($Basics.toString(_p17._0))
+                 ,$Svg$Attributes.cy($Basics.toString(_p17._1))
+                 ,$Svg$Attributes.r("5")
+                 ,$Svg$Attributes.fill("red")]),
+         _U.list([]));
+      };
+      return A2($List.map,makeDot,data);
+   });
+   var dataField = F3(function (ga,pa,data) {
+      var h = ga.height - 2 * ga.margin;
+      var w = ga.width - 2 * ga.margin;
+      var newCoords = A2($List.map,A3(convertCoords,ga.xInterval,ga.yInterval,{ctor: "_Tuple2",_0: w,_1: h}),data);
+      return A2($Svg.g,_U.list([]),A2(makeDots,{ctor: "_Tuple2",_0: w,_1: h},newCoords));
+   });
+   var yAxis = function (graphStyles) {
+      var right = graphStyles.width - graphStyles.margin;
+      var left = graphStyles.margin;
+      var top = graphStyles.margin;
+      var bottom = graphStyles.height - graphStyles.margin;
+      return A2($Svg.line,
+      _U.list([$Svg$Attributes.x1($Basics.toString(left))
+              ,$Svg$Attributes.y1($Basics.toString(bottom))
+              ,$Svg$Attributes.x2($Basics.toString(left))
+              ,$Svg$Attributes.y2($Basics.toString(top))
+              ,$Svg$Attributes.stroke(graphStyles.axisColor)
+              ,$Svg$Attributes.strokeWidth($Basics.toString(graphStyles.axisWidth))]),
+      _U.list([]));
+   };
+   var xAxis = function (graphStyles) {
+      var right = graphStyles.width - graphStyles.margin;
+      var left = graphStyles.margin;
+      var top = graphStyles.margin;
+      var bottom = graphStyles.height - graphStyles.margin;
+      return A2($Svg.line,
+      _U.list([$Svg$Attributes.x1($Basics.toString(graphStyles.margin))
+              ,$Svg$Attributes.y1($Basics.toString(bottom))
+              ,$Svg$Attributes.x2($Basics.toString(right))
+              ,$Svg$Attributes.y2($Basics.toString(bottom))
+              ,$Svg$Attributes.stroke(graphStyles.axisColor)
+              ,$Svg$Attributes.strokeWidth($Basics.toString(graphStyles.axisWidth))]),
+      _U.list([]));
+   };
+   var graph = F2(function (toGraph,graphAttrs) {
+      var graphSvg = function (toGraph) {
+         var _p18 = toGraph;
+         if (_p18._0.ctor === "Func") {
+               return A2($Svg.g,
+               _U.list([$Svg$Attributes.transform($String.concat(_U.list(["translate("
+                                                                         ,$Basics.toString(graphAttrs.margin)
+                                                                         ," "
+                                                                         ,$Basics.toString(graphAttrs.margin)
+                                                                         ,")"])))]),
+               _U.list([A3(funcPlot,graphAttrs,_p18._1,_p18._0._0)]));
+            } else {
+               return A2($Svg.g,
+               _U.list([$Svg$Attributes.transform($String.concat(_U.list(["translate("
+                                                                         ,$Basics.toString(graphAttrs.margin)
+                                                                         ," "
+                                                                         ,$Basics.toString(graphAttrs.margin)
+                                                                         ,")"])))]),
+               _U.list([A3(dataField,graphAttrs,_p18._1,_p18._0._0)]));
+            }
+      };
+      return A2($Svg.svg,
+      _U.list([$Svg$Attributes.width($Basics.toString(graphAttrs.width)),$Svg$Attributes.height($Basics.toString(graphAttrs.height))]),
+      A2($List.append,_U.list([xAxis(graphAttrs),yAxis(graphAttrs)]),A2($List.map,graphSvg,toGraph)));
+   });
+   var PlotAttributes = F2(function (a,b) {    return {strokeColor: a,strokeWidth: b};});
+   var GraphAttributes = F9(function (a,b,c,d,e,f,g,h,i) {
+      return {width: a,height: b,ticks: c,margin: d,xInterval: e,yInterval: f,backgroundColor: g,axisColor: h,axisWidth: i};
+   });
+   var Data = function (a) {    return {ctor: "Data",_0: a};};
+   var wrapData = function (data) {    return Data(data);};
+   var Func = function (a) {    return {ctor: "Func",_0: a};};
+   var wrapFunc = function (func) {    return Func(func);};
+   return _elm.Graphing.values = {_op: _op
+                                 ,wrapData: wrapData
+                                 ,wrapFunc: wrapFunc
+                                 ,graph: graph
+                                 ,defaultGraph: defaultGraph
+                                 ,defaultPlot: defaultPlot
+                                 ,GraphAttributes: GraphAttributes};
+};
