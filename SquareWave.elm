@@ -23,5 +23,5 @@ graphStyle x = { defaultGraph | width=1000,
                                 }
 
 main : Signal Html
-main = Signal.map (\x -> graph [(func3, {defaultPlot | strokeColor="#D2527F"})] ( graphStyle x) ) <| Signal.foldp (+) 0 (Time.fps 40)
+main = Signal.map (\x -> graph [(func3, {defaultPlot | strokeColor="#ee2560"})] ( graphStyle x) ) <| Signal.foldp (+) 0 (Time.fps 40)
 

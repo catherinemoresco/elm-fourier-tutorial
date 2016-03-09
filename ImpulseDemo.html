@@ -1,5 +1,6 @@
-var Elm = Elm || { Native: {} };
-Elm.Native.Array = {};
+<!DOCTYPE HTML>
+<html><head><meta charset="UTF-8"><title>ImpulseDemo</title><style>html,head,body { padding:0; margin:0; }
+body { font-family: calibri, helvetica, arial, sans-serif; }</style><script type="text/javascript">var Elm = Elm || { Native: {} };Elm.Native.Array = {};
 Elm.Native.Array.make = function(localRuntime) {
 
 	localRuntime.Native = localRuntime.Native || {};
@@ -979,7 +980,6 @@ Elm.Native.Array.make = function(localRuntime) {
 
 	return localRuntime.Native.Array.values = Elm.Native.Array.values;
 };
-
 Elm.Native.Basics = {};
 Elm.Native.Basics.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -1116,7 +1116,6 @@ Elm.Native.Basics.make = function(localRuntime) {
 		isInfinite: isInfinite
 	};
 };
-
 Elm.Native.Port = {};
 
 Elm.Native.Port.make = function(localRuntime) {
@@ -1248,7 +1247,6 @@ Elm.Native.Port.make = function(localRuntime) {
 		outboundSignal: outboundSignal
 	};
 };
-
 if (!Elm.fullscreen) {
 	(function() {
 		'use strict';
@@ -1885,7 +1883,6 @@ if (!Elm.fullscreen) {
 			: fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 	}
 }
-
 Elm.Native = Elm.Native || {};
 Elm.Native.Utils = {};
 Elm.Native.Utils.make = function(localRuntime) {
@@ -2416,7 +2413,6 @@ Elm.Native.Utils.make = function(localRuntime) {
 		toString: toString
 	};
 };
-
 Elm.Basics = Elm.Basics || {};
 Elm.Basics.make = function (_elm) {
    "use strict";
@@ -2531,8 +2527,7 @@ Elm.Basics.make = function (_elm) {
                                ,LT: LT
                                ,EQ: EQ
                                ,GT: GT};
-};
-Elm.Maybe = Elm.Maybe || {};
+};Elm.Maybe = Elm.Maybe || {};
 Elm.Maybe.make = function (_elm) {
    "use strict";
    _elm.Maybe = _elm.Maybe || {};
@@ -2613,8 +2608,7 @@ Elm.Maybe.make = function (_elm) {
                               ,oneOf: oneOf
                               ,Just: Just
                               ,Nothing: Nothing};
-};
-Elm.Native.List = {};
+};Elm.Native.List = {};
 Elm.Native.List.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.List = localRuntime.Native.List || {};
@@ -2778,7 +2772,6 @@ Elm.Native.List.make = function(localRuntime) {
 	};
 	return localRuntime.Native.List.values = Elm.Native.List.values;
 };
-
 Elm.List = Elm.List || {};
 Elm.List.make = function (_elm) {
    "use strict";
@@ -2952,8 +2945,7 @@ Elm.List.make = function (_elm) {
                              ,sort: sort
                              ,sortBy: sortBy
                              ,sortWith: sortWith};
-};
-Elm.Array = Elm.Array || {};
+};Elm.Array = Elm.Array || {};
 Elm.Array.make = function (_elm) {
    "use strict";
    _elm.Array = _elm.Array || {};
@@ -3012,8 +3004,7 @@ Elm.Array.make = function (_elm) {
                               ,filter: filter
                               ,foldl: foldl
                               ,foldr: foldr};
-};
-Elm.Native.Char = {};
+};Elm.Native.Char = {};
 Elm.Native.Char.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.Char = localRuntime.Native.Char || {};
@@ -3033,7 +3024,6 @@ Elm.Native.Char.make = function(localRuntime) {
 		toLocaleLower: function(c) { return Utils.chr(c.toLocaleLowerCase()); }
 	};
 };
-
 Elm.Char = Elm.Char || {};
 Elm.Char.make = function (_elm) {
    "use strict";
@@ -3067,8 +3057,7 @@ Elm.Char.make = function (_elm) {
                              ,toLocaleLower: toLocaleLower
                              ,toCode: toCode
                              ,fromCode: fromCode};
-};
-Elm.Native.Color = {};
+};Elm.Native.Color = {};
 Elm.Native.Color.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.Color = localRuntime.Native.Color || {};
@@ -3107,7 +3096,6 @@ Elm.Native.Color.make = function(localRuntime) {
 		toCss: toCss
 	};
 };
-
 Elm.Color = Elm.Color || {};
 Elm.Color.make = function (_elm) {
    "use strict";
@@ -3270,8 +3258,7 @@ Elm.Color.make = function (_elm) {
                               ,lightGray: lightGray
                               ,gray: gray
                               ,darkGray: darkGray};
-};
-Elm.Native.Signal = {};
+};Elm.Native.Signal = {};
 
 Elm.Native.Signal.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -3741,7 +3728,6 @@ Elm.Native.Signal.make = function(localRuntime) {
 		delay: F2(delay)
 	};
 };
-
 Elm.Native.Time = {};
 
 Elm.Native.Time.make = function(localRuntime)
@@ -3851,7 +3837,6 @@ Elm.Native.Time.make = function(localRuntime)
 		read: read
 	};
 };
-
 Elm.Native.Transform2D = {};
 Elm.Native.Transform2D.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -3962,7 +3947,6 @@ Elm.Native.Transform2D.make = function(localRuntime) {
 		*/
 	};
 };
-
 Elm.Transform2D = Elm.Transform2D || {};
 Elm.Transform2D.make = function (_elm) {
    "use strict";
@@ -3989,7 +3973,6 @@ Elm.Transform2D.make = function (_elm) {
                                     ,scaleX: scaleX
                                     ,scaleY: scaleY};
 };
-
 // setup
 Elm.Native = Elm.Native || {};
 Elm.Native.Graphics = Elm.Native.Graphics || {};
@@ -4653,7 +4636,6 @@ Elm.Native.Graphics.Collage.make = function(localRuntime) {
 		collage: F3(collage)
 	};
 };
-
 
 // setup
 Elm.Native = Elm.Native || {};
@@ -5390,7 +5372,6 @@ Elm.Native.Graphics.Element.make = function(localRuntime) {
 		markdown: markdown
 	};
 };
-
 Elm.Native.Text = {};
 Elm.Native.Text.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -5678,7 +5659,6 @@ Elm.Native.Text.make = function(localRuntime) {
 		renderHtml: renderHtml
 	};
 };
-
 Elm.Text = Elm.Text || {};
 Elm.Text.make = function (_elm) {
    "use strict";
@@ -5730,8 +5710,7 @@ Elm.Text.make = function (_elm) {
                              ,Under: Under
                              ,Over: Over
                              ,Through: Through};
-};
-Elm.Graphics = Elm.Graphics || {};
+};Elm.Graphics = Elm.Graphics || {};
 Elm.Graphics.Element = Elm.Graphics.Element || {};
 Elm.Graphics.Element.make = function (_elm) {
    "use strict";
@@ -5928,8 +5907,7 @@ Elm.Graphics.Element.make = function (_elm) {
                                          ,topRightAt: topRightAt
                                          ,bottomLeftAt: bottomLeftAt
                                          ,bottomRightAt: bottomRightAt};
-};
-Elm.Graphics = Elm.Graphics || {};
+};Elm.Graphics = Elm.Graphics || {};
 Elm.Graphics.Collage = Elm.Graphics.Collage || {};
 Elm.Graphics.Collage.make = function (_elm) {
    "use strict";
@@ -6060,8 +6038,7 @@ Elm.Graphics.Collage.make = function (_elm) {
                                          ,Smooth: Smooth
                                          ,Sharp: Sharp
                                          ,Clipped: Clipped};
-};
-Elm.Native.Debug = {};
+};Elm.Native.Debug = {};
 Elm.Native.Debug.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.Debug = localRuntime.Native.Debug || {};
@@ -6127,7 +6104,6 @@ Elm.Native.Debug.make = function(localRuntime) {
 		watchSummary: F3(watchSummary)
 	};
 };
-
 Elm.Debug = Elm.Debug || {};
 Elm.Debug.make = function (_elm) {
    "use strict";
@@ -6141,8 +6117,7 @@ Elm.Debug.make = function (_elm) {
    var crash = $Native$Debug.crash;
    var log = $Native$Debug.log;
    return _elm.Debug.values = {_op: _op,log: log,crash: crash,watch: watch,watchSummary: watchSummary,trace: trace};
-};
-Elm.Native.Task = {};
+};Elm.Native.Task = {};
 
 Elm.Native.Task.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -6367,7 +6342,6 @@ Elm.Native.Task.make = function(localRuntime) {
 		sleep: sleep
 	};
 };
-
 Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
    "use strict";
@@ -6468,8 +6442,7 @@ Elm.Result.make = function (_elm) {
                                ,formatError: formatError
                                ,Ok: Ok
                                ,Err: Err};
-};
-Elm.Task = Elm.Task || {};
+};Elm.Task = Elm.Task || {};
 Elm.Task.make = function (_elm) {
    "use strict";
    _elm.Task = _elm.Task || {};
@@ -6560,8 +6533,7 @@ Elm.Task.make = function (_elm) {
                              ,fromResult: fromResult
                              ,spawn: spawn
                              ,sleep: sleep};
-};
-Elm.Signal = Elm.Signal || {};
+};Elm.Signal = Elm.Signal || {};
 Elm.Signal.make = function (_elm) {
    "use strict";
    _elm.Signal = _elm.Signal || {};
@@ -6626,8 +6598,7 @@ Elm.Signal.make = function (_elm) {
                                ,message: message
                                ,forwardTo: forwardTo
                                ,Mailbox: Mailbox};
-};
-Elm.Time = Elm.Time || {};
+};Elm.Time = Elm.Time || {};
 Elm.Time.make = function (_elm) {
    "use strict";
    _elm.Time = _elm.Time || {};
@@ -6672,8 +6643,7 @@ Elm.Time.make = function (_elm) {
                              ,timestamp: timestamp
                              ,delay: delay
                              ,since: since};
-};
-Elm.Native.String = {};
+};Elm.Native.String = {};
 
 Elm.Native.String.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -7014,7 +6984,6 @@ Elm.Native.String.make = function(localRuntime) {
 		fromList: fromList
 	};
 };
-
 Elm.String = Elm.String || {};
 Elm.String.make = function (_elm) {
    "use strict";
@@ -7105,8 +7074,7 @@ Elm.String.make = function (_elm) {
                                ,foldr: foldr
                                ,any: any
                                ,all: all};
-};
-Elm.Dict = Elm.Dict || {};
+};Elm.Dict = Elm.Dict || {};
 Elm.Dict.make = function (_elm) {
    "use strict";
    _elm.Dict = _elm.Dict || {};
@@ -7666,8 +7634,7 @@ Elm.Dict.make = function (_elm) {
                              ,values: values
                              ,toList: toList
                              ,fromList: fromList};
-};
-Elm.Native.Json = {};
+};Elm.Native.Json = {};
 
 Elm.Native.Json.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -8162,7 +8129,6 @@ Elm.Native.Json.make = function(localRuntime) {
 
 	};
 };
-
 Elm.Json = Elm.Json || {};
 Elm.Json.Encode = Elm.Json.Encode || {};
 Elm.Json.Encode.make = function (_elm) {
@@ -8192,8 +8158,7 @@ Elm.Json.Encode.make = function (_elm) {
                                     ,list: list
                                     ,array: array
                                     ,object: object};
-};
-Elm.Json = Elm.Json || {};
+};Elm.Json = Elm.Json || {};
 Elm.Json.Decode = Elm.Json.Decode || {};
 Elm.Json.Decode.make = function (_elm) {
    "use strict";
@@ -8284,8 +8249,62 @@ Elm.Json.Decode.make = function (_elm) {
                                     ,andThen: andThen
                                     ,value: value
                                     ,customDecoder: customDecoder};
+};Elm.Native = Elm.Native || {};
+Elm.Native.Mouse = {};
+Elm.Native.Mouse.make = function(localRuntime) {
+	localRuntime.Native = localRuntime.Native || {};
+	localRuntime.Native.Mouse = localRuntime.Native.Mouse || {};
+	if (localRuntime.Native.Mouse.values)
+	{
+		return localRuntime.Native.Mouse.values;
+	}
+
+	var NS = Elm.Native.Signal.make(localRuntime);
+	var Utils = Elm.Native.Utils.make(localRuntime);
+
+	var position = NS.input('Mouse.position', Utils.Tuple2(0, 0));
+
+	var isDown = NS.input('Mouse.isDown', false);
+
+	var clicks = NS.input('Mouse.clicks', Utils.Tuple0);
+
+	var node = localRuntime.isFullscreen()
+		? document
+		: localRuntime.node;
+
+	localRuntime.addListener([clicks.id], node, 'click', function click() {
+		localRuntime.notify(clicks.id, Utils.Tuple0);
+	});
+	localRuntime.addListener([isDown.id], node, 'mousedown', function down() {
+		localRuntime.notify(isDown.id, true);
+	});
+	localRuntime.addListener([isDown.id], node, 'mouseup', function up() {
+		localRuntime.notify(isDown.id, false);
+	});
+	localRuntime.addListener([position.id], node, 'mousemove', function move(e) {
+		localRuntime.notify(position.id, Utils.getXY(e));
+	});
+
+	return localRuntime.Native.Mouse.values = {
+		position: position,
+		isDown: isDown,
+		clicks: clicks
+	};
 };
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+Elm.Mouse = Elm.Mouse || {};
+Elm.Mouse.make = function (_elm) {
+   "use strict";
+   _elm.Mouse = _elm.Mouse || {};
+   if (_elm.Mouse.values) return _elm.Mouse.values;
+   var _U = Elm.Native.Utils.make(_elm),$Basics = Elm.Basics.make(_elm),$Native$Mouse = Elm.Native.Mouse.make(_elm),$Signal = Elm.Signal.make(_elm);
+   var _op = {};
+   var clicks = $Native$Mouse.clicks;
+   var isDown = $Native$Mouse.isDown;
+   var position = $Native$Mouse.position;
+   var x = A2($Signal.map,$Basics.fst,position);
+   var y = A2($Signal.map,$Basics.snd,position);
+   return _elm.Mouse.values = {_op: _op,position: position,x: x,y: y,isDown: isDown,clicks: clicks};
+};(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
 },{}],2:[function(require,module,exports){
 (function (global){
@@ -9879,7 +9898,6 @@ Elm.Native.VirtualDom.make = function(elm)
 };
 
 },{"virtual-dom/vdom/create-element":6,"virtual-dom/vdom/patch":9,"virtual-dom/vnode/is-vhook":13,"virtual-dom/vnode/vnode":18,"virtual-dom/vnode/vtext":20,"virtual-dom/vtree/diff":22}]},{},[23]);
-
 Elm.VirtualDom = Elm.VirtualDom || {};
 Elm.VirtualDom.make = function (_elm) {
    "use strict";
@@ -9927,8 +9945,7 @@ Elm.VirtualDom.make = function (_elm) {
                                    ,lazy2: lazy2
                                    ,lazy3: lazy3
                                    ,Options: Options};
-};
-Elm.Html = Elm.Html || {};
+};Elm.Html = Elm.Html || {};
 Elm.Html.make = function (_elm) {
    "use strict";
    _elm.Html = _elm.Html || {};
@@ -10150,8 +10167,7 @@ Elm.Html.make = function (_elm) {
                              ,summary: summary
                              ,menuitem: menuitem
                              ,menu: menu};
-};
-Elm.Html = Elm.Html || {};
+};Elm.Html = Elm.Html || {};
 Elm.Html.Attributes = Elm.Html.Attributes || {};
 Elm.Html.Attributes.make = function (_elm) {
    "use strict";
@@ -10375,8 +10391,7 @@ Elm.Html.Attributes.make = function (_elm) {
                                         ,manifest: manifest
                                         ,property: property
                                         ,attribute: attribute};
-};
-Elm.Html = Elm.Html || {};
+};Elm.Html = Elm.Html || {};
 Elm.Html.Events = Elm.Html.Events || {};
 Elm.Html.Events.make = function (_elm) {
    "use strict";
@@ -10441,30 +10456,7 @@ Elm.Html.Events.make = function (_elm) {
                                     ,targetChecked: targetChecked
                                     ,keyCode: keyCode
                                     ,Options: Options};
-};
-Elm.Html = Elm.Html || {};
-Elm.Html.Lazy = Elm.Html.Lazy || {};
-Elm.Html.Lazy.make = function (_elm) {
-   "use strict";
-   _elm.Html = _elm.Html || {};
-   _elm.Html.Lazy = _elm.Html.Lazy || {};
-   if (_elm.Html.Lazy.values) return _elm.Html.Lazy.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $VirtualDom = Elm.VirtualDom.make(_elm);
-   var _op = {};
-   var lazy3 = $VirtualDom.lazy3;
-   var lazy2 = $VirtualDom.lazy2;
-   var lazy = $VirtualDom.lazy;
-   return _elm.Html.Lazy.values = {_op: _op,lazy: lazy,lazy2: lazy2,lazy3: lazy3};
-};
-Elm.Svg = Elm.Svg || {};
+};Elm.Svg = Elm.Svg || {};
 Elm.Svg.make = function (_elm) {
    "use strict";
    _elm.Svg = _elm.Svg || {};
@@ -10646,8 +10638,7 @@ Elm.Svg.make = function (_elm) {
                             ,script: script
                             ,style: style
                             ,view: view};
-};
-Elm.Svg = Elm.Svg || {};
+};Elm.Svg = Elm.Svg || {};
 Elm.Svg.Attributes = Elm.Svg.Attributes || {};
 Elm.Svg.Attributes.make = function (_elm) {
    "use strict";
@@ -11171,82 +11162,7 @@ Elm.Svg.Attributes.make = function (_elm) {
                                        ,visibility: visibility
                                        ,wordSpacing: wordSpacing
                                        ,writingMode: writingMode};
-};
-Elm.ParseInt = Elm.ParseInt || {};
-Elm.ParseInt.make = function (_elm) {
-   "use strict";
-   _elm.ParseInt = _elm.ParseInt || {};
-   if (_elm.ParseInt.values) return _elm.ParseInt.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Char = Elm.Char.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm);
-   var _op = {};
-   var charFromInt = function (i) {
-      return _U.cmp(i,10) < 0 ? $Char.fromCode(i + $Char.toCode(_U.chr("0"))) : _U.cmp(i,
-      36) < 0 ? $Char.fromCode(i - 10 + $Char.toCode(_U.chr("A"))) : _U.crash("ParseInt",
-      {start: {line: 141,column: 5},end: {line: 141,column: 16}})($Basics.toString(i));
-   };
-   var toRadix$ = F2(function (radix,i) {
-      return _U.cmp(i,radix) < 0 ? $String.fromChar(charFromInt(i)) : A2($Basics._op["++"],
-      A2(toRadix$,radix,i / radix | 0),
-      $String.fromChar(charFromInt(A2($Basics._op["%"],i,radix))));
-   });
-   var isBetween = F3(function (lower,upper,c) {    var ci = $Char.toCode(c);return _U.cmp($Char.toCode(lower),ci) < 1 && _U.cmp(ci,$Char.toCode(upper)) < 1;});
-   var charOffset = F2(function (basis,c) {    return $Char.toCode(c) - $Char.toCode(basis);});
-   var InvalidRadix = function (a) {    return {ctor: "InvalidRadix",_0: a};};
-   var toRadix = F2(function (radix,i) {
-      return _U.cmp(2,radix) < 1 && _U.cmp(radix,36) < 1 ? _U.cmp(i,0) < 0 ? $Result.Ok(A2($Basics._op["++"],
-      "-",
-      A2(toRadix$,radix,0 - i))) : $Result.Ok(A2(toRadix$,radix,i)) : $Result.Err(InvalidRadix(radix));
-   });
-   var OutOfRange = function (a) {    return {ctor: "OutOfRange",_0: a};};
-   var InvalidChar = function (a) {    return {ctor: "InvalidChar",_0: a};};
-   var intFromChar = F2(function (radix,c) {
-      var validInt = function (i) {    return _U.cmp(i,radix) < 0 ? $Result.Ok(i) : $Result.Err(OutOfRange(c));};
-      var toInt = A3(isBetween,_U.chr("0"),_U.chr("9"),c) ? $Result.Ok(A2(charOffset,_U.chr("0"),c)) : A3(isBetween,
-      _U.chr("a"),
-      _U.chr("z"),
-      c) ? $Result.Ok(10 + A2(charOffset,_U.chr("a"),c)) : A3(isBetween,_U.chr("A"),_U.chr("Z"),c) ? $Result.Ok(10 + A2(charOffset,
-      _U.chr("A"),
-      c)) : $Result.Err(InvalidChar(c));
-      return A2($Result.andThen,toInt,validInt);
-   });
-   var parseIntR = F2(function (radix,rstring) {
-      var _p0 = $String.uncons(rstring);
-      if (_p0.ctor === "Nothing") {
-            return $Result.Ok(0);
-         } else {
-            return A2($Result.andThen,
-            A2(intFromChar,radix,_p0._0._0),
-            function (ci) {
-               return A2($Result.andThen,A2(parseIntR,radix,_p0._0._1),function (ri) {    return $Result.Ok(ci + ri * radix);});
-            });
-         }
-   });
-   var parseIntRadix = F2(function (radix,string) {
-      return _U.cmp(2,radix) < 1 && _U.cmp(radix,36) < 1 ? A2(parseIntR,radix,$String.reverse(string)) : $Result.Err(InvalidRadix(radix));
-   });
-   var parseInt = parseIntRadix(10);
-   var parseIntOct = parseIntRadix(8);
-   var parseIntHex = parseIntRadix(16);
-   return _elm.ParseInt.values = {_op: _op
-                                 ,parseInt: parseInt
-                                 ,parseIntOct: parseIntOct
-                                 ,parseIntHex: parseIntHex
-                                 ,parseIntRadix: parseIntRadix
-                                 ,toRadix: toRadix
-                                 ,toRadix$: toRadix$
-                                 ,InvalidChar: InvalidChar
-                                 ,OutOfRange: OutOfRange
-                                 ,InvalidRadix: InvalidRadix};
-};
-Elm.Animation = Elm.Animation || {};
+};Elm.Animation = Elm.Animation || {};
 Elm.Animation.make = function (_elm) {
    "use strict";
    _elm.Animation = _elm.Animation || {};
@@ -11403,8 +11319,7 @@ Elm.Animation.make = function (_elm) {
                                   ,isScheduled: isScheduled
                                   ,isRunning: isRunning
                                   ,isDone: isDone};
-};
-Elm.Graphing = Elm.Graphing || {};
+};Elm.Graphing = Elm.Graphing || {};
 Elm.Graphing.make = function (_elm) {
    "use strict";
    _elm.Graphing = _elm.Graphing || {};
@@ -11677,135 +11592,165 @@ Elm.Graphing.make = function (_elm) {
                                  ,defaultPlot: defaultPlot
                                  ,GraphAttributes: GraphAttributes
                                  ,PlotAttributes: PlotAttributes};
-};
-Elm.FourierSeries = Elm.FourierSeries || {};
-Elm.FourierSeries.make = function (_elm) {
+};Elm.ImpulseDemo = Elm.ImpulseDemo || {};
+Elm.ImpulseDemo.make = function (_elm) {
    "use strict";
-   _elm.FourierSeries = _elm.FourierSeries || {};
-   if (_elm.FourierSeries.values) return _elm.FourierSeries.values;
+   _elm.ImpulseDemo = _elm.ImpulseDemo || {};
+   if (_elm.ImpulseDemo.values) return _elm.ImpulseDemo.values;
    var _U = Elm.Native.Utils.make(_elm),
    $Basics = Elm.Basics.make(_elm),
    $Debug = Elm.Debug.make(_elm),
    $Graphing = Elm.Graphing.make(_elm),
    $Html = Elm.Html.make(_elm),
    $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $Html$Events = Elm.Html.Events.make(_elm),
-   $Html$Lazy = Elm.Html.Lazy.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
-   $ParseInt = Elm.ParseInt.make(_elm),
+   $Mouse = Elm.Mouse.make(_elm),
    $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm);
+   $Signal = Elm.Signal.make(_elm);
    var _op = {};
-   var lastTermImg = function (n) {
-      return A2($Html.img,
-      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
-              ,$Html$Attributes.$class("eqnImg last-term")]),
-      _U.list([]));
-   };
-   var equationTermImg = function (n) {
-      return A2($Html.img,
-      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
-              ,$Html$Attributes.$class("eqnImg middle-term")]),
-      _U.list([]));
-   };
-   var equationImg = function (n) {
-      var closeParen = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(end).svg"),$Html$Attributes.$class("eqnImg closeParen")]),_U.list([]));
-      var leadingFactor = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(start).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
-      var plus = _U.cmp(n,1) > 0 ? A2($Html.img,
-      _U.list([$Html$Attributes.src("equations/CodeCogsEqn(plus).svg"),$Html$Attributes.$class("plus")]),
-      _U.list([])) : A2($Html.img,_U.list([]),_U.list([]));
-      var fx = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(fx).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
-      return A2($Html.div,
-      _U.list([]),
-      $List.concat(_U.list([_U.list([fx])
-                           ,_U.list([leadingFactor])
-                           ,A2($List.intersperse,plus,A2($List.map,equationTermImg,A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n - 1))))
-                           ,_U.list([plus])
-                           ,_U.list([lastTermImg(2 * n - 1)])
-                           ,_U.list([closeParen])])));
+   var combine = function (l) {
+      return A3($List.foldr,$Signal.map2(F2(function (x,y) {    return A2($Basics._op["++"],_U.list([x]),y);})),$Signal.constant(_U.list([])),l);
    };
    var addFunc = F3(function (x,y,z) {    return x(z) + y(z);});
-   var unsafeToInt = function (x) {
-      var _p0 = $ParseInt.parseInt(x);
-      if (_p0.ctor === "Ok") {
-            return _p0._0;
+   var lerp = F5(function (x0,x,x1,y0,y1) {    return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));});
+   var graphStyleSin = _U.update($Graphing.defaultGraph,
+   {width: 800,height: 200,yInterval: {ctor: "_Tuple2",_0: -10,_1: 10},xInterval: {ctor: "_Tuple2",_0: 0,_1: 4},margin: 25,axisColor: "#000",yTicksEvery: 10});
+   var graphStyle = _U.update($Graphing.defaultGraph,
+   {width: 800
+   ,height: 200
+   ,yInterval: {ctor: "_Tuple2",_0: 0,_1: 4 / $Basics.pi * 1.5}
+   ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 20}
+   ,margin: 25
+   ,axisColor: "#000"
+   ,xTicksEvery: 1});
+   var getYValue = F2(function (_p0,ga) {
+      var _p1 = _p0;
+      var _p3 = _p1._1;
+      var _p2 = ga.yInterval;
+      var ymin = _p2._0;
+      var ymax = _p2._1;
+      var height = $Basics.toFloat(ga.height);
+      var width = $Basics.toFloat(ga.width);
+      var margin = $Basics.toFloat(ga.margin);
+      return _U.cmp(_p3,margin) < 0 ? $Maybe.Nothing : _U.cmp(_p3,height + margin) > 0 ? $Maybe.Nothing : $Maybe.Just(A5(lerp,
+      height + margin,
+      _p3,
+      margin,
+      ymin,
+      ymax));
+   });
+   var maybeMouse = A3($Signal.map2,
+   F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),
+   $Mouse.isDown,
+   A2($Signal.map,function (_p4) {    var _p5 = _p4;return {ctor: "_Tuple2",_0: $Basics.toFloat(_p5._0),_1: $Basics.toFloat(_p5._1)};},$Mouse.position));
+   var filterNothing = function (_p6) {
+      var _p7 = _p6;
+      var _p8 = _p7._0;
+      if (_p8 === true) {
+            return $Maybe.Just(_p7._1);
          } else {
-            return _U.crashCase("FourierSeries",{start: {line: 73,column: 17},end: {line: 75,column: 58}},_p0)("unsafeToInt called on a bad string");
+            return $Maybe.Nothing;
          }
    };
-   var mailbox = $Signal.mailbox("1");
-   var graphStyle = function (x) {
-      return _U.update($Graphing.defaultGraph,
-      {width: 800
-      ,height: 300
-      ,yInterval: {ctor: "_Tuple2",_0: -1.5,_1: 1.5}
-      ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 4}
-      ,margin: 15
-      ,axisColor: "#fff"
-      ,axisWidth: 0
-      ,xTicksEvery: 100
-      ,yTicksEvery: 100});
-   };
-   var nthSin = F3(function (period,n,x) {    return 4 / $Basics.pi * (1 / n) * $Basics.sin(n * $Basics.pi * x / period);});
-   var componentSinusoids = F2(function (period,n) {    return A2($List.map,$Graphing.wrapFunc,A2($List.map,nthSin(period),_U.range(1,n)));});
-   var sineWavesAtN = F2(function (period,n) {
-      return $Graphing.wrapFunc(A3($List.foldr,
-      addFunc,
-      function (x) {
-         return 0;
-      },
-      A2($List.map,nthSin(period),A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n)))));
+   var dataList = $List.concat(A3($List.map2,
+   F2(function (x,y) {    return _U.list([x,y]);}),
+   A2($List.map,
+   function (x) {
+      return {ctor: "_Tuple2",_0: x,_1: $Basics.abs(4 / $Basics.pi / x)};
+   },
+   A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,10))),
+   A2($List.map,function (x) {    return {ctor: "_Tuple2",_0: x,_1: 0};},A2($List.map,function (x) {    return 2 * x;},_U.range(1,10)))));
+   var getSector = F2(function (_p9,ga) {
+      var _p10 = _p9;
+      var _p13 = _p10._1;
+      var _p12 = _p10._0;
+      var _p11 = A2($Debug.log,"",_p12);
+      var height = $Basics.toFloat(ga.height);
+      var width = $Basics.toFloat(ga.width - 2 * ga.margin);
+      var margin = $Basics.toFloat(ga.margin);
+      if (_U.cmp(_p12,margin) < 0) return $Maybe.Nothing; else if (_U.cmp(_p12,width + margin + 15) > 0) return $Maybe.Nothing; else if (_U.cmp(_p13,
+            margin) < 0) return $Maybe.Nothing; else if (_U.cmp(_p13,height + margin) > 0) return $Maybe.Nothing; else {
+                     var sectorSize = width / $Basics.toFloat($List.length(dataList));
+                     return $Maybe.Just($Basics.floor((_p12 - margin - 15) / sectorSize - 0.5));
+                  }
    });
-   var squareWave = $Graphing.wrapFunc(function (x) {    return _U.eq(A2($Basics._op["%"],$Basics.round(x + 0.5),2),0) ? -1 : 1;});
-   var view = function (v) {
-      var event = A3($Html$Events.on,"input",$Html$Events.targetValue,$Signal.message(mailbox.address));
-      var x = v;
-      return A2($Html.div,
-      _U.list([$Html$Attributes.$class("centered-content")]),
-      _U.list([A2($Graphing.graph,
-              $List.concat(_U.list([A3($List.map2,
-                                   F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),
-                                   A2(componentSinusoids,1,x),
-                                   A2($List.repeat,$Basics.round(x),_U.update($Graphing.defaultPlot,{strokeColor: "#eee"})))
-                                   ,_U.list([{ctor: "_Tuple2"
-                                             ,_0: $Graphing.wrapFunc(A2(nthSin,1,x))
-                                             ,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#bbb"})}])
-                                   ,_U.list([{ctor: "_Tuple2",_0: squareWave,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#34314c"})}
-                                            ,{ctor: "_Tuple2",_0: A2(sineWavesAtN,1,x),_1: _U.update($Graphing.defaultPlot,{strokeColor: "#ee2560"})}])])),
-              graphStyle(0))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("centered cm")]),_U.list([$Html.text(A2($String.append,"n = ",$Basics.toString(x)))]))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))
-              ,A2($Html.div,
-              _U.list([$Html$Attributes.$class("auto-margin limited-width")]),
-              _U.list([A2($Html.input,
-              _U.list([$Html$Attributes.type$("range")
-                      ,$Html$Attributes.min("1")
-                      ,$Html$Attributes.max("20")
-                      ,$Html$Attributes.value($Basics.toString(x))
-                      ,event
-                      ,$Html$Attributes.$class("slider")
-                      ,$Html$Attributes.style(_U.list([{ctor: "_Tuple2",_0: "width",_1: "100%"},{ctor: "_Tuple2",_0: "max-width",_1: "800px"}]))]),
-              _U.list([]))]))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("double-spacer")]),_U.list([]))
-              ,A2($Html.div,
-              _U.list([$Html$Attributes.$class("centered limited-width")]),
-              _U.list([A2($Html.div,_U.list([$Html$Attributes.$class("inline-block auto-margin")]),_U.list([equationImg(x)]))]))]));
-   };
-   var main = A2($Signal.map,$Html$Lazy.lazy(view),A2($Signal.map,function (_p2) {    return $Basics.toFloat(unsafeToInt(_p2));},mailbox.signal));
-   return _elm.FourierSeries.values = {_op: _op
-                                      ,squareWave: squareWave
-                                      ,sineWavesAtN: sineWavesAtN
-                                      ,nthSin: nthSin
-                                      ,graphStyle: graphStyle
-                                      ,componentSinusoids: componentSinusoids
-                                      ,mailbox: mailbox
-                                      ,view: view
-                                      ,main: main
-                                      ,unsafeToInt: unsafeToInt
-                                      ,addFunc: addFunc
-                                      ,equationTermImg: equationTermImg
-                                      ,lastTermImg: lastTermImg
-                                      ,equationImg: equationImg};
-};
+   var updateData = F3(function (ga,mousePos,data) {
+      var foo = F2(function (_p14,data) {
+         var _p15 = _p14;
+         var _p20 = _p15._1;
+         var _p19 = _p15._0;
+         var _p16 = data;
+         if (_p16.ctor === "[]") {
+               return _U.list([]);
+            } else {
+               var _p18 = _p16._1;
+               var _p17 = _p16._0;
+               return _U.eq(_p19,0) ? A2($List._op["::"],{ctor: "_Tuple2",_0: $Basics.fst(_p17),_1: _p20},_p18) : A2($List._op["::"],
+               _p17,
+               A2(foo,{ctor: "_Tuple2",_0: _p19 - 1,_1: _p20},_p18));
+            }
+      });
+      var _p21 = {ctor: "_Tuple2",_0: A2(getSector,mousePos,ga),_1: A2(getYValue,mousePos,ga)};
+      if (_p21._0.ctor === "Nothing") {
+            return data;
+         } else {
+            if (_p21._1.ctor === "Nothing") {
+                  return data;
+               } else {
+                  return A2(foo,{ctor: "_Tuple2",_0: _p21._0._0,_1: _p21._1._0},data);
+               }
+         }
+   });
+   var mouseCoordData = A3($Signal.foldp,updateData(graphStyle),dataList,A3($Signal.filterMap,filterNothing,{ctor: "_Tuple2",_0: -1,_1: -1},maybeMouse));
+   var $function = A2($Signal.map,
+   $Graphing.wrapFunc,
+   function () {
+      var sinFromFreqSpace = F2(function (_p22,z) {    var _p23 = _p22;return _p23._1 * $Basics.sin(_p23._0 * $Basics.pi * z);});
+      return A2($Signal.map,A2($List.foldr,addFunc,function (_p24) {    return 0;}),A2($Signal.map,$List.map(sinFromFreqSpace),mouseCoordData));
+   }());
+   var sinusoid = A2($Signal.map,
+   $Html.div(_U.list([$Html$Attributes.$class("white shadow")])),
+   combine(_U.list([$Signal.constant(A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([])))
+                   ,$Signal.constant(A2($Html.div,_U.list([$Html$Attributes.$class("centered header-font")]),_U.list([$Html.text("Sinusoidal Signal")])))
+                   ,A2($Signal.map,
+                   function (x) {
+                      return A2($Graphing.graph,_U.list([{ctor: "_Tuple2",_0: x,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#ee2560"})}]),graphStyleSin);
+                   },
+                   $function)])));
+   var data = A2($Signal.map,$Graphing.wrapData,mouseCoordData);
+   var freq = A2($Signal.map,
+   $Html.div(_U.list([$Html$Attributes.$class("white shadow")])),
+   combine(_U.list([$Signal.constant(A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([])))
+                   ,$Signal.constant(A2($Html.div,
+                   _U.list([$Html$Attributes.$class("centered header-font")]),
+                   _U.list([$Html.text("Frequency Domain Representation")])))
+                   ,A2($Signal.map,
+                   function (x) {
+                      return A2($Graphing.graph,
+                      _U.list([{ctor: "_Tuple2",_0: x,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#999",dotColor: "#ee2560"})}]),
+                      graphStyle);
+                   },
+                   data)])));
+   var main = A2($Signal.map,
+   $Html.div(_U.list([])),
+   combine(_U.list([freq,$Signal.constant(A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))),sinusoid])));
+   return _elm.ImpulseDemo.values = {_op: _op
+                                    ,data: data
+                                    ,$function: $function
+                                    ,dataList: dataList
+                                    ,mouseCoordData: mouseCoordData
+                                    ,filterNothing: filterNothing
+                                    ,maybeMouse: maybeMouse
+                                    ,getSector: getSector
+                                    ,getYValue: getYValue
+                                    ,updateData: updateData
+                                    ,graphStyle: graphStyle
+                                    ,graphStyleSin: graphStyleSin
+                                    ,main: main
+                                    ,freq: freq
+                                    ,sinusoid: sinusoid
+                                    ,lerp: lerp
+                                    ,addFunc: addFunc
+                                    ,combine: combine};
+};</script></head><body><script type="text/javascript">Elm.fullscreen(Elm.ImpulseDemo)</script></body></html>

@@ -10442,28 +10442,6 @@ Elm.Html.Events.make = function (_elm) {
                                     ,keyCode: keyCode
                                     ,Options: Options};
 };
-Elm.Html = Elm.Html || {};
-Elm.Html.Lazy = Elm.Html.Lazy || {};
-Elm.Html.Lazy.make = function (_elm) {
-   "use strict";
-   _elm.Html = _elm.Html || {};
-   _elm.Html.Lazy = _elm.Html.Lazy || {};
-   if (_elm.Html.Lazy.values) return _elm.Html.Lazy.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $VirtualDom = Elm.VirtualDom.make(_elm);
-   var _op = {};
-   var lazy3 = $VirtualDom.lazy3;
-   var lazy2 = $VirtualDom.lazy2;
-   var lazy = $VirtualDom.lazy;
-   return _elm.Html.Lazy.values = {_op: _op,lazy: lazy,lazy2: lazy2,lazy3: lazy3};
-};
 Elm.Svg = Elm.Svg || {};
 Elm.Svg.make = function (_elm) {
    "use strict";
@@ -11172,80 +11150,6 @@ Elm.Svg.Attributes.make = function (_elm) {
                                        ,wordSpacing: wordSpacing
                                        ,writingMode: writingMode};
 };
-Elm.ParseInt = Elm.ParseInt || {};
-Elm.ParseInt.make = function (_elm) {
-   "use strict";
-   _elm.ParseInt = _elm.ParseInt || {};
-   if (_elm.ParseInt.values) return _elm.ParseInt.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Char = Elm.Char.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm);
-   var _op = {};
-   var charFromInt = function (i) {
-      return _U.cmp(i,10) < 0 ? $Char.fromCode(i + $Char.toCode(_U.chr("0"))) : _U.cmp(i,
-      36) < 0 ? $Char.fromCode(i - 10 + $Char.toCode(_U.chr("A"))) : _U.crash("ParseInt",
-      {start: {line: 141,column: 5},end: {line: 141,column: 16}})($Basics.toString(i));
-   };
-   var toRadix$ = F2(function (radix,i) {
-      return _U.cmp(i,radix) < 0 ? $String.fromChar(charFromInt(i)) : A2($Basics._op["++"],
-      A2(toRadix$,radix,i / radix | 0),
-      $String.fromChar(charFromInt(A2($Basics._op["%"],i,radix))));
-   });
-   var isBetween = F3(function (lower,upper,c) {    var ci = $Char.toCode(c);return _U.cmp($Char.toCode(lower),ci) < 1 && _U.cmp(ci,$Char.toCode(upper)) < 1;});
-   var charOffset = F2(function (basis,c) {    return $Char.toCode(c) - $Char.toCode(basis);});
-   var InvalidRadix = function (a) {    return {ctor: "InvalidRadix",_0: a};};
-   var toRadix = F2(function (radix,i) {
-      return _U.cmp(2,radix) < 1 && _U.cmp(radix,36) < 1 ? _U.cmp(i,0) < 0 ? $Result.Ok(A2($Basics._op["++"],
-      "-",
-      A2(toRadix$,radix,0 - i))) : $Result.Ok(A2(toRadix$,radix,i)) : $Result.Err(InvalidRadix(radix));
-   });
-   var OutOfRange = function (a) {    return {ctor: "OutOfRange",_0: a};};
-   var InvalidChar = function (a) {    return {ctor: "InvalidChar",_0: a};};
-   var intFromChar = F2(function (radix,c) {
-      var validInt = function (i) {    return _U.cmp(i,radix) < 0 ? $Result.Ok(i) : $Result.Err(OutOfRange(c));};
-      var toInt = A3(isBetween,_U.chr("0"),_U.chr("9"),c) ? $Result.Ok(A2(charOffset,_U.chr("0"),c)) : A3(isBetween,
-      _U.chr("a"),
-      _U.chr("z"),
-      c) ? $Result.Ok(10 + A2(charOffset,_U.chr("a"),c)) : A3(isBetween,_U.chr("A"),_U.chr("Z"),c) ? $Result.Ok(10 + A2(charOffset,
-      _U.chr("A"),
-      c)) : $Result.Err(InvalidChar(c));
-      return A2($Result.andThen,toInt,validInt);
-   });
-   var parseIntR = F2(function (radix,rstring) {
-      var _p0 = $String.uncons(rstring);
-      if (_p0.ctor === "Nothing") {
-            return $Result.Ok(0);
-         } else {
-            return A2($Result.andThen,
-            A2(intFromChar,radix,_p0._0._0),
-            function (ci) {
-               return A2($Result.andThen,A2(parseIntR,radix,_p0._0._1),function (ri) {    return $Result.Ok(ci + ri * radix);});
-            });
-         }
-   });
-   var parseIntRadix = F2(function (radix,string) {
-      return _U.cmp(2,radix) < 1 && _U.cmp(radix,36) < 1 ? A2(parseIntR,radix,$String.reverse(string)) : $Result.Err(InvalidRadix(radix));
-   });
-   var parseInt = parseIntRadix(10);
-   var parseIntOct = parseIntRadix(8);
-   var parseIntHex = parseIntRadix(16);
-   return _elm.ParseInt.values = {_op: _op
-                                 ,parseInt: parseInt
-                                 ,parseIntOct: parseIntOct
-                                 ,parseIntHex: parseIntHex
-                                 ,parseIntRadix: parseIntRadix
-                                 ,toRadix: toRadix
-                                 ,toRadix$: toRadix$
-                                 ,InvalidChar: InvalidChar
-                                 ,OutOfRange: OutOfRange
-                                 ,InvalidRadix: InvalidRadix};
-};
 Elm.Animation = Elm.Animation || {};
 Elm.Animation.make = function (_elm) {
    "use strict";
@@ -11678,134 +11582,39 @@ Elm.Graphing.make = function (_elm) {
                                  ,GraphAttributes: GraphAttributes
                                  ,PlotAttributes: PlotAttributes};
 };
-Elm.FourierSeries = Elm.FourierSeries || {};
-Elm.FourierSeries.make = function (_elm) {
+Elm.SquareFreq = Elm.SquareFreq || {};
+Elm.SquareFreq.make = function (_elm) {
    "use strict";
-   _elm.FourierSeries = _elm.FourierSeries || {};
-   if (_elm.FourierSeries.values) return _elm.FourierSeries.values;
+   _elm.SquareFreq = _elm.SquareFreq || {};
+   if (_elm.SquareFreq.values) return _elm.SquareFreq.values;
    var _U = Elm.Native.Utils.make(_elm),
    $Basics = Elm.Basics.make(_elm),
    $Debug = Elm.Debug.make(_elm),
    $Graphing = Elm.Graphing.make(_elm),
    $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $Html$Events = Elm.Html.Events.make(_elm),
-   $Html$Lazy = Elm.Html.Lazy.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
-   $ParseInt = Elm.ParseInt.make(_elm),
    $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm);
+   $Signal = Elm.Signal.make(_elm);
    var _op = {};
-   var lastTermImg = function (n) {
-      return A2($Html.img,
-      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
-              ,$Html$Attributes.$class("eqnImg last-term")]),
-      _U.list([]));
-   };
-   var equationTermImg = function (n) {
-      return A2($Html.img,
-      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
-              ,$Html$Attributes.$class("eqnImg middle-term")]),
-      _U.list([]));
-   };
-   var equationImg = function (n) {
-      var closeParen = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(end).svg"),$Html$Attributes.$class("eqnImg closeParen")]),_U.list([]));
-      var leadingFactor = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(start).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
-      var plus = _U.cmp(n,1) > 0 ? A2($Html.img,
-      _U.list([$Html$Attributes.src("equations/CodeCogsEqn(plus).svg"),$Html$Attributes.$class("plus")]),
-      _U.list([])) : A2($Html.img,_U.list([]),_U.list([]));
-      var fx = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(fx).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
-      return A2($Html.div,
-      _U.list([]),
-      $List.concat(_U.list([_U.list([fx])
-                           ,_U.list([leadingFactor])
-                           ,A2($List.intersperse,plus,A2($List.map,equationTermImg,A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n - 1))))
-                           ,_U.list([plus])
-                           ,_U.list([lastTermImg(2 * n - 1)])
-                           ,_U.list([closeParen])])));
-   };
-   var addFunc = F3(function (x,y,z) {    return x(z) + y(z);});
-   var unsafeToInt = function (x) {
-      var _p0 = $ParseInt.parseInt(x);
-      if (_p0.ctor === "Ok") {
-            return _p0._0;
-         } else {
-            return _U.crashCase("FourierSeries",{start: {line: 73,column: 17},end: {line: 75,column: 58}},_p0)("unsafeToInt called on a bad string");
-         }
-   };
-   var mailbox = $Signal.mailbox("1");
-   var graphStyle = function (x) {
-      return _U.update($Graphing.defaultGraph,
-      {width: 800
-      ,height: 300
-      ,yInterval: {ctor: "_Tuple2",_0: -1.5,_1: 1.5}
-      ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 4}
-      ,margin: 15
-      ,axisColor: "#fff"
-      ,axisWidth: 0
-      ,xTicksEvery: 100
-      ,yTicksEvery: 100});
-   };
-   var nthSin = F3(function (period,n,x) {    return 4 / $Basics.pi * (1 / n) * $Basics.sin(n * $Basics.pi * x / period);});
-   var componentSinusoids = F2(function (period,n) {    return A2($List.map,$Graphing.wrapFunc,A2($List.map,nthSin(period),_U.range(1,n)));});
-   var sineWavesAtN = F2(function (period,n) {
-      return $Graphing.wrapFunc(A3($List.foldr,
-      addFunc,
-      function (x) {
-         return 0;
-      },
-      A2($List.map,nthSin(period),A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n)))));
-   });
-   var squareWave = $Graphing.wrapFunc(function (x) {    return _U.eq(A2($Basics._op["%"],$Basics.round(x + 0.5),2),0) ? -1 : 1;});
-   var view = function (v) {
-      var event = A3($Html$Events.on,"input",$Html$Events.targetValue,$Signal.message(mailbox.address));
-      var x = v;
-      return A2($Html.div,
-      _U.list([$Html$Attributes.$class("centered-content")]),
-      _U.list([A2($Graphing.graph,
-              $List.concat(_U.list([A3($List.map2,
-                                   F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),
-                                   A2(componentSinusoids,1,x),
-                                   A2($List.repeat,$Basics.round(x),_U.update($Graphing.defaultPlot,{strokeColor: "#eee"})))
-                                   ,_U.list([{ctor: "_Tuple2"
-                                             ,_0: $Graphing.wrapFunc(A2(nthSin,1,x))
-                                             ,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#bbb"})}])
-                                   ,_U.list([{ctor: "_Tuple2",_0: squareWave,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#34314c"})}
-                                            ,{ctor: "_Tuple2",_0: A2(sineWavesAtN,1,x),_1: _U.update($Graphing.defaultPlot,{strokeColor: "#ee2560"})}])])),
-              graphStyle(0))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("centered cm")]),_U.list([$Html.text(A2($String.append,"n = ",$Basics.toString(x)))]))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))
-              ,A2($Html.div,
-              _U.list([$Html$Attributes.$class("auto-margin limited-width")]),
-              _U.list([A2($Html.input,
-              _U.list([$Html$Attributes.type$("range")
-                      ,$Html$Attributes.min("1")
-                      ,$Html$Attributes.max("20")
-                      ,$Html$Attributes.value($Basics.toString(x))
-                      ,event
-                      ,$Html$Attributes.$class("slider")
-                      ,$Html$Attributes.style(_U.list([{ctor: "_Tuple2",_0: "width",_1: "100%"},{ctor: "_Tuple2",_0: "max-width",_1: "800px"}]))]),
-              _U.list([]))]))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("double-spacer")]),_U.list([]))
-              ,A2($Html.div,
-              _U.list([$Html$Attributes.$class("centered limited-width")]),
-              _U.list([A2($Html.div,_U.list([$Html$Attributes.$class("inline-block auto-margin")]),_U.list([equationImg(x)]))]))]));
-   };
-   var main = A2($Signal.map,$Html$Lazy.lazy(view),A2($Signal.map,function (_p2) {    return $Basics.toFloat(unsafeToInt(_p2));},mailbox.signal));
-   return _elm.FourierSeries.values = {_op: _op
-                                      ,squareWave: squareWave
-                                      ,sineWavesAtN: sineWavesAtN
-                                      ,nthSin: nthSin
-                                      ,graphStyle: graphStyle
-                                      ,componentSinusoids: componentSinusoids
-                                      ,mailbox: mailbox
-                                      ,view: view
-                                      ,main: main
-                                      ,unsafeToInt: unsafeToInt
-                                      ,addFunc: addFunc
-                                      ,equationTermImg: equationTermImg
-                                      ,lastTermImg: lastTermImg
-                                      ,equationImg: equationImg};
+   var graphStyle = _U.update($Graphing.defaultGraph,
+   {width: 800
+   ,height: 300
+   ,yInterval: {ctor: "_Tuple2",_0: 0,_1: 1.5}
+   ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 40}
+   ,margin: 25
+   ,axisColor: "#000"
+   ,axisWidth: 2
+   ,xTicksEvery: 5
+   ,yTicksEvery: 1});
+   var dataList = A2($List.map,
+   function (x) {
+      return {ctor: "_Tuple2",_0: x,_1: $Basics.abs(4 / $Basics.pi / x)};
+   },
+   A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,20)));
+   var data = $Graphing.wrapData(dataList);
+   var main = A2($Graphing.graph,
+   _U.list([{ctor: "_Tuple2",_0: data,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#ee2560",dotColor: "#ee2560"})}]),
+   graphStyle);
+   return _elm.SquareFreq.values = {_op: _op,data: data,dataList: dataList,graphStyle: graphStyle,main: main};
 };

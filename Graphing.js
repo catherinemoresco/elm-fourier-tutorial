@@ -10151,319 +10151,6 @@ Elm.Html.make = function (_elm) {
                              ,menuitem: menuitem
                              ,menu: menu};
 };
-Elm.Html = Elm.Html || {};
-Elm.Html.Attributes = Elm.Html.Attributes || {};
-Elm.Html.Attributes.make = function (_elm) {
-   "use strict";
-   _elm.Html = _elm.Html || {};
-   _elm.Html.Attributes = _elm.Html.Attributes || {};
-   if (_elm.Html.Attributes.values) return _elm.Html.Attributes.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Json$Encode = Elm.Json.Encode.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm),
-   $VirtualDom = Elm.VirtualDom.make(_elm);
-   var _op = {};
-   var attribute = $VirtualDom.attribute;
-   var contextmenu = function (value) {    return A2(attribute,"contextmenu",value);};
-   var property = $VirtualDom.property;
-   var stringProperty = F2(function (name,string) {    return A2(property,name,$Json$Encode.string(string));});
-   var $class = function (name) {    return A2(stringProperty,"className",name);};
-   var id = function (name) {    return A2(stringProperty,"id",name);};
-   var title = function (name) {    return A2(stringProperty,"title",name);};
-   var accesskey = function ($char) {    return A2(stringProperty,"accessKey",$String.fromChar($char));};
-   var dir = function (value) {    return A2(stringProperty,"dir",value);};
-   var draggable = function (value) {    return A2(stringProperty,"draggable",value);};
-   var dropzone = function (value) {    return A2(stringProperty,"dropzone",value);};
-   var itemprop = function (value) {    return A2(stringProperty,"itemprop",value);};
-   var lang = function (value) {    return A2(stringProperty,"lang",value);};
-   var tabindex = function (n) {    return A2(stringProperty,"tabIndex",$Basics.toString(n));};
-   var charset = function (value) {    return A2(stringProperty,"charset",value);};
-   var content = function (value) {    return A2(stringProperty,"content",value);};
-   var httpEquiv = function (value) {    return A2(stringProperty,"httpEquiv",value);};
-   var language = function (value) {    return A2(stringProperty,"language",value);};
-   var src = function (value) {    return A2(stringProperty,"src",value);};
-   var height = function (value) {    return A2(stringProperty,"height",$Basics.toString(value));};
-   var width = function (value) {    return A2(stringProperty,"width",$Basics.toString(value));};
-   var alt = function (value) {    return A2(stringProperty,"alt",value);};
-   var preload = function (value) {    return A2(stringProperty,"preload",value);};
-   var poster = function (value) {    return A2(stringProperty,"poster",value);};
-   var kind = function (value) {    return A2(stringProperty,"kind",value);};
-   var srclang = function (value) {    return A2(stringProperty,"srclang",value);};
-   var sandbox = function (value) {    return A2(stringProperty,"sandbox",value);};
-   var srcdoc = function (value) {    return A2(stringProperty,"srcdoc",value);};
-   var type$ = function (value) {    return A2(stringProperty,"type",value);};
-   var value = function (value) {    return A2(stringProperty,"value",value);};
-   var placeholder = function (value) {    return A2(stringProperty,"placeholder",value);};
-   var accept = function (value) {    return A2(stringProperty,"accept",value);};
-   var acceptCharset = function (value) {    return A2(stringProperty,"acceptCharset",value);};
-   var action = function (value) {    return A2(stringProperty,"action",value);};
-   var autocomplete = function (bool) {    return A2(stringProperty,"autocomplete",bool ? "on" : "off");};
-   var autosave = function (value) {    return A2(stringProperty,"autosave",value);};
-   var enctype = function (value) {    return A2(stringProperty,"enctype",value);};
-   var formaction = function (value) {    return A2(stringProperty,"formAction",value);};
-   var list = function (value) {    return A2(stringProperty,"list",value);};
-   var minlength = function (n) {    return A2(stringProperty,"minLength",$Basics.toString(n));};
-   var maxlength = function (n) {    return A2(stringProperty,"maxLength",$Basics.toString(n));};
-   var method = function (value) {    return A2(stringProperty,"method",value);};
-   var name = function (value) {    return A2(stringProperty,"name",value);};
-   var pattern = function (value) {    return A2(stringProperty,"pattern",value);};
-   var size = function (n) {    return A2(stringProperty,"size",$Basics.toString(n));};
-   var $for = function (value) {    return A2(stringProperty,"htmlFor",value);};
-   var form = function (value) {    return A2(stringProperty,"form",value);};
-   var max = function (value) {    return A2(stringProperty,"max",value);};
-   var min = function (value) {    return A2(stringProperty,"min",value);};
-   var step = function (n) {    return A2(stringProperty,"step",n);};
-   var cols = function (n) {    return A2(stringProperty,"cols",$Basics.toString(n));};
-   var rows = function (n) {    return A2(stringProperty,"rows",$Basics.toString(n));};
-   var wrap = function (value) {    return A2(stringProperty,"wrap",value);};
-   var usemap = function (value) {    return A2(stringProperty,"useMap",value);};
-   var shape = function (value) {    return A2(stringProperty,"shape",value);};
-   var coords = function (value) {    return A2(stringProperty,"coords",value);};
-   var challenge = function (value) {    return A2(stringProperty,"challenge",value);};
-   var keytype = function (value) {    return A2(stringProperty,"keytype",value);};
-   var align = function (value) {    return A2(stringProperty,"align",value);};
-   var cite = function (value) {    return A2(stringProperty,"cite",value);};
-   var href = function (value) {    return A2(stringProperty,"href",value);};
-   var target = function (value) {    return A2(stringProperty,"target",value);};
-   var downloadAs = function (value) {    return A2(stringProperty,"download",value);};
-   var hreflang = function (value) {    return A2(stringProperty,"hreflang",value);};
-   var media = function (value) {    return A2(stringProperty,"media",value);};
-   var ping = function (value) {    return A2(stringProperty,"ping",value);};
-   var rel = function (value) {    return A2(stringProperty,"rel",value);};
-   var datetime = function (value) {    return A2(stringProperty,"datetime",value);};
-   var pubdate = function (value) {    return A2(stringProperty,"pubdate",value);};
-   var start = function (n) {    return A2(stringProperty,"start",$Basics.toString(n));};
-   var colspan = function (n) {    return A2(stringProperty,"colSpan",$Basics.toString(n));};
-   var headers = function (value) {    return A2(stringProperty,"headers",value);};
-   var rowspan = function (n) {    return A2(stringProperty,"rowSpan",$Basics.toString(n));};
-   var scope = function (value) {    return A2(stringProperty,"scope",value);};
-   var manifest = function (value) {    return A2(stringProperty,"manifest",value);};
-   var boolProperty = F2(function (name,bool) {    return A2(property,name,$Json$Encode.bool(bool));});
-   var hidden = function (bool) {    return A2(boolProperty,"hidden",bool);};
-   var contenteditable = function (bool) {    return A2(boolProperty,"contentEditable",bool);};
-   var spellcheck = function (bool) {    return A2(boolProperty,"spellcheck",bool);};
-   var async = function (bool) {    return A2(boolProperty,"async",bool);};
-   var defer = function (bool) {    return A2(boolProperty,"defer",bool);};
-   var scoped = function (bool) {    return A2(boolProperty,"scoped",bool);};
-   var autoplay = function (bool) {    return A2(boolProperty,"autoplay",bool);};
-   var controls = function (bool) {    return A2(boolProperty,"controls",bool);};
-   var loop = function (bool) {    return A2(boolProperty,"loop",bool);};
-   var $default = function (bool) {    return A2(boolProperty,"default",bool);};
-   var seamless = function (bool) {    return A2(boolProperty,"seamless",bool);};
-   var checked = function (bool) {    return A2(boolProperty,"checked",bool);};
-   var selected = function (bool) {    return A2(boolProperty,"selected",bool);};
-   var autofocus = function (bool) {    return A2(boolProperty,"autofocus",bool);};
-   var disabled = function (bool) {    return A2(boolProperty,"disabled",bool);};
-   var multiple = function (bool) {    return A2(boolProperty,"multiple",bool);};
-   var novalidate = function (bool) {    return A2(boolProperty,"noValidate",bool);};
-   var readonly = function (bool) {    return A2(boolProperty,"readOnly",bool);};
-   var required = function (bool) {    return A2(boolProperty,"required",bool);};
-   var ismap = function (value) {    return A2(boolProperty,"isMap",value);};
-   var download = function (bool) {    return A2(boolProperty,"download",bool);};
-   var reversed = function (bool) {    return A2(boolProperty,"reversed",bool);};
-   var classList = function (list) {    return $class(A2($String.join," ",A2($List.map,$Basics.fst,A2($List.filter,$Basics.snd,list))));};
-   var style = function (props) {
-      return A2(property,
-      "style",
-      $Json$Encode.object(A2($List.map,function (_p0) {    var _p1 = _p0;return {ctor: "_Tuple2",_0: _p1._0,_1: $Json$Encode.string(_p1._1)};},props)));
-   };
-   var key = function (k) {    return A2(stringProperty,"key",k);};
-   return _elm.Html.Attributes.values = {_op: _op
-                                        ,key: key
-                                        ,style: style
-                                        ,$class: $class
-                                        ,classList: classList
-                                        ,id: id
-                                        ,title: title
-                                        ,hidden: hidden
-                                        ,type$: type$
-                                        ,value: value
-                                        ,checked: checked
-                                        ,placeholder: placeholder
-                                        ,selected: selected
-                                        ,accept: accept
-                                        ,acceptCharset: acceptCharset
-                                        ,action: action
-                                        ,autocomplete: autocomplete
-                                        ,autofocus: autofocus
-                                        ,autosave: autosave
-                                        ,disabled: disabled
-                                        ,enctype: enctype
-                                        ,formaction: formaction
-                                        ,list: list
-                                        ,maxlength: maxlength
-                                        ,minlength: minlength
-                                        ,method: method
-                                        ,multiple: multiple
-                                        ,name: name
-                                        ,novalidate: novalidate
-                                        ,pattern: pattern
-                                        ,readonly: readonly
-                                        ,required: required
-                                        ,size: size
-                                        ,$for: $for
-                                        ,form: form
-                                        ,max: max
-                                        ,min: min
-                                        ,step: step
-                                        ,cols: cols
-                                        ,rows: rows
-                                        ,wrap: wrap
-                                        ,href: href
-                                        ,target: target
-                                        ,download: download
-                                        ,downloadAs: downloadAs
-                                        ,hreflang: hreflang
-                                        ,media: media
-                                        ,ping: ping
-                                        ,rel: rel
-                                        ,ismap: ismap
-                                        ,usemap: usemap
-                                        ,shape: shape
-                                        ,coords: coords
-                                        ,src: src
-                                        ,height: height
-                                        ,width: width
-                                        ,alt: alt
-                                        ,autoplay: autoplay
-                                        ,controls: controls
-                                        ,loop: loop
-                                        ,preload: preload
-                                        ,poster: poster
-                                        ,$default: $default
-                                        ,kind: kind
-                                        ,srclang: srclang
-                                        ,sandbox: sandbox
-                                        ,seamless: seamless
-                                        ,srcdoc: srcdoc
-                                        ,reversed: reversed
-                                        ,start: start
-                                        ,align: align
-                                        ,colspan: colspan
-                                        ,rowspan: rowspan
-                                        ,headers: headers
-                                        ,scope: scope
-                                        ,async: async
-                                        ,charset: charset
-                                        ,content: content
-                                        ,defer: defer
-                                        ,httpEquiv: httpEquiv
-                                        ,language: language
-                                        ,scoped: scoped
-                                        ,accesskey: accesskey
-                                        ,contenteditable: contenteditable
-                                        ,contextmenu: contextmenu
-                                        ,dir: dir
-                                        ,draggable: draggable
-                                        ,dropzone: dropzone
-                                        ,itemprop: itemprop
-                                        ,lang: lang
-                                        ,spellcheck: spellcheck
-                                        ,tabindex: tabindex
-                                        ,challenge: challenge
-                                        ,keytype: keytype
-                                        ,cite: cite
-                                        ,datetime: datetime
-                                        ,pubdate: pubdate
-                                        ,manifest: manifest
-                                        ,property: property
-                                        ,attribute: attribute};
-};
-Elm.Html = Elm.Html || {};
-Elm.Html.Events = Elm.Html.Events || {};
-Elm.Html.Events.make = function (_elm) {
-   "use strict";
-   _elm.Html = _elm.Html || {};
-   _elm.Html.Events = _elm.Html.Events || {};
-   if (_elm.Html.Events.values) return _elm.Html.Events.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Json$Decode = Elm.Json.Decode.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $VirtualDom = Elm.VirtualDom.make(_elm);
-   var _op = {};
-   var keyCode = A2($Json$Decode._op[":="],"keyCode",$Json$Decode.$int);
-   var targetChecked = A2($Json$Decode.at,_U.list(["target","checked"]),$Json$Decode.bool);
-   var targetValue = A2($Json$Decode.at,_U.list(["target","value"]),$Json$Decode.string);
-   var defaultOptions = $VirtualDom.defaultOptions;
-   var Options = F2(function (a,b) {    return {stopPropagation: a,preventDefault: b};});
-   var onWithOptions = $VirtualDom.onWithOptions;
-   var on = $VirtualDom.on;
-   var messageOn = F3(function (name,addr,msg) {    return A3(on,name,$Json$Decode.value,function (_p0) {    return A2($Signal.message,addr,msg);});});
-   var onClick = messageOn("click");
-   var onDoubleClick = messageOn("dblclick");
-   var onMouseMove = messageOn("mousemove");
-   var onMouseDown = messageOn("mousedown");
-   var onMouseUp = messageOn("mouseup");
-   var onMouseEnter = messageOn("mouseenter");
-   var onMouseLeave = messageOn("mouseleave");
-   var onMouseOver = messageOn("mouseover");
-   var onMouseOut = messageOn("mouseout");
-   var onBlur = messageOn("blur");
-   var onFocus = messageOn("focus");
-   var onSubmit = messageOn("submit");
-   var onKey = F3(function (name,addr,handler) {    return A3(on,name,keyCode,function (code) {    return A2($Signal.message,addr,handler(code));});});
-   var onKeyUp = onKey("keyup");
-   var onKeyDown = onKey("keydown");
-   var onKeyPress = onKey("keypress");
-   return _elm.Html.Events.values = {_op: _op
-                                    ,onBlur: onBlur
-                                    ,onFocus: onFocus
-                                    ,onSubmit: onSubmit
-                                    ,onKeyUp: onKeyUp
-                                    ,onKeyDown: onKeyDown
-                                    ,onKeyPress: onKeyPress
-                                    ,onClick: onClick
-                                    ,onDoubleClick: onDoubleClick
-                                    ,onMouseMove: onMouseMove
-                                    ,onMouseDown: onMouseDown
-                                    ,onMouseUp: onMouseUp
-                                    ,onMouseEnter: onMouseEnter
-                                    ,onMouseLeave: onMouseLeave
-                                    ,onMouseOver: onMouseOver
-                                    ,onMouseOut: onMouseOut
-                                    ,on: on
-                                    ,onWithOptions: onWithOptions
-                                    ,defaultOptions: defaultOptions
-                                    ,targetValue: targetValue
-                                    ,targetChecked: targetChecked
-                                    ,keyCode: keyCode
-                                    ,Options: Options};
-};
-Elm.Html = Elm.Html || {};
-Elm.Html.Lazy = Elm.Html.Lazy || {};
-Elm.Html.Lazy.make = function (_elm) {
-   "use strict";
-   _elm.Html = _elm.Html || {};
-   _elm.Html.Lazy = _elm.Html.Lazy || {};
-   if (_elm.Html.Lazy.values) return _elm.Html.Lazy.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $VirtualDom = Elm.VirtualDom.make(_elm);
-   var _op = {};
-   var lazy3 = $VirtualDom.lazy3;
-   var lazy2 = $VirtualDom.lazy2;
-   var lazy = $VirtualDom.lazy;
-   return _elm.Html.Lazy.values = {_op: _op,lazy: lazy,lazy2: lazy2,lazy3: lazy3};
-};
 Elm.Svg = Elm.Svg || {};
 Elm.Svg.make = function (_elm) {
    "use strict";
@@ -11172,80 +10859,6 @@ Elm.Svg.Attributes.make = function (_elm) {
                                        ,wordSpacing: wordSpacing
                                        ,writingMode: writingMode};
 };
-Elm.ParseInt = Elm.ParseInt || {};
-Elm.ParseInt.make = function (_elm) {
-   "use strict";
-   _elm.ParseInt = _elm.ParseInt || {};
-   if (_elm.ParseInt.values) return _elm.ParseInt.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Char = Elm.Char.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm);
-   var _op = {};
-   var charFromInt = function (i) {
-      return _U.cmp(i,10) < 0 ? $Char.fromCode(i + $Char.toCode(_U.chr("0"))) : _U.cmp(i,
-      36) < 0 ? $Char.fromCode(i - 10 + $Char.toCode(_U.chr("A"))) : _U.crash("ParseInt",
-      {start: {line: 141,column: 5},end: {line: 141,column: 16}})($Basics.toString(i));
-   };
-   var toRadix$ = F2(function (radix,i) {
-      return _U.cmp(i,radix) < 0 ? $String.fromChar(charFromInt(i)) : A2($Basics._op["++"],
-      A2(toRadix$,radix,i / radix | 0),
-      $String.fromChar(charFromInt(A2($Basics._op["%"],i,radix))));
-   });
-   var isBetween = F3(function (lower,upper,c) {    var ci = $Char.toCode(c);return _U.cmp($Char.toCode(lower),ci) < 1 && _U.cmp(ci,$Char.toCode(upper)) < 1;});
-   var charOffset = F2(function (basis,c) {    return $Char.toCode(c) - $Char.toCode(basis);});
-   var InvalidRadix = function (a) {    return {ctor: "InvalidRadix",_0: a};};
-   var toRadix = F2(function (radix,i) {
-      return _U.cmp(2,radix) < 1 && _U.cmp(radix,36) < 1 ? _U.cmp(i,0) < 0 ? $Result.Ok(A2($Basics._op["++"],
-      "-",
-      A2(toRadix$,radix,0 - i))) : $Result.Ok(A2(toRadix$,radix,i)) : $Result.Err(InvalidRadix(radix));
-   });
-   var OutOfRange = function (a) {    return {ctor: "OutOfRange",_0: a};};
-   var InvalidChar = function (a) {    return {ctor: "InvalidChar",_0: a};};
-   var intFromChar = F2(function (radix,c) {
-      var validInt = function (i) {    return _U.cmp(i,radix) < 0 ? $Result.Ok(i) : $Result.Err(OutOfRange(c));};
-      var toInt = A3(isBetween,_U.chr("0"),_U.chr("9"),c) ? $Result.Ok(A2(charOffset,_U.chr("0"),c)) : A3(isBetween,
-      _U.chr("a"),
-      _U.chr("z"),
-      c) ? $Result.Ok(10 + A2(charOffset,_U.chr("a"),c)) : A3(isBetween,_U.chr("A"),_U.chr("Z"),c) ? $Result.Ok(10 + A2(charOffset,
-      _U.chr("A"),
-      c)) : $Result.Err(InvalidChar(c));
-      return A2($Result.andThen,toInt,validInt);
-   });
-   var parseIntR = F2(function (radix,rstring) {
-      var _p0 = $String.uncons(rstring);
-      if (_p0.ctor === "Nothing") {
-            return $Result.Ok(0);
-         } else {
-            return A2($Result.andThen,
-            A2(intFromChar,radix,_p0._0._0),
-            function (ci) {
-               return A2($Result.andThen,A2(parseIntR,radix,_p0._0._1),function (ri) {    return $Result.Ok(ci + ri * radix);});
-            });
-         }
-   });
-   var parseIntRadix = F2(function (radix,string) {
-      return _U.cmp(2,radix) < 1 && _U.cmp(radix,36) < 1 ? A2(parseIntR,radix,$String.reverse(string)) : $Result.Err(InvalidRadix(radix));
-   });
-   var parseInt = parseIntRadix(10);
-   var parseIntOct = parseIntRadix(8);
-   var parseIntHex = parseIntRadix(16);
-   return _elm.ParseInt.values = {_op: _op
-                                 ,parseInt: parseInt
-                                 ,parseIntOct: parseIntOct
-                                 ,parseIntHex: parseIntHex
-                                 ,parseIntRadix: parseIntRadix
-                                 ,toRadix: toRadix
-                                 ,toRadix$: toRadix$
-                                 ,InvalidChar: InvalidChar
-                                 ,OutOfRange: OutOfRange
-                                 ,InvalidRadix: InvalidRadix};
-};
 Elm.Animation = Elm.Animation || {};
 Elm.Animation.make = function (_elm) {
    "use strict";
@@ -11435,9 +11048,7 @@ Elm.Graphing.make = function (_elm) {
                       ,margin: 25
                       ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 10}
                       ,yInterval: {ctor: "_Tuple2",_0: 0,_1: 10}
-                      ,axisWidth: 2
-                      ,xTicksEvery: 1
-                      ,yTicksEvery: 1};
+                      ,axisWidth: 2};
    var lerp = F5(function (x0,x,x1,y0,y1) {    return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));});
    var linearSpace = F2(function (_p0,numPoints) {
       var _p1 = _p0;
@@ -11487,18 +11098,18 @@ Elm.Graphing.make = function (_elm) {
       var makeImpulse = function (_p16) {
          var _p17 = _p16;
          var _p18 = _p17._0;
-         return A2(pathFromCoords,pa,_U.list([{ctor: "_Tuple2",_0: _p18,_1: _p17._1},{ctor: "_Tuple2",_0: _p18,_1: $Basics.snd(dimensions)}]));
+         return A2(pathFromCoords,pa,_U.list([{ctor: "_Tuple2",_0: _p18,_1: _p17._1},{ctor: "_Tuple2",_0: _p18,_1: 0}]));
       };
       return A2($List.map,makeImpulse,data);
    });
-   var makeDots = F3(function (dimensions,data,pa) {
+   var makeDots = F2(function (dimensions,data) {
       var makeDot = function (_p19) {
          var _p20 = _p19;
          return A2($Svg.circle,
          _U.list([$Svg$Attributes.cx($Basics.toString(_p20._0))
                  ,$Svg$Attributes.cy($Basics.toString(_p20._1))
                  ,$Svg$Attributes.r("5")
-                 ,$Svg$Attributes.fill(pa.dotColor)]),
+                 ,$Svg$Attributes.fill("red")]),
          _U.list([]));
       };
       return A2($List.map,makeDot,data);
@@ -11515,75 +11126,8 @@ Elm.Graphing.make = function (_elm) {
                return A3(makeImpulses,{ctor: "_Tuple2",_0: w,_1: h},newCoords,pa);
             }
       }();
-      return A2($Svg.g,_U.list([]),$List.concat(_U.list([lines,A3(makeDots,{ctor: "_Tuple2",_0: w,_1: h},newCoords,pa)])));
+      return A2($Svg.g,_U.list([]),A2(makeDots,{ctor: "_Tuple2",_0: w,_1: h},newCoords));
    });
-   var yTicks = function (ga) {
-      var _p22 = ga.yInterval;
-      var ymin = _p22._0;
-      var ymax = _p22._1;
-      var numticks = $Basics.floor((ymax - ymin) / ga.yTicksEvery);
-      var step = ($Basics.toFloat(ga.height) - 2 * $Basics.toFloat(ga.margin)) / ((ymax - ymin) / ga.yTicksEvery);
-      var right = ga.width - ga.margin;
-      var left = ga.margin;
-      var top = ga.margin;
-      var bottom = ga.height - ga.margin;
-      var labels = A2($List.map,
-      function (k) {
-         return A2($Svg.text$,
-         _U.list([$Svg$Attributes.y($Basics.toString($Basics.toFloat(bottom) + 5 - k * step))
-                 ,$Svg$Attributes.x($Basics.toString(left - 10))
-                 ,$Svg$Attributes.textAnchor("end")
-                 ,$Svg$Attributes.fontFamily("monospace")]),
-         _U.list([$Svg.text($Basics.toString(k * ga.yTicksEvery + ymin))]));
-      },
-      A2($List.map,$Basics.toFloat,_U.range(1,numticks)));
-      var lines = A2($List.map,
-      function (x) {
-         return A2($Svg.line,
-         _U.list([$Svg$Attributes.x1($Basics.toString($Basics.toFloat(left) - 5))
-                 ,$Svg$Attributes.y1($Basics.toString($Basics.toFloat(bottom) - x * step))
-                 ,$Svg$Attributes.x2($Basics.toString($Basics.toFloat(left) + 5))
-                 ,$Svg$Attributes.y2($Basics.toString($Basics.toFloat(bottom) - x * step))
-                 ,$Svg$Attributes.stroke(ga.axisColor)
-                 ,$Svg$Attributes.strokeWidth($Basics.toString(ga.axisWidth))]),
-         _U.list([]));
-      },
-      A2($List.map,$Basics.toFloat,_U.range(1,numticks)));
-      return A2($Svg.g,_U.list([]),A2($List.append,lines,labels));
-   };
-   var xTicks = function (ga) {
-      var _p23 = ga.xInterval;
-      var xmin = _p23._0;
-      var xmax = _p23._1;
-      var numticks = $Basics.floor((xmax - xmin) / ga.xTicksEvery);
-      var step = ($Basics.toFloat(ga.width) - 2 * $Basics.toFloat(ga.margin)) / $Basics.toFloat(numticks);
-      var right = ga.width - ga.margin;
-      var left = ga.margin;
-      var top = ga.margin;
-      var bottom = ga.height - ga.margin;
-      var labels = A2($List.map,
-      function (k) {
-         return A2($Svg.text$,
-         _U.list([$Svg$Attributes.x($Basics.toString(k * step + $Basics.toFloat(left) + 3))
-                 ,$Svg$Attributes.y($Basics.toString(bottom + 15))
-                 ,$Svg$Attributes.fontFamily("monospace")]),
-         _U.list([$Svg.text($Basics.toString(k * ga.xTicksEvery + xmin))]));
-      },
-      A2($List.map,$Basics.toFloat,_U.range(1,numticks)));
-      var lines = A2($List.map,
-      function (x) {
-         return A2($Svg.line,
-         _U.list([$Svg$Attributes.x1($Basics.toString(x * step + $Basics.toFloat(left)))
-                 ,$Svg$Attributes.y1($Basics.toString(bottom + 5))
-                 ,$Svg$Attributes.x2($Basics.toString(x * step + $Basics.toFloat(left)))
-                 ,$Svg$Attributes.y2($Basics.toString(bottom - 5))
-                 ,$Svg$Attributes.stroke(ga.axisColor)
-                 ,$Svg$Attributes.strokeWidth($Basics.toString(ga.axisWidth))]),
-         _U.list([]));
-      },
-      A2($List.map,$Basics.toFloat,_U.range(1,numticks)));
-      return A2($Svg.g,_U.list([]),A2($List.append,lines,labels));
-   };
    var yAxis = function (graphStyles) {
       var right = graphStyles.width - graphStyles.margin;
       var left = graphStyles.margin;
@@ -11617,54 +11161,24 @@ Elm.Graphing.make = function (_elm) {
    };
    var graph = F2(function (toGraph,graphAttrs) {
       var graphSvg = function (toGraph) {
-         var _p24 = toGraph;
-         if (_p24._0.ctor === "Func") {
-               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(funcPlot,graphAttrs,_p24._1,_p24._0._0)]));
+         var _p22 = toGraph;
+         if (_p22._0.ctor === "Func") {
+               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(funcPlot,graphAttrs,_p22._1,_p22._0._0)]));
             } else {
-               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(dataField,graphAttrs,_p24._1,_p24._0._0)]));
+               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(dataField,graphAttrs,_p22._1,_p22._0._0)]));
             }
       };
       return A2($Svg.svg,
       _U.list([$Svg$Attributes.width($Basics.toString(graphAttrs.width)),$Svg$Attributes.height($Basics.toString(graphAttrs.height))]),
-      A2($List.append,_U.list([xAxis(graphAttrs),yAxis(graphAttrs),xTicks(graphAttrs),yTicks(graphAttrs)]),A2($List.map,graphSvg,toGraph)));
+      A2($List.append,_U.list([xAxis(graphAttrs),yAxis(graphAttrs)]),A2($List.map,graphSvg,toGraph)));
    });
-   var PlotAttributes = F4(function (a,b,c,d) {    return {strokeColor: a,dotColor: b,strokeWidth: c,plotType: d};});
-   var GraphAttributes = function (a) {
-      return function (b) {
-         return function (c) {
-            return function (d) {
-               return function (e) {
-                  return function (f) {
-                     return function (g) {
-                        return function (h) {
-                           return function (i) {
-                              return function (j) {
-                                 return function (k) {
-                                    return {width: a
-                                           ,height: b
-                                           ,ticks: c
-                                           ,margin: d
-                                           ,xInterval: e
-                                           ,yInterval: f
-                                           ,backgroundColor: g
-                                           ,axisColor: h
-                                           ,axisWidth: i
-                                           ,xTicksEvery: j
-                                           ,yTicksEvery: k};
-                                 };
-                              };
-                           };
-                        };
-                     };
-                  };
-               };
-            };
-         };
-      };
-   };
+   var PlotAttributes = F3(function (a,b,c) {    return {strokeColor: a,strokeWidth: b,plotType: c};});
+   var GraphAttributes = F9(function (a,b,c,d,e,f,g,h,i) {
+      return {width: a,height: b,ticks: c,margin: d,xInterval: e,yInterval: f,backgroundColor: g,axisColor: h,axisWidth: i};
+   });
    var Impulse = {ctor: "Impulse"};
-   var defaultPlot = {strokeColor: "#000",strokeWidth: "2px",plotType: Impulse,dotColor: "#000"};
    var Scatter = {ctor: "Scatter"};
+   var defaultPlot = {strokeColor: "#000",strokeWidth: "2px",plotType: Scatter};
    var Data = function (a) {    return {ctor: "Data",_0: a};};
    var wrapData = function (data) {    return Data(data);};
    var Func = function (a) {    return {ctor: "Func",_0: a};};
@@ -11675,137 +11189,5 @@ Elm.Graphing.make = function (_elm) {
                                  ,graph: graph
                                  ,defaultGraph: defaultGraph
                                  ,defaultPlot: defaultPlot
-                                 ,GraphAttributes: GraphAttributes
-                                 ,PlotAttributes: PlotAttributes};
-};
-Elm.FourierSeries = Elm.FourierSeries || {};
-Elm.FourierSeries.make = function (_elm) {
-   "use strict";
-   _elm.FourierSeries = _elm.FourierSeries || {};
-   if (_elm.FourierSeries.values) return _elm.FourierSeries.values;
-   var _U = Elm.Native.Utils.make(_elm),
-   $Basics = Elm.Basics.make(_elm),
-   $Debug = Elm.Debug.make(_elm),
-   $Graphing = Elm.Graphing.make(_elm),
-   $Html = Elm.Html.make(_elm),
-   $Html$Attributes = Elm.Html.Attributes.make(_elm),
-   $Html$Events = Elm.Html.Events.make(_elm),
-   $Html$Lazy = Elm.Html.Lazy.make(_elm),
-   $List = Elm.List.make(_elm),
-   $Maybe = Elm.Maybe.make(_elm),
-   $ParseInt = Elm.ParseInt.make(_elm),
-   $Result = Elm.Result.make(_elm),
-   $Signal = Elm.Signal.make(_elm),
-   $String = Elm.String.make(_elm);
-   var _op = {};
-   var lastTermImg = function (n) {
-      return A2($Html.img,
-      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
-              ,$Html$Attributes.$class("eqnImg last-term")]),
-      _U.list([]));
-   };
-   var equationTermImg = function (n) {
-      return A2($Html.img,
-      _U.list([$Html$Attributes.src($String.concat(_U.list(["equations/CodeCogsEqn(",$Basics.toString(n),").svg"])))
-              ,$Html$Attributes.$class("eqnImg middle-term")]),
-      _U.list([]));
-   };
-   var equationImg = function (n) {
-      var closeParen = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(end).svg"),$Html$Attributes.$class("eqnImg closeParen")]),_U.list([]));
-      var leadingFactor = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(start).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
-      var plus = _U.cmp(n,1) > 0 ? A2($Html.img,
-      _U.list([$Html$Attributes.src("equations/CodeCogsEqn(plus).svg"),$Html$Attributes.$class("plus")]),
-      _U.list([])) : A2($Html.img,_U.list([]),_U.list([]));
-      var fx = A2($Html.img,_U.list([$Html$Attributes.src("equations/CodeCogsEqn(fx).svg"),$Html$Attributes.$class("eqnImg")]),_U.list([]));
-      return A2($Html.div,
-      _U.list([]),
-      $List.concat(_U.list([_U.list([fx])
-                           ,_U.list([leadingFactor])
-                           ,A2($List.intersperse,plus,A2($List.map,equationTermImg,A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n - 1))))
-                           ,_U.list([plus])
-                           ,_U.list([lastTermImg(2 * n - 1)])
-                           ,_U.list([closeParen])])));
-   };
-   var addFunc = F3(function (x,y,z) {    return x(z) + y(z);});
-   var unsafeToInt = function (x) {
-      var _p0 = $ParseInt.parseInt(x);
-      if (_p0.ctor === "Ok") {
-            return _p0._0;
-         } else {
-            return _U.crashCase("FourierSeries",{start: {line: 73,column: 17},end: {line: 75,column: 58}},_p0)("unsafeToInt called on a bad string");
-         }
-   };
-   var mailbox = $Signal.mailbox("1");
-   var graphStyle = function (x) {
-      return _U.update($Graphing.defaultGraph,
-      {width: 800
-      ,height: 300
-      ,yInterval: {ctor: "_Tuple2",_0: -1.5,_1: 1.5}
-      ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 4}
-      ,margin: 15
-      ,axisColor: "#fff"
-      ,axisWidth: 0
-      ,xTicksEvery: 100
-      ,yTicksEvery: 100});
-   };
-   var nthSin = F3(function (period,n,x) {    return 4 / $Basics.pi * (1 / n) * $Basics.sin(n * $Basics.pi * x / period);});
-   var componentSinusoids = F2(function (period,n) {    return A2($List.map,$Graphing.wrapFunc,A2($List.map,nthSin(period),_U.range(1,n)));});
-   var sineWavesAtN = F2(function (period,n) {
-      return $Graphing.wrapFunc(A3($List.foldr,
-      addFunc,
-      function (x) {
-         return 0;
-      },
-      A2($List.map,nthSin(period),A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n)))));
-   });
-   var squareWave = $Graphing.wrapFunc(function (x) {    return _U.eq(A2($Basics._op["%"],$Basics.round(x + 0.5),2),0) ? -1 : 1;});
-   var view = function (v) {
-      var event = A3($Html$Events.on,"input",$Html$Events.targetValue,$Signal.message(mailbox.address));
-      var x = v;
-      return A2($Html.div,
-      _U.list([$Html$Attributes.$class("centered-content")]),
-      _U.list([A2($Graphing.graph,
-              $List.concat(_U.list([A3($List.map2,
-                                   F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),
-                                   A2(componentSinusoids,1,x),
-                                   A2($List.repeat,$Basics.round(x),_U.update($Graphing.defaultPlot,{strokeColor: "#eee"})))
-                                   ,_U.list([{ctor: "_Tuple2"
-                                             ,_0: $Graphing.wrapFunc(A2(nthSin,1,x))
-                                             ,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#bbb"})}])
-                                   ,_U.list([{ctor: "_Tuple2",_0: squareWave,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#34314c"})}
-                                            ,{ctor: "_Tuple2",_0: A2(sineWavesAtN,1,x),_1: _U.update($Graphing.defaultPlot,{strokeColor: "#ee2560"})}])])),
-              graphStyle(0))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("centered cm")]),_U.list([$Html.text(A2($String.append,"n = ",$Basics.toString(x)))]))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))
-              ,A2($Html.div,
-              _U.list([$Html$Attributes.$class("auto-margin limited-width")]),
-              _U.list([A2($Html.input,
-              _U.list([$Html$Attributes.type$("range")
-                      ,$Html$Attributes.min("1")
-                      ,$Html$Attributes.max("20")
-                      ,$Html$Attributes.value($Basics.toString(x))
-                      ,event
-                      ,$Html$Attributes.$class("slider")
-                      ,$Html$Attributes.style(_U.list([{ctor: "_Tuple2",_0: "width",_1: "100%"},{ctor: "_Tuple2",_0: "max-width",_1: "800px"}]))]),
-              _U.list([]))]))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("double-spacer")]),_U.list([]))
-              ,A2($Html.div,
-              _U.list([$Html$Attributes.$class("centered limited-width")]),
-              _U.list([A2($Html.div,_U.list([$Html$Attributes.$class("inline-block auto-margin")]),_U.list([equationImg(x)]))]))]));
-   };
-   var main = A2($Signal.map,$Html$Lazy.lazy(view),A2($Signal.map,function (_p2) {    return $Basics.toFloat(unsafeToInt(_p2));},mailbox.signal));
-   return _elm.FourierSeries.values = {_op: _op
-                                      ,squareWave: squareWave
-                                      ,sineWavesAtN: sineWavesAtN
-                                      ,nthSin: nthSin
-                                      ,graphStyle: graphStyle
-                                      ,componentSinusoids: componentSinusoids
-                                      ,mailbox: mailbox
-                                      ,view: view
-                                      ,main: main
-                                      ,unsafeToInt: unsafeToInt
-                                      ,addFunc: addFunc
-                                      ,equationTermImg: equationTermImg
-                                      ,lastTermImg: lastTermImg
-                                      ,equationImg: equationImg};
+                                 ,GraphAttributes: GraphAttributes};
 };

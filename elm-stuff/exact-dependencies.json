@@ -1,4 +1,5 @@
 {
+    "Apanatshka/elm-signal-extra": "5.7.0",
     "evancz/virtual-dom": "2.1.0",
     "fredcy/elm-parseint": "1.1.1",
     "mgold/elm-animation": "1.0.3",

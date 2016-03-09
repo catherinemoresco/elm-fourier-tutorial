@@ -11437,7 +11437,7 @@ Elm.GraphDemo.make = function (_elm) {
    });
    var main = A2($Signal.map,
    function (x) {
-      return A2($Graphing.graph,_U.list([{ctor: "_Tuple2",_0: func3,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#D2527F"})}]),graphStyle(x));
+      return A2($Graphing.graph,_U.list([{ctor: "_Tuple2",_0: func3,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#ee2560"})}]),graphStyle(x));
    },
    A3($Signal.foldp,F2(function (x,y) {    return x + y;}),0,$Time.fps(60)));
    var func2 = $Graphing.wrapFunc(function (x) {    return 2 * $Basics.cos(x);});

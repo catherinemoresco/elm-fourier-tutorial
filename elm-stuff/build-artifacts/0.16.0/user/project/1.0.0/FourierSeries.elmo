@@ -41,9 +41,9 @@ Elm.FourierSeries.make = function (_elm) {
       _U.list([]),
       $List.concat(_U.list([_U.list([fx])
                            ,_U.list([leadingFactor])
-                           ,A2($List.intersperse,plus,A2($List.map,equationTermImg,_U.range(1,n - 1)))
+                           ,A2($List.intersperse,plus,A2($List.map,equationTermImg,A2($List.map,function (x) {    return 2 * x - 1;},_U.range(1,n - 1))))
                            ,_U.list([plus])
-                           ,_U.list([lastTermImg(n)])
+                           ,_U.list([lastTermImg(2 * n - 1)])
                            ,_U.list([closeParen])])));
    };
    var addFunc = F3(function (x,y,z) {    return x(z) + y(z);});
@@ -52,7 +52,7 @@ Elm.FourierSeries.make = function (_elm) {
       if (_p0.ctor === "Ok") {
             return _p0._0;
          } else {
-            return _U.crashCase("FourierSeries",{start: {line: 72,column: 17},end: {line: 74,column: 58}},_p0)("unsafeToInt called on a bad string");
+            return _U.crashCase("FourierSeries",{start: {line: 73,column: 17},end: {line: 75,column: 58}},_p0)("unsafeToInt called on a bad string");
          }
    };
    var mailbox = $Signal.mailbox("1");
@@ -64,7 +64,9 @@ Elm.FourierSeries.make = function (_elm) {
       ,xInterval: {ctor: "_Tuple2",_0: 0,_1: 4}
       ,margin: 15
       ,axisColor: "#fff"
-      ,axisWidth: 0});
+      ,axisWidth: 0
+      ,xTicksEvery: 100
+      ,yTicksEvery: 100});
    };
    var nthSin = F3(function (period,n,x) {    return 4 / $Basics.pi * (1 / n) * $Basics.sin(n * $Basics.pi * x / period);});
    var componentSinusoids = F2(function (period,n) {    return A2($List.map,$Graphing.wrapFunc,A2($List.map,nthSin(period),_U.range(1,n)));});
@@ -90,8 +92,8 @@ Elm.FourierSeries.make = function (_elm) {
                                    ,_U.list([{ctor: "_Tuple2"
                                              ,_0: $Graphing.wrapFunc(A2(nthSin,1,x))
                                              ,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#bbb"})}])
-                                   ,_U.list([{ctor: "_Tuple2",_0: squareWave,_1: $Graphing.defaultPlot}
-                                            ,{ctor: "_Tuple2",_0: A2(sineWavesAtN,1,x),_1: _U.update($Graphing.defaultPlot,{strokeColor: "#D2527F"})}])])),
+                                   ,_U.list([{ctor: "_Tuple2",_0: squareWave,_1: _U.update($Graphing.defaultPlot,{strokeColor: "#34314c"})}
+                                            ,{ctor: "_Tuple2",_0: A2(sineWavesAtN,1,x),_1: _U.update($Graphing.defaultPlot,{strokeColor: "#ee2560"})}])])),
               graphStyle(0))
               ,A2($Html.div,_U.list([$Html$Attributes.$class("centered cm")]),_U.list([$Html.text(A2($String.append,"n = ",$Basics.toString(x)))]))
               ,A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))
@@ -109,8 +111,7 @@ Elm.FourierSeries.make = function (_elm) {
               ,A2($Html.div,_U.list([$Html$Attributes.$class("double-spacer")]),_U.list([]))
               ,A2($Html.div,
               _U.list([$Html$Attributes.$class("centered limited-width")]),
-              _U.list([A2($Html.div,_U.list([$Html$Attributes.$class("inline-block auto-margin")]),_U.list([equationImg(x)]))]))
-              ,A2($Html.div,_U.list([$Html$Attributes.$class("spacer")]),_U.list([]))]));
+              _U.list([A2($Html.div,_U.list([$Html$Attributes.$class("inline-block auto-margin")]),_U.list([equationImg(x)]))]))]));
    };
    var main = A2($Signal.map,$Html$Lazy.lazy(view),A2($Signal.map,function (_p2) {    return $Basics.toFloat(unsafeToInt(_p2));},mailbox.signal));
    return _elm.FourierSeries.values = {_op: _op

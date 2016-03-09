@@ -1,0 +1,43 @@
+Catherine Moresco
+cmoresco@uchicago.edu
+Functional Programming
+Winter 2016
+
+STATUS UPDATE
+
+BUILDING THE PROJECT:
+The project consists of elm widgets embedded in HMTL. Compile the following elm modules to javascript, in the same directory as Fourier.html and Fourier.css:
+
+SquareWave.elm
+GraphDemo.elm
+FourierSeries.elm
+
+Then open Fourier.html
+
+Compiling the individual modules to html and viewing them individually will not yield the same results, as the Fourier.css styles will not be included.
+
+REPORT: 
+
+I've chosen to focus on visualizations--my original idea was to do several visualizations of different algorithms, but I've iterated a bit and now have decided to focus on doing several visualizations all centered around the same mathematical concept: the Fourier transform. I think there's really ample material to develop a number of interesting visualizations; there's a lot of different angles to attack it from. I've already done a section on Fourier Series, and am next going to work on visualizations in the frequency domain like this ( http://www.billconnelly.net/?p=276 ), a visualization with circles, perhaps, like this ( https://www.youtube.com/watch?v=LznjC4Lo7lE ), explaining the difference between the CFT, DFT, and DTFT, and eventually visualizing FFTs as well, with an interactive version of a butterfly dagram like this ( http://www.cmlab.csie.ntu.edu.tw/cml/dsp/training/coding/transform/images/figure13.gif ). 
+
+If you don't think that this is enough material and want me to shift my focus back to multiple scattered visualizations, please let me know as soon as possible.
+
+The overall structure of the projest is a HTML/CSS tutorial, with embedded Elm widgets. Right now, I've completed one major interactive widget, and much of the surrounding structure and design work. 
+
+In particular, I've written a simple plotting library that has made it much simpler to create both plots of functions and creations of scatter plots in arbitrary intervals and styles. This can (and will) still be built out more, but for now it's been very helpful in the widgets I've created so far.
+
+This graphing library is built on the elm SVG library. The plotting function does not make great use of svg curves--it operates by just sampling closely spaced points on the x-axis and drawing lines between them at a close enough resolution that the straight segments are not obvious. This is, obviously, inefficient, and I'd love to come up with a more efficient implementation, but that's not my priorty right now, as none of my widgets are prohibitively expensive and I'm trying to focus on creating new widgets instead of optimizing what I've done, considering time constraints. Styles are passed to the graphing function by a record struct. 
+
+A scrolling graph can simply be created by mapping the x-interval of the graph to a foldp with Time.fps. 
+
+The major widget is a visualization of a Fourier series of a square wave. This takes input in the form of a slider, which determines the number of terms in the series. All of the terms, plus their linear combination, are plotted as the value changes, and terms of the equation appear (the terms of the equation were downloaded from the internet as a LaTeX to SVG generator, which is a cheap solution but for now seemed simpler than figuring out dynamically generating LaTeX). 
+
+While I only have on major widget done, developing the graphing function has laid a lot of the groundwork for other ones to come, as well. 
+
+I could probably have done this and all the styles in elm-html, but embedding seemed more logical for the static parts that don't require JavaScript, it's a little quicker to write and doesn't benefit as substantially from the elegance and simplicty of elm.
+
+
+Ultimately, I'd like the capstone widget of the project to involve some sort of real-time fourier analysis of a user-generated signal; an appropriate interface for the construction of such a signal and whether this is computationally feasible is still something I'm working on.
+
+I'm looking forward to hearing your feedback!
+

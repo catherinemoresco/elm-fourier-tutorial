@@ -31,7 +31,9 @@ graphStyle x = { defaultGraph | width=800,
                                 xInterval=(0, 4), 
                                 margin=15,
                                 axisColor="#fff",
-                                axisWidth=0
+                                axisWidth=0,
+                                xTicksEvery=100,
+                                yTicksEvery=100
                             }
 
 componentSinusoids : Float -> Float -> List Graphing.ToPlot
@@ -48,7 +50,7 @@ view v = let x = v
          Html.div [ class "centered-content"] 
                 [ (graph (List.concat [(List.map2 (,) (componentSinusoids 1 x) (List.repeat (round x) {defaultPlot | strokeColor="#eee"})),
                                       [(Graphing.wrapFunc (nthSin 1 x), {defaultPlot | strokeColor="#bbb"})],
-                                      [(squareWave, defaultPlot) , (sineWavesAtN 1 x, { defaultPlot | strokeColor="#D2527F" })]]) (graphStyle 0))
+                                      [(squareWave, {defaultPlot | strokeColor="#34314c"}) , (sineWavesAtN 1 x, { defaultPlot | strokeColor="#ee2560" })]]) (graphStyle 0))
            , Html.div [class "centered cm"] [Html.text <| String.append "n = " <|toString x]
 
            , Html.div [class "spacer"] []
@@ -62,8 +64,7 @@ view v = let x = v
                         ("max-width", "800px")]
               ] []]
            , Html.div [class "double-spacer"] []
-           , Html.div [class "centered limited-width"] [ Html.div [class "inline-block auto-margin"] [(equationImg x)]]
-           , Html.div [class "spacer"] []]
+           , Html.div [class "centered limited-width"] [ Html.div [class "inline-block auto-margin"] [(equationImg x)]]]
 
 main : Signal Html
 main = Signal.map (lazy view) <| Signal.map (toFloat << unsafeToInt) mailbox.signal
@@ -96,7 +97,7 @@ equationImg n =
   Html.div [] <| List.concat <|
                     [[fx],
                      [leadingFactor], 
-                     List.intersperse plus <| List.map equationTermImg [1..(n-1)],
+                     List.intersperse plus <| List.map equationTermImg (List.map (\x -> 2*x - 1) [1..(n-1)] ) ,
                      [plus],
-                     [lastTermImg n],
+                     [lastTermImg <| 2 * n - 1],
                      [closeParen]]

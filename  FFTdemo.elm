@@ -9,21 +9,12 @@ import Graphing exposing (graph, defaultGraph, defaultPlot)
 import Svg
 import Signal
 import Time
---import Svg.Attributes exposing (..)
 import Html.Attributes exposing (..)
 import Html exposing (Html)
 
-data : Graphing.ToPlot
-data = Graphing.wrapData [(1, 1), (2, 2), (3, 3), (4, 4), (6, 8), (9, 10)]
-
 func : Graphing.ToPlot
-func = Graphing.wrapFunc (\x -> sin x)
+func = Graphing.wrapFunc <| List.foldl (addFunc) (\x -> 0) (List.map (\x y -> sin (x pi y)) [1..10])
 
-func2 : Graphing.ToPlot
-func2 = Graphing.wrapFunc (\x -> 2 * cos x)
-
-func3 : Graphing.ToPlot
-func3 = Graphing.wrapFunc (\x -> 1 * cos (10*(12/7) *x) +  sin (x/10) - 2 * sin (10*(3/5)*(x)) + 2.5)
 
 graphStyle : Float -> Graphing.GraphAttributes
 graphStyle x = { defaultGraph | width=800, 
@@ -34,5 +25,7 @@ graphStyle x = { defaultGraph | width=800,
                                 axisColor="#FFF"}
 
 main : Signal Html
-main = Signal.map (\x -> graph [(func3, {defaultPlot | strokeColor="#ee2560"})] ( graphStyle  x) ) <| Signal.foldp (+) 0 (Time.fps 60)
+main = Signal.map (\x -> graph [(func, {defaultPlot | strokeColor="#ee2560"})] ( graphStyle  x) ) <| Signal.foldp (+) 0 (Time.fps 60)
 
+addFunc : (Float->Float) -> (Float->Float) -> (Float->Float)
+addFunc x y = (\z -> x z  + y z)

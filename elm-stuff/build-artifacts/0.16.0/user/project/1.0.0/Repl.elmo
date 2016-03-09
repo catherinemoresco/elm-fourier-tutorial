@@ -4,13 +4,27 @@ Elm.Repl.make = function (_elm) {
    _elm.Repl = _elm.Repl || {};
    if (_elm.Repl.values) return _elm.Repl.values;
    var _U = Elm.Native.Utils.make(_elm),
+   $Array = Elm.Array.make(_elm),
    $Basics = Elm.Basics.make(_elm),
+   $Complex = Elm.Complex.make(_elm),
    $Debug = Elm.Debug.make(_elm),
+   $FFT = Elm.FFT.make(_elm),
    $List = Elm.List.make(_elm),
    $Maybe = Elm.Maybe.make(_elm),
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm);
    var _op = {};
    var tsol = {ctor: "_Tuple0"};
-   return _elm.Repl.values = {_op: _op,tsol: tsol};
+   var evens = A2($List.map,function (x) {    return 2 * x;},_U.range(1,10));
+   var deltron3030 = A2($List.map,
+   function (x) {
+      return x.real;
+   },
+   $FFT.dft(A2($List.map,
+   function (x) {
+      return A2($Complex.Complex,x,0);
+   },
+   _U.list([1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]))));
+   var data = $Array.fromList(_U.list([0,1,2,3,4,5,6,7]));
+   return _elm.Repl.values = {_op: _op,data: data,deltron3030: deltron3030,evens: evens,tsol: tsol};
 };

@@ -4,7 +4,7 @@
 -- 2016
 
 module Graphing 
-    (Graph, ToPlot, GraphAttributes, wrapData, wrapFunc, graph, defaultGraph, defaultPlot) where
+    (Graph, ToPlot, plotType, GraphAttributes, wrapData, wrapFunc, graph, defaultGraph, defaultPlot) where
 
 import List
 import String
@@ -21,6 +21,8 @@ by `Svg.Svg` in  `evancz/elm-svg` -}
 type alias Graph = Svg.Svg
 type alias Coords = (Float, Float)
 type ToPlot = Func (Float -> Float) | Data (List Coords)
+type DataPlot = Scatter | Impulse
+
 type alias GraphAttributes = {
                                 width:  Int, 
                                 height:  Int, 
@@ -30,11 +32,16 @@ type alias GraphAttributes = {
                                 yInterval: (Float, Float),
                                 backgroundColor: String,
                                 axisColor: String,
-                                axisWidth: Int
+                                axisWidth: Int,
+                                xTicksEvery: Float,
+                                yTicksEvery: Float
                             }
+
 type alias PlotAttributes = {
                                 strokeColor: String,
-                                strokeWidth: String
+                                dotColor: String,
+                                strokeWidth: String, 
+                                plotType: DataPlot
                             }
 
 {-| Main function for a simple graph. 
@@ -45,10 +52,18 @@ graph : List (ToPlot, PlotAttributes) ->  GraphAttributes -> Html
 graph toGraph graphAttrs =
     let graphSvg toGraph= 
         case toGraph of 
-            (Func function, plotAttrs) -> Svg.g [transform <| String.concat [ "translate(", toString graphAttrs.margin,  " ", toString graphAttrs.margin, ")"]] [funcPlot graphAttrs plotAttrs function]
-            (Data coords, plotAttrs) -> Svg.g [transform <| String.concat [ "translate(", toString graphAttrs.margin,  " ", toString graphAttrs.margin, ")"]] [dataField graphAttrs plotAttrs coords]
+            (Func function, plotAttrs) -> 
+                Svg.g [transform <| translate graphAttrs] [funcPlot graphAttrs plotAttrs function]
+            (Data coords, plotAttrs) -> 
+                Svg.g [transform <| translate graphAttrs] [dataField graphAttrs plotAttrs coords]
+
     in 
-        Svg.svg [width <| toString graphAttrs.width, height <| toString graphAttrs.height]  (List.append [xAxis graphAttrs, yAxis graphAttrs] (List.map graphSvg toGraph))
+        Svg.svg [width <| toString graphAttrs.width, height <| toString graphAttrs.height]  (List.append [xAxis graphAttrs, yAxis graphAttrs, xTicks graphAttrs, yTicks graphAttrs] (List.map graphSvg toGraph))
+
+translate : GraphAttributes -> String
+translate graphAttrs = 
+    String.concat [ "translate(", toString graphAttrs.margin,  " ", toString graphAttrs.margin, ")"]
+
 
 xAxis : GraphAttributes -> Svg.Svg
 xAxis graphStyles = 
@@ -80,20 +95,84 @@ yAxis graphStyles =
                 strokeWidth <| toString graphStyles.axisWidth
         ] []
 
+xTicks : GraphAttributes -> Svg.Svg
+xTicks ga = 
+    let (xmin, xmax) = ga.xInterval in
+    let numticks = floor <| (xmax - xmin)/ga.xTicksEvery in 
+    let step = (toFloat ga.width - 2 * (toFloat ga.margin))/ (toFloat numticks)
+    in
+    let bottom = ga.height - ga.margin
+        top = ga.margin
+        left = ga.margin
+        right = ga.width - ga.margin
+    in 
+    let lines =  List.map (\x -> Svg.line [ x1 <| toString <| x * step + toFloat left
+                                       , y1 <| toString (bottom + 5)
+                                       , x2 <| toString <| x * step + toFloat left
+                                       , y2 <| toString (bottom - 5)
+                                       , stroke ga.axisColor
+                                       , strokeWidth <| toString ga.axisWidth] []) 
+                                <| List.map toFloat [1..numticks]
+        labels = List.map (\k -> Svg.text' [ x <| toString <| k * step + toFloat left + 3
+                                            , y <| toString (bottom + 15)
+                                            , fontFamily "monospace"
+                                            ] [Svg.text <| toString <| (k * ga.xTicksEvery) + xmin]) 
+                                <| List.map toFloat [1..numticks]
+    in
+    Svg.g [] <| List.append lines labels
+
+yTicks : GraphAttributes -> Svg.Svg
+yTicks ga = 
+    let (ymin, ymax) = ga.yInterval in
+    let numticks = floor <| (ymax - ymin)/ga.yTicksEvery in 
+    let step = (toFloat ga.height - 2 * (toFloat ga.margin))/ ((ymax - ymin)/ga.yTicksEvery)
+    in
+    let bottom = ga.height - ga.margin
+        top = ga.margin
+        left = ga.margin
+        right = ga.width - ga.margin
+    in 
+    let lines =  List.map (\x -> Svg.line [ x1 <| toString <| toFloat left - 5
+                                       , y1 <| toString <| toFloat bottom -  x * step 
+                                       , x2 <| toString <| toFloat left + 5
+                                       , y2 <| toString <| toFloat bottom -  x * step 
+                                       , stroke ga.axisColor
+                                       , strokeWidth <| toString ga.axisWidth] []) 
+                                <| List.map toFloat [1..numticks]
+        labels = List.map (\k -> Svg.text' [ y <| toString <| toFloat bottom + 5  - k * step
+                                            , x <| toString (left - 10)
+                                            , textAnchor "end"
+                                            , fontFamily "monospace"
+                                            ] [Svg.text <| toString <| (k * ga.yTicksEvery) + ymin]) 
+                                <| List.map toFloat [1..numticks]
+    in
+    Svg.g [] <| List.append lines labels
+
 {-| Functions for a scatter plot -}
 dataField : GraphAttributes -> PlotAttributes -> List Coords -> Svg.Svg
 dataField ga pa data = 
     let w = ga.width - 2*ga.margin
         h = ga.height - 2*ga.margin 
-        newCoords = List.map (convertCoords ga.xInterval ga.yInterval (w, h)) data in 
-    Svg.g [] (makeDots (w, h) newCoords)
+        newCoords = List.map (convertCoords ga.xInterval ga.yInterval (w, h)) data in
+    let lines = case pa.plotType of 
+                    Scatter -> []
+                    Impulse -> makeImpulses (w, h) newCoords pa
+    in
+    Svg.g [] <| List.concat [lines, (makeDots (w, h) newCoords pa)]
 
-makeDots : (Float, Float) -> List Coords -> List Svg.Svg
-makeDots dimensions data = 
+makeDots : (Float, Float) -> List Coords -> PlotAttributes -> List Svg.Svg
+makeDots dimensions data pa = 
         let makeDot (x, y) = 
-            Svg.circle [cx <| toString x, cy <| toString y, r "5", fill "red"] []
+            Svg.circle [cx <| toString x, cy <| toString y, r "5", fill pa.dotColor] []
         in 
         List.map makeDot data
+
+makeImpulses : (Float, Float) -> List Coords -> PlotAttributes -> List Svg.Svg
+makeImpulses dimensions data pa = 
+        let makeImpulse (x, y) = 
+            pathFromCoords pa [(x, y), (x, snd dimensions)]
+        in 
+        List.map makeImpulse data
 
 {-| Functions for plotting a continuous function -}
 funcPlot : GraphAttributes -> PlotAttributes -> (Float -> Float) -> Svg.Svg
@@ -126,7 +205,6 @@ pathFromCoords pa coords =
     Svg.path [d (String.concat ["M", toString x, " ", toString y, addPt (List.drop 1 coords)]), stroke pa.strokeColor, strokeWidth pa.strokeWidth, fill "none"] []
 
 
-
 {-| Input an (xmin, xmax), (ymin, ymax), (width, height), and coords for a new set of coords 
 
 Used to convert data coordinates to pixel coordinates-}
@@ -154,17 +232,29 @@ defaultGraph = {width=400,
                 margin=25, 
                 xInterval=(0, 10), 
                 yInterval=(0, 10), 
-                axisWidth = 2}
+                axisWidth = 2, 
+                xTicksEvery = 1,
+                yTicksEvery = 1
+            }
 
 defaultPlot : PlotAttributes
 defaultPlot = {strokeColor="#000",
-               strokeWidth="2px"}
+               strokeWidth="2px",
+               plotType=Impulse,
+               dotColor="#000"
+            }
 
 wrapData : List Coords -> ToPlot
 wrapData data = Data data
 
 wrapFunc : (Float -> Float) -> ToPlot
 wrapFunc func = Func func
+
+plotType : String -> DataPlot
+plotType x = 
+    if x == "impulse" then Impulse
+    else if x == "scatter" then Scatter
+    else Debug.crash "that's not a plot type!"
 
 
 {-| Some defualt constants -}

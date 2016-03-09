@@ -7,74 +7,156 @@
 <script src="GraphDemo.js" type="text/javascript"></script>
 <script src="SquareWave.js" type="text/javascript"></script>
 <script src="FourierSeries.js" type="text/javascript"></script>
+<script src="SquareFreq.js" type="text/javascript"></script>
+<script src="ImpulseDemo.js" type="text/javascript"></script>
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+</script>
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
 
 </head>
 
 <body>
-	<div class="page">
-		<div class="wrapper">
+    <div class="page">
+        <div class="wrapper">
 
-			<div class="header centered">
-				<h1 class='page-title'>The Fourier Transform</h1>
-				<div id="scrollingGraph" class="centered-content"></div>
-				<h2 class='page-subtitle'>(an interactive introduction)</h2>
-				<!-- <h2> &#8681; </h2> -->
-			</div>
-		</div>
-	</div>
+            <div class="header centered">
+                <h1 class='page-title'>The Fourier Transform</h1>
+                <div id="scrollingGraph" class="centered-content"></div>
+                <h2 class='page-subtitle'>(an interactive introduction)</h2>
+                <!-- <h2> &#8681; </h2> -->
+            </div>
+        </div>
+    </div>
 
-	<div class="page">
-	<div class="background-img fourier"></div>
-		<div class="wrapper"> 
-			<div class="page-content">
-				<h1 class="right-align">What's a Fourier Transform?</h1>
-				<div class="three-quarters float-right">
-					<p class="right-align"> The <span class="emph">Fourier Transform</span> is one of the most important mathematical concepts in signal processing. </p>
-					<p class="right-align"> In 1822, Joseph Fourier asserted that certain functions could be represented as infinite sums of other functions, which simplifies analysis considerably; this concept has been refined over decades and is now at the heart of what drives much of modern audio signal processing, image processing, video processing, wireless communication, control systems, financial signal processing, and dozens of other very important things. </p>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="page">
+    <div class="background-img fourier"></div>
+        <div class="wrapper"> 
+            <div class="page-content">
+                <h1 class="right-align">What's a Fourier Transform?</h1>
+                <div class="three-quarters float-right">
+                    <p class="right-align"> The <span class="emph">Fourier Transform</span> is one of the most important mathematical concepts in signal processing. </p>
+                    <p class="right-align"> In 1822, Joseph Fourier asserted that certain functions could be represented as infinite sums of other functions, which simplifies analysis considerably; this concept has been refined over decades and is now at the heart of what drives much of modern audio signal processing, image processing, video processing, wireless communication, control systems, financial signal processing, and dozens of other very important things. </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="page gray shadow">
-		<div class="wrapper">
-			<div class="page-content">
-				<h1>Fourier series</h1>
-				<p> A natural place to start thinking about the decomposition of functions into other functions is the <span class="emph">Fourier series</span>: a decomposition of a <span class="emph">periodic</span> function into a sum of <span class="emph">sines</span> and <span class="emph">cosines</span>. </p>
-				<p> Consider a square wave: </p>
-				<div id="squareWave" class="centered-content"></div>
-				<div class="spacer"></div>
-				<p>A square wave is a discontinuous function, but with a Fourier Series, we can approximate it by a set of continuous sinusoids, in a summation of the form:</p> 
-				<div class="centered-content">
-					<div class="centered">
-						<a class="centered" href="http://www.codecogs.com/eqnedit.php?latex=\frac{4}{\pi}\sum_{n=1,&space;3,&space;5,&space;\dots}^{\infty}&space;\frac{1}{n}\sin&space;\Big(&space;\frac{n&space;\pi&space;x}{L}&space;\Big)" target="_blank"><img src="http://latex.codecogs.com/svg.latex?\frac{4}{\pi}\sum_{n=1,&space;3,&space;5,&space;\dots}^{\infty}&space;\frac{1}{n}\sin&space;\Big(&space;\frac{n&space;\pi&space;x}{L}&space;\Big)" title="\frac{4}{\pi}\sum_{n=1, 3, 5, \dots}^{\infty} \frac{1}{n}\sin \Big( \frac{n \pi x}{L} \Big)" /></a>
-					</div>
-				</div>
-				<p>Oberserve that, while any sinusoid bears little resemblance to a square wave in itself, when multiple sinusoids are added in linear combination we converge quickly to something that very nearly approximates our signal:</p>
-				<div class="spacer"></div>
-				<div id="fourierSeries" class="centered-content white shadow padded"></div>
-				<div class="spacer"></div>
-				</p>The square wave is a simple example, but Fourier series can also be constructed to approximate <span class="emph">any periodic function</span>: triangle waves, sawtooth waves, and any other sinusoud are all fair game. As the number of terms in our approximation goes to infinity, our approximation gets closer and closer to our function.</p>
+    <div class="page gray shadow">
+        <div class="wrapper">
+            <div class="page-content">
+                <h1>Fourier series</h1>
+                <p> A natural place to start thinking about the decomposition of functions into other functions is the <span class="emph">Fourier series</span>: a decomposition of a <span class="emph">periodic</span> function into a sum of <span class="emph">sines</span> and <span class="emph">cosines</span>. </p>
+                <p> Consider a square wave: </p>
+                <div id="squareWave" class="centered-content"></div>
+                <div class="spacer"></div>
+                <p>A square wave is a discontinuous function, but with a Fourier Series, we can approximate it by a set of continuous sinusoids, in a summation of the form:</p> 
+                <div class="centered-content">
+                    <div class="centered">
+                        <a class="centered" href="http://www.codecogs.com/eqnedit.php?latex=\frac{4}{\pi}\sum_{n=1,&space;3,&space;5,&space;\dots}^{\infty}&space;\frac{1}{n}\sin&space;\Big(&space;\frac{n&space;\pi&space;x}{L}&space;\Big)" target="_blank"><img src="http://latex.codecogs.com/svg.latex?\frac{4}{\pi}\sum_{n=1,&space;3,&space;5,&space;\dots}^{\infty}&space;\frac{1}{n}\sin&space;\Big(&space;\frac{n&space;\pi&space;x}{L}&space;\Big)" title="\frac{4}{\pi}\sum_{n=1, 3, 5, \dots}^{\infty} \frac{1}{n}\sin \Big( \frac{n \pi x}{L} \Big)" /></a>
+                    </div>
+                </div>
+                <p>Oberserve that, while any sinusoid bears little resemblance to a square wave in itself, when multiple sinusoids are added in linear combination we converge quickly to something that very nearly approximates our signal:</p>
+                <div class="spacer"></div>
+                <div id="fourierSeries" class="centered-content white shadow padded no-overflow"></div>
+                <div class="spacer"></div>
+                </p>The square wave is a simple example, but Fourier series can also be constructed to approximate <span class="emph">any periodic function</span>: triangle waves, sawtooth waves, and any other sinusoud are all fair game. As the number of terms in our approximation goes to infinity, our approximation gets closer and closer to our function.</p>
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
-	<div class="page">
-		<div class="wrapper centered">
-			<h1></h1>
-		</div>
-	</div>
+    <div class="page">
+        <div class="wrapper">
+            <h1>Visualizing the Frequency Domain</h1>
+            <p>To proceed further in our understanding of the Fourier transform and the Fourier series, it's useful to 
+
+
+
+                visualize our functions in the <span class="emph">frequency domain</span>, instead of the time domain. In the frequency domain, we plot <span class="emph">the frequencies of the sinusoidal components</span> of the function, instead of time. The y-axis can represent phase shift or amplitude. For our purposes, let's make a plot of the frequency-domain representation of the square wave Fourier series that we just saw in the last section: </p>
+            <div class="spacer"></div>
+            <div id="squareFreq" class="centered-content padded no-overflow pointer noselect"></div>
+            <div class="spacer"></div>
+            <p>Each component at frequency <span class="cm-it">n</span> is represented by an impulse at <span class="cm-it">n</span> on the x-axis and amplitude equal to <span class="cm">1/</span><span class="cm-it">n</span>, its coefficient in the linear combination that makes up our signal.</p>
+            <p>Experiment with how the amplitudes of different frequency components affect the shape of our periodic pattern! In the widget below, <span class="emph">drag the impulses up and down and observe the changes in the periodic signal</span>.</p>
+            <div class="spacer"></div>
+                <div class="centered-content">
+                    <div id="impulseDemo" class="fixed-width pink shadow padded no-overflow pointer noselect"></div>
+                </div>
+
+            <p> A quick note: in many of the formulae relevant to signal processing, it is convenient to employ another way of conceptualizing sinusoids--not as simply sines and cosines, but as complex exponentials. The relationships between trigonometric functions and the complex exponential function is established by <span class="emph">Euler's Formula:</span></p>
+            <div class="centered">
+                <a href="http://www.codecogs.com/eqnedit.php?latex=e^{ix}&space;=&space;\cos&space;x&space;&plus;&space;i&space;\sin&space;x" target="_blank"><img src="http://latex.codecogs.com/svg.latex?e^{ix}&space;=&space;\cos&space;x&space;&plus;&space;i&space;\sin&space;x" title="e^{ix} = \cos x + i \sin x" /></a>
+            </div>
+            <p>In particular, the formula for the sine and cosine functions are</p>
+            <div class="centered">
+                <a href="http://www.codecogs.com/eqnedit.php?latex=\cos&space;x&space;=&space;\frac{1}{2}(e^{ix}&space;&plus;&space;e^{-ix})" target="_blank"><img src="http://latex.codecogs.com/svg.latex?\cos&space;x&space;=&space;\frac{1}{2}(e^{ix}&space;&plus;&space;e^{-ix})" title="\cos x = \frac{1}{2}(e^{ix} + e^{-ix})" /></a>
+            </div>
+            <div class="spacer"></div>
+            <div class="centered">
+                <a href="http://www.codecogs.com/eqnedit.php?latex=\sin&space;x&space;=&space;\frac{1}{2i}(e^{ix}&space;-&space;e^{-ix})" target="_blank"><img src="http://latex.codecogs.com/svg.latex?\sin&space;x&space;=&space;\frac{1}{2i}(e^{ix}&space;-&space;e^{-ix})" title="\sin x = \frac{1}{2i}(e^{ix} - e^{-ix})" /></a>
+            </div>
+            <p> Using these, our Fourier series approximation of our signal be compactly represented by the expression</p>
+            <div class="centered">
+                <a href="https://www.codecogs.com/eqnedit.php?latex=\sum_{k=-\infty}^{\infty}c_ke^{ikw_0t}" target="_blank"><img src="https://latex.codecogs.com/svg.latex?\sum_{k=-\infty}^{\infty}c_ke^{ikw_0t}" title="\sum_{k=-\infty}^{\infty}c_ke^{ikw_0t}" /></a>
+            </div>
+            <p>A (countably) infinite sum of complex exponentials and their respective coefficients at integer multiples of some frequency $\omega_0$.</p>
+            <div class="double-spacer"></div>
+        </div>
+    </div>
+
+    <div class="page gray shadow">
+        <div class="wrapper">
+            <h1>To Finity and Beyond</h1>
+            <p>This is great--we've shown that we can represent arbitrary periodic signals with sums of sines and cosines. But we needn't stop there; Fourier analysis can be used on finite signals, as well.</p>
+
+            <p>You can't approximate arbitrary finite signals with finite sums of sinusoids. However, consider what would happen if we didn't limit ourselves to finite sums of sinusoids. A Fourier series consists of impulses in the frequency domain, but what happens with signals in the frequency space that are continuous, that can have any value of frequency?</p>
+
+           
+            <p>The Fourier transform is just such a function; it can be thought of as a continuous analogue to the Fourier series, where instead of a sum of countably many complex exponentials, we have an integral over every possible angular frequency. Our infinite summation from our Fourier series representation of our signal now becomes an integral: </p>
+
+            <div class="centered">
+                $$ \int _{-\infty}^{\infty} R(\omega)e^{i \omega t} d \omega$$
+            </div>
+            <p>Where $R(\omega )$ is a continuous function in the frequency domain called the <span class="emph">Fourier transform</span>.</p>
+
+            <p>Some Fourier transforms of simple functions are shown below.</p>
+
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="wrapper">
+            <h1>Let's Get Practical</h1>
+            <p>In all of these cases, we have been working with (mostly) continuous input signals. But computers don't work with continuous signals--instead, computers often work with signals that are sampled at a certain rate; when processing, for example, speech or image data, computers are presented not with the formula for an intricate sinusoid, but rather an array of data values.</p>
+
+            <p>There are two variants of the Fourier transform that are useful here--the Discrete-time Fourier Transform (DTFT) can take an array of an input signal and produce a continuous Fourier transform function as its output; the Discrete Fourier Transform (DFT) takes a discrete samples signal and returns a discrete sampling of the transform in the frequency domain. The latter is used most widely in computing; a class of algorithms called Fast Fourier Transforms (FFT) computes the DFT of a signal (or the inverse DFT of a Fourier transofrm, to recover the original signal). One famous such algorithm, the Cooley-Tukey FFT Algorithm, reduces the computation of a DFT from $O(n^2)$ to $O(n \log n)$ by use of a divide-and conquer strategy.</p>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="wrapper centered">
+        </div>
+    </div>
 
 </body>
 
 
 <script>
-	var scrollingGraph = document.getElementById('scrollingGraph');
-	Elm.embed(Elm.GraphDemo, scrollingGraph);
-	var squareWave = document.getElementById('squareWave');
-	Elm.embed(Elm.SquareWave, squareWave);
-	var fourierSeries = document.getElementById('fourierSeries');
-	Elm.embed(Elm.FourierSeries, fourierSeries);
+    var scrollingGraph = document.getElementById('scrollingGraph');
+    Elm.embed(Elm.GraphDemo, scrollingGraph);
+    var squareWave = document.getElementById('squareWave');
+    Elm.embed(Elm.SquareWave, squareWave);
+    var fourierSeries = document.getElementById('fourierSeries');
+    Elm.embed(Elm.FourierSeries, fourierSeries);
+    var squareFreq = document.getElementById('squareFreq');
+    Elm.embed(Elm.SquareFreq, squareFreq);
+    var impulseDemo = document.getElementById('impulseDemo');
+    Elm.embed(Elm.ImpulseDemo, impulseDemo);
 </script>
 </html>
