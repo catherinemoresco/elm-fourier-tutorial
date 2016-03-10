@@ -21,7 +21,7 @@ by `Svg.Svg` in  `evancz/elm-svg` -}
 type alias Graph = Svg.Svg
 type alias Coords = (Float, Float)
 type ToPlot = Func (Float -> Float) | Data (List Coords)
-type DataPlot = Scatter | Impulse
+type DataPlot = Scatter | Impulse | Line
 
 type alias GraphAttributes = {
                                 width:  Int, 
@@ -34,7 +34,9 @@ type alias GraphAttributes = {
                                 axisColor: String,
                                 axisWidth: Int,
                                 xTicksEvery: Float,
-                                yTicksEvery: Float
+                                yTicksEvery: Float, 
+                                xUnits: String,
+                                yUnits: String
                             }
 
 type alias PlotAttributes = {
@@ -116,7 +118,7 @@ xTicks ga =
         labels = List.map (\k -> Svg.text' [ x <| toString <| k * step + toFloat left + 3
                                             , y <| toString (bottom + 15)
                                             , fontFamily "monospace"
-                                            ] [Svg.text <| toString <| (k * ga.xTicksEvery) + xmin]) 
+                                            ] [Svg.text <| String.concat [toString <| (k * ga.xTicksEvery) + xmin, ga.xUnits]]) 
                                 <| List.map toFloat [1..numticks]
     in
     Svg.g [] <| List.append lines labels
@@ -154,11 +156,12 @@ dataField ga pa data =
     let w = ga.width - 2*ga.margin
         h = ga.height - 2*ga.margin 
         newCoords = List.map (convertCoords ga.xInterval ga.yInterval (w, h)) data in
-    let lines = case pa.plotType of 
-                    Scatter -> []
-                    Impulse -> makeImpulses (w, h) newCoords pa
+    let (lines, dots) = case pa.plotType of 
+                    Scatter -> ([], (makeDots (w, h) newCoords pa)) 
+                    Impulse -> (makeImpulses (w, h) newCoords pa, (makeDots (w, h) newCoords pa))
+                    Line -> ([pathFromCoords pa newCoords], [])
     in
-    Svg.g [] <| List.concat [lines, (makeDots (w, h) newCoords pa)]
+    Svg.g [] <| List.concat [lines, dots]
 
 makeDots : (Float, Float) -> List Coords -> PlotAttributes -> List Svg.Svg
 makeDots dimensions data pa = 
@@ -234,7 +237,9 @@ defaultGraph = {width=400,
                 yInterval=(0, 10), 
                 axisWidth = 2, 
                 xTicksEvery = 1,
-                yTicksEvery = 1
+                yTicksEvery = 1,
+                xUnits="", 
+                yUnits=""
             }
 
 defaultPlot : PlotAttributes
@@ -254,6 +259,7 @@ plotType : String -> DataPlot
 plotType x = 
     if x == "impulse" then Impulse
     else if x == "scatter" then Scatter
+    else if x == "line" then Line
     else Debug.crash "that's not a plot type!"
 
 

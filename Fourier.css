@@ -15,6 +15,10 @@ h1, h2, h3, h4, h5 {
 	font-weight: normal;
 }
 
+a {
+	color: #ee2560;
+}
+
 body{
 	font-family: 'Lato', sans-serif;
 	margin: 0;
@@ -55,7 +59,7 @@ body{
 	text-align: center;
 }
 
-.centered-content svg, .centered-content a, .centered-content > div, .centered-content input {
+.centered-content svg, .centered-content a, .centered-content > div, .centered-content > img, .centered-content input {
 	margin-right: auto;
 	margin-left: auto;
 	display: block;
@@ -175,6 +179,21 @@ body{
 
 .pointer {
 	cursor: pointer;
+}
+
+.cursor-default {
+	cursor: default;
+}
+
+button {
+	border-radius: 4px;
+	box-shadow: 0px 3px 4px -1px #999;
+	border: none;
+	font-family: 'Arial', 'sans-serif';
+	font-weight: bold;
+	color: white;
+	background-color: #ee2560;
+;
 }
 
 .noselect {

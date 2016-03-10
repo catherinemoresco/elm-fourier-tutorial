@@ -1,6 +1,5 @@
-<!DOCTYPE HTML>
-<html><head><meta charset="UTF-8"><title>FFTDemo</title><style>html,head,body { padding:0; margin:0; }
-body { font-family: calibri, helvetica, arial, sans-serif; }</style><script type="text/javascript">var Elm = Elm || { Native: {} };Elm.Native.Basics = {};
+var Elm = Elm || { Native: {} };
+Elm.Native.Basics = {};
 Elm.Native.Basics.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.Basics = localRuntime.Native.Basics || {};
@@ -136,6 +135,7 @@ Elm.Native.Basics.make = function(localRuntime) {
 		isInfinite: isInfinite
 	};
 };
+
 Elm.Native.Port = {};
 
 Elm.Native.Port.make = function(localRuntime) {
@@ -267,6 +267,7 @@ Elm.Native.Port.make = function(localRuntime) {
 		outboundSignal: outboundSignal
 	};
 };
+
 if (!Elm.fullscreen) {
 	(function() {
 		'use strict';
@@ -903,6 +904,7 @@ if (!Elm.fullscreen) {
 			: fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 	}
 }
+
 Elm.Native = Elm.Native || {};
 Elm.Native.Utils = {};
 Elm.Native.Utils.make = function(localRuntime) {
@@ -1433,6 +1435,7 @@ Elm.Native.Utils.make = function(localRuntime) {
 		toString: toString
 	};
 };
+
 Elm.Basics = Elm.Basics || {};
 Elm.Basics.make = function (_elm) {
    "use strict";
@@ -1547,7 +1550,8 @@ Elm.Basics.make = function (_elm) {
                                ,LT: LT
                                ,EQ: EQ
                                ,GT: GT};
-};Elm.Maybe = Elm.Maybe || {};
+};
+Elm.Maybe = Elm.Maybe || {};
 Elm.Maybe.make = function (_elm) {
    "use strict";
    _elm.Maybe = _elm.Maybe || {};
@@ -1628,7 +1632,8 @@ Elm.Maybe.make = function (_elm) {
                               ,oneOf: oneOf
                               ,Just: Just
                               ,Nothing: Nothing};
-};Elm.Native.List = {};
+};
+Elm.Native.List = {};
 Elm.Native.List.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.List = localRuntime.Native.List || {};
@@ -1792,6 +1797,7 @@ Elm.Native.List.make = function(localRuntime) {
 	};
 	return localRuntime.Native.List.values = Elm.Native.List.values;
 };
+
 Elm.List = Elm.List || {};
 Elm.List.make = function (_elm) {
    "use strict";
@@ -1965,7 +1971,8 @@ Elm.List.make = function (_elm) {
                              ,sort: sort
                              ,sortBy: sortBy
                              ,sortWith: sortWith};
-};Elm.Native.Transform2D = {};
+};
+Elm.Native.Transform2D = {};
 Elm.Native.Transform2D.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.Transform2D = localRuntime.Native.Transform2D || {};
@@ -2075,6 +2082,7 @@ Elm.Native.Transform2D.make = function(localRuntime) {
 		*/
 	};
 };
+
 Elm.Transform2D = Elm.Transform2D || {};
 Elm.Transform2D.make = function (_elm) {
    "use strict";
@@ -2101,6 +2109,7 @@ Elm.Transform2D.make = function (_elm) {
                                     ,scaleX: scaleX
                                     ,scaleY: scaleY};
 };
+
 // setup
 Elm.Native = Elm.Native || {};
 Elm.Native.Graphics = Elm.Native.Graphics || {};
@@ -2764,6 +2773,7 @@ Elm.Native.Graphics.Collage.make = function(localRuntime) {
 		collage: F3(collage)
 	};
 };
+
 Elm.Native.Color = {};
 Elm.Native.Color.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -2803,6 +2813,7 @@ Elm.Native.Color.make = function(localRuntime) {
 		toCss: toCss
 	};
 };
+
 Elm.Color = Elm.Color || {};
 Elm.Color.make = function (_elm) {
    "use strict";
@@ -2966,6 +2977,7 @@ Elm.Color.make = function (_elm) {
                               ,gray: gray
                               ,darkGray: darkGray};
 };
+
 // setup
 Elm.Native = Elm.Native || {};
 Elm.Native.Graphics = Elm.Native.Graphics || {};
@@ -3701,6 +3713,7 @@ Elm.Native.Graphics.Element.make = function(localRuntime) {
 		markdown: markdown
 	};
 };
+
 Elm.Native.Text = {};
 Elm.Native.Text.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -3988,6 +4001,7 @@ Elm.Native.Text.make = function(localRuntime) {
 		renderHtml: renderHtml
 	};
 };
+
 Elm.Text = Elm.Text || {};
 Elm.Text.make = function (_elm) {
    "use strict";
@@ -4039,7 +4053,8 @@ Elm.Text.make = function (_elm) {
                              ,Under: Under
                              ,Over: Over
                              ,Through: Through};
-};Elm.Graphics = Elm.Graphics || {};
+};
+Elm.Graphics = Elm.Graphics || {};
 Elm.Graphics.Element = Elm.Graphics.Element || {};
 Elm.Graphics.Element.make = function (_elm) {
    "use strict";
@@ -4236,7 +4251,8 @@ Elm.Graphics.Element.make = function (_elm) {
                                          ,topRightAt: topRightAt
                                          ,bottomLeftAt: bottomLeftAt
                                          ,bottomRightAt: bottomRightAt};
-};Elm.Graphics = Elm.Graphics || {};
+};
+Elm.Graphics = Elm.Graphics || {};
 Elm.Graphics.Collage = Elm.Graphics.Collage || {};
 Elm.Graphics.Collage.make = function (_elm) {
    "use strict";
@@ -4367,7 +4383,8 @@ Elm.Graphics.Collage.make = function (_elm) {
                                          ,Smooth: Smooth
                                          ,Sharp: Sharp
                                          ,Clipped: Clipped};
-};Elm.Native.Debug = {};
+};
+Elm.Native.Debug = {};
 Elm.Native.Debug.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.Debug = localRuntime.Native.Debug || {};
@@ -4433,6 +4450,7 @@ Elm.Native.Debug.make = function(localRuntime) {
 		watchSummary: F3(watchSummary)
 	};
 };
+
 Elm.Debug = Elm.Debug || {};
 Elm.Debug.make = function (_elm) {
    "use strict";
@@ -4446,7 +4464,8 @@ Elm.Debug.make = function (_elm) {
    var crash = $Native$Debug.crash;
    var log = $Native$Debug.log;
    return _elm.Debug.values = {_op: _op,log: log,crash: crash,watch: watch,watchSummary: watchSummary,trace: trace};
-};Elm.Result = Elm.Result || {};
+};
+Elm.Result = Elm.Result || {};
 Elm.Result.make = function (_elm) {
    "use strict";
    _elm.Result = _elm.Result || {};
@@ -4546,7 +4565,8 @@ Elm.Result.make = function (_elm) {
                                ,formatError: formatError
                                ,Ok: Ok
                                ,Err: Err};
-};Elm.Native.Signal = {};
+};
+Elm.Native.Signal = {};
 
 Elm.Native.Signal.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -5016,6 +5036,7 @@ Elm.Native.Signal.make = function(localRuntime) {
 		delay: F2(delay)
 	};
 };
+
 Elm.Native.Task = {};
 
 Elm.Native.Task.make = function(localRuntime) {
@@ -5241,6 +5262,7 @@ Elm.Native.Task.make = function(localRuntime) {
 		sleep: sleep
 	};
 };
+
 Elm.Task = Elm.Task || {};
 Elm.Task.make = function (_elm) {
    "use strict";
@@ -5332,7 +5354,8 @@ Elm.Task.make = function (_elm) {
                              ,fromResult: fromResult
                              ,spawn: spawn
                              ,sleep: sleep};
-};Elm.Signal = Elm.Signal || {};
+};
+Elm.Signal = Elm.Signal || {};
 Elm.Signal.make = function (_elm) {
    "use strict";
    _elm.Signal = _elm.Signal || {};
@@ -5397,7 +5420,8 @@ Elm.Signal.make = function (_elm) {
                                ,message: message
                                ,forwardTo: forwardTo
                                ,Mailbox: Mailbox};
-};Elm.Signal = Elm.Signal || {};
+};
+Elm.Signal = Elm.Signal || {};
 Elm.Signal.Extra = Elm.Signal.Extra || {};
 Elm.Signal.Extra.make = function (_elm) {
    "use strict";
@@ -5551,7 +5575,8 @@ Elm.Signal.Extra.make = function (_elm) {
                                      ,applyMany: applyMany
                                      ,passiveMap2: passiveMap2
                                      ,withPassive: withPassive};
-};Elm.Native.Time = {};
+};
+Elm.Native.Time = {};
 
 Elm.Native.Time.make = function(localRuntime)
 {
@@ -5660,6 +5685,7 @@ Elm.Native.Time.make = function(localRuntime)
 		read: read
 	};
 };
+
 Elm.Time = Elm.Time || {};
 Elm.Time.make = function (_elm) {
    "use strict";
@@ -5705,7 +5731,8 @@ Elm.Time.make = function (_elm) {
                              ,timestamp: timestamp
                              ,delay: delay
                              ,since: since};
-};Elm.Native.Array = {};
+};
+Elm.Native.Array = {};
 Elm.Native.Array.make = function(localRuntime) {
 
 	localRuntime.Native = localRuntime.Native || {};
@@ -6685,6 +6712,7 @@ Elm.Native.Array.make = function(localRuntime) {
 
 	return localRuntime.Native.Array.values = Elm.Native.Array.values;
 };
+
 Elm.Array = Elm.Array || {};
 Elm.Array.make = function (_elm) {
    "use strict";
@@ -6744,7 +6772,8 @@ Elm.Array.make = function (_elm) {
                               ,filter: filter
                               ,foldl: foldl
                               ,foldr: foldr};
-};Elm.Native.Char = {};
+};
+Elm.Native.Char = {};
 Elm.Native.Char.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
 	localRuntime.Native.Char = localRuntime.Native.Char || {};
@@ -6764,6 +6793,7 @@ Elm.Native.Char.make = function(localRuntime) {
 		toLocaleLower: function(c) { return Utils.chr(c.toLocaleLowerCase()); }
 	};
 };
+
 Elm.Char = Elm.Char || {};
 Elm.Char.make = function (_elm) {
    "use strict";
@@ -6797,7 +6827,8 @@ Elm.Char.make = function (_elm) {
                              ,toLocaleLower: toLocaleLower
                              ,toCode: toCode
                              ,fromCode: fromCode};
-};Elm.Native.String = {};
+};
+Elm.Native.String = {};
 
 Elm.Native.String.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -7138,6 +7169,7 @@ Elm.Native.String.make = function(localRuntime) {
 		fromList: fromList
 	};
 };
+
 Elm.String = Elm.String || {};
 Elm.String.make = function (_elm) {
    "use strict";
@@ -7228,7 +7260,8 @@ Elm.String.make = function (_elm) {
                                ,foldr: foldr
                                ,any: any
                                ,all: all};
-};Elm.Dict = Elm.Dict || {};
+};
+Elm.Dict = Elm.Dict || {};
 Elm.Dict.make = function (_elm) {
    "use strict";
    _elm.Dict = _elm.Dict || {};
@@ -7788,7 +7821,8 @@ Elm.Dict.make = function (_elm) {
                              ,values: values
                              ,toList: toList
                              ,fromList: fromList};
-};// setup
+};
+// setup
 Elm.Native = Elm.Native || {};
 Elm.Native.Graphics = Elm.Native.Graphics || {};
 Elm.Native.Graphics.Input = Elm.Native.Graphics.Input || {};
@@ -8265,6 +8299,7 @@ Elm.Native.Graphics.Input.make = function(localRuntime) {
 		clickable: F2(clickable)
 	};
 };
+
 Elm.Graphics = Elm.Graphics || {};
 Elm.Graphics.Input = Elm.Graphics.Input || {};
 Elm.Graphics.Input.make = function (_elm) {
@@ -8290,7 +8325,8 @@ Elm.Graphics.Input.make = function (_elm) {
                                        ,dropDown: dropDown
                                        ,hoverable: hoverable
                                        ,clickable: clickable};
-};Elm.Native.Json = {};
+};
+Elm.Native.Json = {};
 
 Elm.Native.Json.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -8785,6 +8821,7 @@ Elm.Native.Json.make = function(localRuntime) {
 
 	};
 };
+
 Elm.Json = Elm.Json || {};
 Elm.Json.Encode = Elm.Json.Encode || {};
 Elm.Json.Encode.make = function (_elm) {
@@ -8814,7 +8851,8 @@ Elm.Json.Encode.make = function (_elm) {
                                     ,list: list
                                     ,array: array
                                     ,object: object};
-};Elm.Json = Elm.Json || {};
+};
+Elm.Json = Elm.Json || {};
 Elm.Json.Decode = Elm.Json.Decode || {};
 Elm.Json.Decode.make = function (_elm) {
    "use strict";
@@ -8905,7 +8943,8 @@ Elm.Json.Decode.make = function (_elm) {
                                     ,andThen: andThen
                                     ,value: value
                                     ,customDecoder: customDecoder};
-};Elm.Native = Elm.Native || {};
+};
+Elm.Native = Elm.Native || {};
 Elm.Native.Mouse = {};
 Elm.Native.Mouse.make = function(localRuntime) {
 	localRuntime.Native = localRuntime.Native || {};
@@ -8947,6 +8986,7 @@ Elm.Native.Mouse.make = function(localRuntime) {
 		clicks: clicks
 	};
 };
+
 Elm.Mouse = Elm.Mouse || {};
 Elm.Mouse.make = function (_elm) {
    "use strict";
@@ -8960,7 +9000,8 @@ Elm.Mouse.make = function (_elm) {
    var x = A2($Signal.map,$Basics.fst,position);
    var y = A2($Signal.map,$Basics.snd,position);
    return _elm.Mouse.values = {_op: _op,position: position,x: x,y: y,isDown: isDown,clicks: clicks};
-};(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+};
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 
 },{}],2:[function(require,module,exports){
 (function (global){
@@ -10554,6 +10595,7 @@ Elm.Native.VirtualDom.make = function(elm)
 };
 
 },{"virtual-dom/vdom/create-element":6,"virtual-dom/vdom/patch":9,"virtual-dom/vnode/is-vhook":13,"virtual-dom/vnode/vnode":18,"virtual-dom/vnode/vtext":20,"virtual-dom/vtree/diff":22}]},{},[23]);
+
 Elm.VirtualDom = Elm.VirtualDom || {};
 Elm.VirtualDom.make = function (_elm) {
    "use strict";
@@ -10601,7 +10643,8 @@ Elm.VirtualDom.make = function (_elm) {
                                    ,lazy2: lazy2
                                    ,lazy3: lazy3
                                    ,Options: Options};
-};Elm.Html = Elm.Html || {};
+};
+Elm.Html = Elm.Html || {};
 Elm.Html.make = function (_elm) {
    "use strict";
    _elm.Html = _elm.Html || {};
@@ -10823,7 +10866,8 @@ Elm.Html.make = function (_elm) {
                              ,summary: summary
                              ,menuitem: menuitem
                              ,menu: menu};
-};Elm.Html = Elm.Html || {};
+};
+Elm.Html = Elm.Html || {};
 Elm.Html.Attributes = Elm.Html.Attributes || {};
 Elm.Html.Attributes.make = function (_elm) {
    "use strict";
@@ -11047,7 +11091,8 @@ Elm.Html.Attributes.make = function (_elm) {
                                         ,manifest: manifest
                                         ,property: property
                                         ,attribute: attribute};
-};Elm.Svg = Elm.Svg || {};
+};
+Elm.Svg = Elm.Svg || {};
 Elm.Svg.make = function (_elm) {
    "use strict";
    _elm.Svg = _elm.Svg || {};
@@ -11229,7 +11274,8 @@ Elm.Svg.make = function (_elm) {
                             ,script: script
                             ,style: style
                             ,view: view};
-};Elm.Svg = Elm.Svg || {};
+};
+Elm.Svg = Elm.Svg || {};
 Elm.Svg.Attributes = Elm.Svg.Attributes || {};
 Elm.Svg.Attributes.make = function (_elm) {
    "use strict";
@@ -11753,7 +11799,8 @@ Elm.Svg.Attributes.make = function (_elm) {
                                        ,visibility: visibility
                                        ,wordSpacing: wordSpacing
                                        ,writingMode: writingMode};
-};Elm.Animation = Elm.Animation || {};
+};
+Elm.Animation = Elm.Animation || {};
 Elm.Animation.make = function (_elm) {
    "use strict";
    _elm.Animation = _elm.Animation || {};
@@ -11910,7 +11957,8 @@ Elm.Animation.make = function (_elm) {
                                   ,isScheduled: isScheduled
                                   ,isRunning: isRunning
                                   ,isDone: isDone};
-};Elm.Graphing = Elm.Graphing || {};
+};
+Elm.Graphing = Elm.Graphing || {};
 Elm.Graphing.make = function (_elm) {
    "use strict";
    _elm.Graphing = _elm.Graphing || {};
@@ -11943,7 +11991,9 @@ Elm.Graphing.make = function (_elm) {
                       ,yInterval: {ctor: "_Tuple2",_0: 0,_1: 10}
                       ,axisWidth: 2
                       ,xTicksEvery: 1
-                      ,yTicksEvery: 1};
+                      ,yTicksEvery: 1
+                      ,xUnits: ""
+                      ,yUnits: ""};
    var lerp = F5(function (x0,x,x1,y0,y1) {    return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));});
    var linearSpace = F2(function (_p0,numPoints) {
       var _p1 = _p0;
@@ -12076,7 +12126,7 @@ Elm.Graphing.make = function (_elm) {
          _U.list([$Svg$Attributes.x($Basics.toString(k * step + $Basics.toFloat(left) + 3))
                  ,$Svg$Attributes.y($Basics.toString(bottom + 15))
                  ,$Svg$Attributes.fontFamily("monospace")]),
-         _U.list([$Svg.text($Basics.toString(k * ga.xTicksEvery + xmin))]));
+         _U.list([$Svg.text($String.concat(_U.list([$Basics.toString(k * ga.xTicksEvery + xmin),ga.xUnits])))]));
       },
       A2($List.map,$Basics.toFloat,_U.range(1,numticks)));
       var lines = A2($List.map,
@@ -12149,17 +12199,23 @@ Elm.Graphing.make = function (_elm) {
                            return function (i) {
                               return function (j) {
                                  return function (k) {
-                                    return {width: a
-                                           ,height: b
-                                           ,ticks: c
-                                           ,margin: d
-                                           ,xInterval: e
-                                           ,yInterval: f
-                                           ,backgroundColor: g
-                                           ,axisColor: h
-                                           ,axisWidth: i
-                                           ,xTicksEvery: j
-                                           ,yTicksEvery: k};
+                                    return function (l) {
+                                       return function (m) {
+                                          return {width: a
+                                                 ,height: b
+                                                 ,ticks: c
+                                                 ,margin: d
+                                                 ,xInterval: e
+                                                 ,yInterval: f
+                                                 ,backgroundColor: g
+                                                 ,axisColor: h
+                                                 ,axisWidth: i
+                                                 ,xTicksEvery: j
+                                                 ,yTicksEvery: k
+                                                 ,xUnits: l
+                                                 ,yUnits: m};
+                                       };
+                                    };
                                  };
                               };
                            };
@@ -12177,7 +12233,7 @@ Elm.Graphing.make = function (_elm) {
    var Scatter = {ctor: "Scatter"};
    var plotType = function (x) {
       return _U.eq(x,"impulse") ? Impulse : _U.eq(x,"scatter") ? Scatter : _U.eq(x,"line") ? Line : _U.crash("Graphing",
-      {start: {line: 259,column: 10},end: {line: 259,column: 21}})("that\'s not a plot type!");
+      {start: {line: 263,column: 10},end: {line: 263,column: 21}})("that\'s not a plot type!");
    };
    var Data = function (a) {    return {ctor: "Data",_0: a};};
    var wrapData = function (data) {    return Data(data);};
@@ -12191,13 +12247,15 @@ Elm.Graphing.make = function (_elm) {
                                  ,defaultGraph: defaultGraph
                                  ,defaultPlot: defaultPlot
                                  ,GraphAttributes: GraphAttributes};
-};Elm.FFTDemo = Elm.FFTDemo || {};
+};
+Elm.FFTDemo = Elm.FFTDemo || {};
 Elm.FFTDemo.make = function (_elm) {
    "use strict";
    _elm.FFTDemo = _elm.FFTDemo || {};
    if (_elm.FFTDemo.values) return _elm.FFTDemo.values;
    var _U = Elm.Native.Utils.make(_elm),
    $Basics = Elm.Basics.make(_elm),
+   $Color = Elm.Color.make(_elm),
    $Debug = Elm.Debug.make(_elm),
    $Graphics$Element = Elm.Graphics.Element.make(_elm),
    $Graphics$Input = Elm.Graphics.Input.make(_elm),
@@ -12209,55 +12267,103 @@ Elm.FFTDemo.make = function (_elm) {
    $Result = Elm.Result.make(_elm),
    $Signal = Elm.Signal.make(_elm),
    $Signal$Extra = Elm.Signal.Extra.make(_elm),
-   $Text = Elm.Text.make(_elm);
+   $String = Elm.String.make(_elm),
+   $Text = Elm.Text.make(_elm),
+   $Time = Elm.Time.make(_elm);
    var _op = {};
+   var refreshMathJax = Elm.Native.Port.make(_elm).outboundSignal("refreshMathJax",function (v) {    return v;},$Time.fps(60));
+   var percentToMessage = function (x) {
+      return _U.cmp(x,70) < 0 ? "Are you even trying?" : _U.cmp(x,80) < 0 ? "Well, at least you tried." : _U.cmp(x,95) < 0 ? "Nice." : "Holy cow!";
+   };
+   var percentToColor = function (x) {    return _U.cmp(x,80) < 0 ? $Color.red : _U.cmp(x,95) < 0 ? $Color.yellow : $Color.green;};
+   var unJustFloat = function (x) {    var _p0 = x;if (_p0.ctor === "Nothing") {    return 66.3;} else {    return _p0._0;}};
    var check = F2(function (data,func) {
-      return $List.sum(A2($List.map,function (_p0) {    var _p1 = _p0;return $Basics.abs(func(_p1._0) - _p1._1);},data)) / $Basics.toFloat($List.length(data));
+      var avgDiff = $List.sum(A2($List.map,
+      function (_p1) {
+         var _p2 = _p1;
+         return $Basics.abs(func(_p2._0) - _p2._1);
+      },
+      data)) / $Basics.toFloat($List.length(data));
+      return 100 - 100 * (avgDiff / 3);
    });
    var $const = function (x) {    return 1;};
    var cosTransform = function (x) {    return _U.eq(x,1) || _U.eq(x,-1) ? 1 : 0;};
+   var cosPair = {signal: function (x) {
+                    return $Basics.cos(2 * $Basics.pi * x);
+                 }
+                 ,transform: cosTransform
+                 ,signalEqn: "f(t) = \\cos (t0)$"
+                 ,transformEqn: "$F(f) = \\delta\\delta^+(f0)"
+                 ,tTitle: "Impulses"
+                 ,sTitle: "Cosine"
+                 ,sXUnits: "t0"
+                 ,tXUnits: "f0"};
    var gaussianTransform = function (x) {    return Math.pow($Basics.e,-1 * Math.pow(x,2) * 1 / 2);};
    var gaussian = function (x) {    return Math.pow($Basics.e,-1 * Math.pow(x,2) * 1 / 2);};
    var gaussianPair = {signal: gaussian
                       ,transform: gaussianTransform
-                      ,signalEqn: "$f(t) = $e^{-\\frac{1}{2}t^2} $"
-                      ,transformEqn: "$F(f) = \\tau (2 \\pi)^{\\frac{1}{2}} e^{-(\\pi f \tau)t^2$  "
-                      ,title: "Gaussian"};
+                      ,signalEqn: "$f(t) = e^{-\\frac{1}{2}t^2} $"
+                      ,transformEqn: "$F(f) = \\tau (2 \\pi )^{\\frac{1}{2}} e^{-\\frac{1}{2}t^2}$"
+                      ,tTitle: "Gaussian"
+                      ,sTitle: "Gaussian"
+                      ,sXUnits: "T"
+                      ,tXUnits: "/T"};
    var triangle = function (x) {    return _U.cmp($Basics.abs(x),1) < 0 ? 1 - $Basics.abs(x) : 0;};
    var sinc2 = function (x) {    return _U.eq(x,0) ? 1 : Math.pow(1 / ($Basics.pi * x) * $Basics.sin($Basics.pi * x),2);};
    var trianglePair = {signal: triangle
                       ,transform: sinc2
-                      ,signalEqn: "$f(t) = \\left \\{\n          \\begin{tabular}{ccc}\n          1 $, 1 - |t|/\\tau < \\tau \\\\\n          0 $, |t| < \\tau \\\\\n          \\end{tabular} $"
-                      ,transformEqn: "$F(f) = \\tau \\sinc^2 (f \\tau)$"
-                      ,title: "Triangle"};
+                      ,signalEqn: "$f(t) = \\begin{cases}\n        1 - |t|/\\tau, & |t| < \\tau \\\\\n        0, & |t| > \\tau\n        \\end{cases} $"
+                      ,transformEqn: "$F(f) = \\tau \\text{sinc}^2 (f \\tau)$"
+                      ,tTitle: "Squared sinc"
+                      ,sTitle: "Triangle"
+                      ,sXUnits: "T"
+                      ,tXUnits: "/T"};
    var sinc = function (x) {    return _U.eq(x,0) ? 1 : 1 / ($Basics.pi * x) * $Basics.sin($Basics.pi * x);};
    var box = function (x) {    return _U.cmp(x,-1 / 2.0) > 0 && _U.cmp(x,1 / 2.0) < 0 ? 1 : 0;};
    var boxPair = {signal: box
                  ,transform: sinc
-                 ,signalEqn: "$f(t) = \\left \\{\n          \\begin{tabular}{ccc}\n          1 $, |t| < \\tau/2 \\\\\n          0 $, |t| < \\tau/2 \\\\\n          \\end{tabular} $"
-                 ,transformEqn: "$F(f) = \\tau \\sinc (f \\tau)$"
-                 ,title: "Box"};
+                 ,signalEqn: "$f(t) = \\begin{cases}\n        1, & |t| < \\tau/2 \\\\\n        0, & |t| > \\tau/2  \n        \\end{cases} $"
+                 ,transformEqn: "$F(f) = \\tau \\text{sinc} (f \\tau)$"
+                 ,tTitle: "Sinc"
+                 ,sTitle: "Box"
+                 ,sXUnits: "T"
+                 ,tXUnits: "/T"};
    var maybeMouse = A3($Signal.map2,
    F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),
    $Mouse.isDown,
-   A2($Signal.map,function (_p2) {    var _p3 = _p2;return {ctor: "_Tuple2",_0: $Basics.toFloat(_p3._0),_1: $Basics.toFloat(_p3._1)};},$Mouse.position));
-   var filterNothing = function (_p4) {
-      var _p5 = _p4;
-      var _p6 = _p5._0;
-      if (_p6 === true) {
-            return $Maybe.Just(_p5._1);
+   A2($Signal.map,function (_p3) {    var _p4 = _p3;return {ctor: "_Tuple2",_0: $Basics.toFloat(_p4._0),_1: $Basics.toFloat(_p4._1)};},$Mouse.position));
+   var filterNothing = function (_p5) {
+      var _p6 = _p5;
+      var _p7 = _p6._0;
+      if (_p7 === true) {
+            return $Maybe.Just(_p6._1);
          } else {
             return $Maybe.Nothing;
          }
    };
    var lerp = F5(function (x0,x,x1,y0,y1) {    return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));});
-   var convertCoords = F5(function (_p11,_p10,_p9,_p8,_p7) {
-      var _p12 = _p11;
-      var _p13 = _p10;
-      var _p14 = _p9;
-      var _p15 = _p8;
-      var _p16 = _p7;
-      return {ctor: "_Tuple2",_0: A5(lerp,_p12._0,_p16._0,_p12._1,_p14._0,_p14._1),_1: A5(lerp,_p13._1,_p16._1,_p13._0,_p15._0,_p15._1)};
+   var convertCoords = F5(function (_p12,_p11,_p10,_p9,_p8) {
+      var _p13 = _p12;
+      var _p14 = _p11;
+      var _p15 = _p10;
+      var _p16 = _p9;
+      var _p17 = _p8;
+      return {ctor: "_Tuple2",_0: A5(lerp,_p13._0,_p17._0,_p13._1,_p15._0,_p15._1),_1: A5(lerp,_p14._1,_p17._1,_p14._0,_p16._0,_p16._1)};
+   });
+   var scoreLine = F2(function (idx,_p18) {
+      var _p19 = _p18;
+      var _p20 = _p19._1;
+      var color = _U.eq(idx,0) ? $Color.darkGray : $Color.gray;
+      return A2($Graphics$Element.flow,
+      $Graphics$Element.right,
+      _U.list([A4($Graphics$Element.container,
+              200,
+              19,
+              $Graphics$Element.midLeft,
+              $Graphics$Element.leftAligned(A2($Text.color,color,$Text.fromString($String.concat(_U.list([_p20.sTitle," &rarr; ",_p20.tTitle]))))))
+              ,$Graphics$Element.rightAligned(A2($Text.color,
+              color,
+              $Text.fromString($String.concat(_U.list([A2($String.left,4,$Basics.toString(_p19._0)),"%"])))))]));
    });
    var scoreDisplay = function (gs) {
       return A2($Graphics$Element.flow,
@@ -12265,8 +12371,14 @@ Elm.FFTDemo.make = function (_elm) {
       _U.list([A2($Graphics$Element.spacer,30,30)
               ,A2($Graphics$Element.flow,
               $Graphics$Element.down,
-              _U.list([$Graphics$Element.leftAligned($Text.fromString($Basics.toString(gs.totalScore)))
-                      ,$Graphics$Element.leftAligned($Text.fromString($Basics.toString(gs.scores)))]))]));
+              A2($List.append,
+              _U.list([A2($Graphics$Element.flow,
+              $Graphics$Element.right,
+              _U.list([A2($Graphics$Element.width,200,$Graphics$Element.leftAligned($Text.fromString("Average Score: ")))
+                      ,$Graphics$Element.rightAligned(A2($Text.color,
+                      percentToColor(gs.totalScore),
+                      $Text.fromString($String.concat(_U.list([A2($String.left,4,$Basics.toString(gs.totalScore)),"%"])))))]))]),
+              A2($List.indexedMap,scoreLine,A3($List.map2,F2(function (v0,v1) {    return {ctor: "_Tuple2",_0: v0,_1: v1};}),gs.scores,gs.pairsVisited))))]));
    };
    var header = A2($Graphics$Element.flow,
    $Graphics$Element.down,
@@ -12274,52 +12386,112 @@ Elm.FFTDemo.make = function (_elm) {
            ,A2($Graphics$Element.flow,
            $Graphics$Element.right,
            _U.list([A2($Graphics$Element.spacer,30,30)
-                   ,$Graphics$Element.leftAligned(A2($Text.height,
-                   35,
-                   A2($Text.typeface,_U.list(["Patua One","sans-serif"]),$Text.fromString("So you think you know Fourier transforms?"))))]))
+                   ,A2($Graphics$Element.width,
+                   800,
+                   $Graphics$Element.leftAligned(A2($Text.height,
+                   30,
+                   A2($Text.typeface,_U.list(["Patua One","sans-serif"]),$Text.fromString("So you think you know ")))))]))
+           ,A2($Graphics$Element.width,
+           800,
+           $Graphics$Element.centered(A2($Text.height,45,A2($Text.typeface,_U.list(["Patua One","sans-serif"]),$Text.fromString("Fourier Transforms?")))))
+           ,A2($Graphics$Element.flow,
+           $Graphics$Element.right,
+           _U.list([A2($Graphics$Element.spacer,30,30)
+                   ,A2($Graphics$Element.width,
+                   800,
+                   $Graphics$Element.leftAligned(A2($Text.color,
+                   $Color.darkGray,
+                   A2($Text.height,
+                   14,
+                   A2($Text.typeface,
+                   _U.list(["Lato","sans-serif"]),
+                   $Text.fromString("Click and drag to draw the signal corresponding to the given frequency-domain representation."))))))]))
+           ,A2($Graphics$Element.spacer,45,45)
            ,A2($Graphics$Element.spacer,15,15)]));
    var plotStyle = _U.update($Graphing.defaultPlot,{plotType: $Graphing.plotType("line"),strokeColor: "#ee2560"});
    var graphStyle = _U.update($Graphing.defaultGraph,
-   {width: 400,height: 300,xInterval: {ctor: "_Tuple2",_0: -5,_1: 5},yInterval: {ctor: "_Tuple2",_0: -1,_1: 2}});
+   {width: 400,height: 300,xInterval: {ctor: "_Tuple2",_0: -5,_1: 5},yInterval: {ctor: "_Tuple2",_0: -1,_1: 2},xTicksEvery: 2});
    var graphs = function (gs) {
-      var _p17 = gs.phase;
-      if (_p17.ctor === "GameOver") {
+      var _p21 = gs.phase;
+      if (_p21.ctor === "GameOver") {
             return A2($Graphics$Element.spacer,10,10);
          } else {
-            var shownSig = function () {
-               var _p18 = gs.phase;
-               if (_p18.ctor === "Drawing") {
-                     return $Graphing.wrapData(_U.list([]));
+            var _p22 = function () {
+               var _p23 = gs.phase;
+               if (_p23.ctor === "Drawing") {
+                     return {ctor: "_Tuple3",_0: $Graphing.wrapData(_U.list([])),_1: "",_2: "?"};
                   } else {
-                     return $Graphing.wrapFunc(gs.currentPair.signal);
+                     return {ctor: "_Tuple3",_0: $Graphing.wrapFunc(gs.currentPair.signal),_1: gs.currentPair.signalEqn,_2: gs.currentPair.sTitle};
                   }
             }();
+            var shownSig = _p22._0;
+            var shownEq = _p22._1;
+            var shownTitle = _p22._2;
             return A2($Graphics$Element.flow,
             $Graphics$Element.right,
             _U.list([A2($Graphics$Element.spacer,30,30)
-                    ,A3($Html.toElement,
-                    400,
-                    300,
-                    A2($Graphing.graph,
-                    _U.list([{ctor: "_Tuple2",_0: shownSig,_1: $Graphing.defaultPlot},{ctor: "_Tuple2",_0: $Graphing.wrapData(gs.drawing),_1: plotStyle}]),
-                    graphStyle))
                     ,A2($Graphics$Element.flow,
                     $Graphics$Element.down,
-                    _U.list([A2($Graphics$Element.spacer,50,130),$Graphics$Element.centered($Text.fromString("&rarr;"))]))
-                    ,A3($Html.toElement,
-                    400,
-                    300,
-                    A2($Graphing.graph,_U.list([{ctor: "_Tuple2",_0: $Graphing.wrapFunc(gs.currentPair.transform),_1: $Graphing.defaultPlot}]),graphStyle))]));
+                    _U.list([A2($Graphics$Element.flow,
+                            $Graphics$Element.right,
+                            _U.list([A2($Graphics$Element.spacer,0,110)
+                                    ,A2($Graphics$Element.flow,
+                                    $Graphics$Element.down,
+                                    _U.list([A2($Graphics$Element.width,
+                                            400,
+                                            $Graphics$Element.centered(A2($Text.typeface,_U.list(["Patua One","serif"]),$Text.fromString(shownTitle))))
+                                            ,A2($Graphics$Element.spacer,15,15)
+                                            ,A2($Graphics$Element.width,400,$Graphics$Element.centered(A2($Text.height,12,$Text.fromString(shownEq))))]))]))
+                            ,A3($Html.toElement,
+                            400,
+                            300,
+                            A2($Graphing.graph,
+                            _U.list([{ctor: "_Tuple2",_0: shownSig,_1: $Graphing.defaultPlot}
+                                    ,{ctor: "_Tuple2",_0: $Graphing.wrapData(gs.drawing),_1: plotStyle}]),
+                            _U.update(graphStyle,{xUnits: gs.currentPair.sXUnits})))]))
+                    ,A2($Graphics$Element.flow,
+                    $Graphics$Element.down,
+                    _U.list([A2($Graphics$Element.spacer,50,230),$Graphics$Element.centered(A2($Text.height,30,$Text.fromString("&rarr;")))]))
+                    ,A2($Graphics$Element.flow,
+                    $Graphics$Element.down,
+                    _U.list([A2($Graphics$Element.flow,
+                            $Graphics$Element.right,
+                            _U.list([A2($Graphics$Element.spacer,0,110)
+                                    ,A2($Graphics$Element.flow,
+                                    $Graphics$Element.down,
+                                    _U.list([A2($Graphics$Element.width,
+                                            400,
+                                            $Graphics$Element.centered(A2($Text.typeface,
+                                            _U.list(["Patua One","serif"]),
+                                            $Text.fromString(gs.currentPair.tTitle))))
+                                            ,A2($Graphics$Element.spacer,15,15)
+                                            ,A2($Graphics$Element.width,
+                                            400,
+                                            $Graphics$Element.centered(A2($Text.height,12,$Text.fromString(gs.currentPair.transformEqn))))]))]))
+                            ,A3($Html.toElement,
+                            400,
+                            300,
+                            A2($Graphing.graph,
+                            _U.list([{ctor: "_Tuple2",_0: $Graphing.wrapFunc(gs.currentPair.transform),_1: $Graphing.defaultPlot}]),
+                            _U.update(graphStyle,{xUnits: gs.currentPair.tXUnits})))]))]));
          }
    };
    var impulse = function (x) {    return _U.eq(x,0) ? $Basics.snd(graphStyle.yInterval) : 0;};
+   var impulsePair = {signal: impulse
+                     ,transform: $const
+                     ,signalEqn: "$f(t) = \\delta(t) $"
+                     ,transformEqn: "$F(f) = 1$"
+                     ,tTitle: "Constant"
+                     ,sTitle: "Impulse"
+                     ,sXUnits: "T"
+                     ,tXUnits: "/T"};
    var impulseTrain = function (x) {    return _U.cmp($Basics.abs(x - $Basics.toFloat($Basics.round(x))),1.0e-2) < 0 ? $Basics.snd(graphStyle.yInterval) : 0;};
-   var topMargin = 35 + 30 + 15;
-   var isMouseInDrawSpace = function (_p19) {
-      var _p20 = _p19;
-      var _p22 = _p20._1;
-      var _p21 = _p20._0;
-      return _U.cmp(_p21,30) > 0 && (_U.cmp(_p21,430) < 0 && (_U.cmp(_p22,0 + topMargin) > 0 && _U.cmp(_p22,300 + topMargin) < 0)) ? true : false;
+   var topMargin = 35 + 30 + 15 + 40 + 45 + 10 + 75 + 35 + 28;
+   var isMouseInDrawSpace = function (_p24) {
+      var _p25 = _p24;
+      var _p27 = _p25._1;
+      var _p26 = _p25._0;
+      return _U.cmp(_p26,30) > 0 && (_U.cmp(_p26,430) < 0 && (_U.cmp(_p27,0 + topMargin) > 0 && _U.cmp(_p27,300 + topMargin) < 0)) ? true : false;
    };
    var mouseCoordData = A3($Signal.filter,
    isMouseInDrawSpace,
@@ -12338,14 +12510,14 @@ Elm.FFTDemo.make = function (_elm) {
    var GameState = F8(function (a,b,c,d,e,f,g,h) {
       return {phase: a,pairsVisited: b,pairsToVisit: c,currentPair: d,drawing: e,totalScore: f,scores: g,lastAction: h};
    });
-   var Pair = F5(function (a,b,c,d,e) {    return {signal: a,transform: b,signalEqn: c,transformEqn: d,title: e};});
+   var Pair = F8(function (a,b,c,d,e,f,g,h) {    return {signal: a,transform: b,signalEqn: c,transformEqn: d,tTitle: e,sTitle: f,sXUnits: g,tXUnits: h};});
    var GameOver = {ctor: "GameOver"};
    var Result = {ctor: "Result"};
    var upstateDrawing = F2(function (coord,state) {
       if (_U.eq(state.phase,Result) || _U.eq(state.phase,GameOver)) return state; else {
-            var _p23 = state.drawing;
-            if (_p23.ctor === "::") {
-                  return _U.eq(coord,_p23._0) ? state : _U.update(state,{drawing: A2($List._op["::"],coord,state.drawing)});
+            var _p28 = state.drawing;
+            if (_p28.ctor === "::") {
+                  return _U.eq(coord,_p28._0) ? state : _U.update(state,{drawing: A2($List._op["::"],coord,state.drawing)});
                } else {
                   return _U.update(state,{drawing: A2($List._op["::"],coord,state.drawing)});
                }
@@ -12355,56 +12527,120 @@ Elm.FFTDemo.make = function (_elm) {
    var NoOp = {ctor: "NoOp"};
    var state = {phase: Drawing
                ,pairsVisited: _U.list([])
-               ,pairsToVisit: _U.list([trianglePair,gaussianPair])
+               ,pairsToVisit: _U.list([trianglePair,gaussianPair,impulsePair,cosPair])
                ,currentPair: boxPair
                ,drawing: _U.list([])
                ,totalScore: 0
                ,scores: _U.list([])
                ,lastAction: NoOp};
    var myMailbox = $Signal.mailbox(NoOp);
+   var StartOver = {ctor: "StartOver"};
+   var startOver = function (gs) {    return A2($Graphics$Input.button,A2($Signal.message,myMailbox.address,StartOver),"TRY AGAIN");};
+   var resultScore = function (gs) {
+      if (_U.eq(gs.phase,Result)) {
+            var score = function () {    var _p29 = gs.scores;if (_p29.ctor === "[]") {    return 0;} else {    return _p29._0;}}();
+            return A4($Graphics$Element.container,
+            900,
+            60,
+            $Graphics$Element.middle,
+            $Graphics$Element.centered(A2($Text.color,
+            percentToColor(score),
+            A2($Text.typeface,
+            _U.list(["Patua One","serif"]),
+            A2($Text.height,50,$Text.fromString($String.concat(_U.list([A2($String.left,4,$Basics.toString(score)),"%"]))))))));
+         } else if (_U.eq(gs.phase,GameOver)) {
+               var score = gs.totalScore;
+               return A2($Graphics$Element.flow,
+               $Graphics$Element.down,
+               _U.list([A2($Graphics$Element.spacer,25,25)
+                       ,A4($Graphics$Element.container,
+                       950,
+                       150,
+                       $Graphics$Element.middle,
+                       $Graphics$Element.centered(A2($Text.color,
+                       percentToColor(gs.totalScore),
+                       A2($Text.typeface,
+                       _U.list(["Patua One","serif"]),
+                       A2($Text.height,100,$Text.fromString($String.concat(_U.list([A2($String.left,4,$Basics.toString(gs.totalScore)),"%"]))))))))
+                       ,A2($Graphics$Element.spacer,15,15)
+                       ,A4($Graphics$Element.container,
+                       950,
+                       100,
+                       $Graphics$Element.midTop,
+                       $Graphics$Element.centered(A2($Text.color,
+                       $Color.darkGray,
+                       A2($Text.typeface,_U.list(["Lato","sans-serif"]),A2($Text.height,40,$Text.fromString(percentToMessage(gs.totalScore)))))))
+                       ,A4($Graphics$Element.container,950,75,$Graphics$Element.middle,startOver(gs))]));
+            } else return A2($Graphics$Element.spacer,0,0);
+   };
    var Reset = {ctor: "Reset"};
    var resetButton = function (gs) {
-      return _U.cmp($List.length(gs.drawing),2) < 0 || !_U.eq(gs.phase,Drawing) ? A2($Graphics$Element.spacer,0,0) : A2($Graphics$Input.button,
+      return !_U.eq(gs.phase,Drawing) ? A2($Graphics$Element.spacer,0,0) : A4($Graphics$Element.container,
+      900,
+      60,
+      $Graphics$Element.middle,
+      A2($Graphics$Element.flow,
+      $Graphics$Element.down,
+      _U.list([_U.cmp($List.length(gs.drawing),2) < 0 || !_U.eq(gs.phase,Drawing) ? A2($Graphics$Element.spacer,0,0) : A2($Graphics$Input.button,
       A2($Signal.message,myMailbox.address,Reset),
-      "Reset");
+      "RESET")])));
    };
    var Next = {ctor: "Next"};
    var nextButton = function (gs) {
-      return !_U.eq(gs.phase,Result) ? A2($Graphics$Element.spacer,0,0) : A2($Graphics$Input.button,A2($Signal.message,myMailbox.address,Next),"Next");
+      return !_U.eq(gs.phase,Result) ? A2($Graphics$Element.spacer,0,0) : A4($Graphics$Element.container,
+      900,
+      60,
+      $Graphics$Element.middle,
+      A2($Graphics$Element.flow,
+      $Graphics$Element.down,
+      _U.list([!_U.eq(gs.phase,Result) ? A2($Graphics$Element.spacer,0,0) : A2($Graphics$Input.button,A2($Signal.message,myMailbox.address,Next),"NEXT")])));
    };
    var Done = {ctor: "Done"};
    var doneButton = function (gs) {
-      return _U.cmp($List.length(gs.drawing),2) < 0 || !_U.eq(gs.phase,Drawing) ? A2($Graphics$Element.spacer,0,0) : A2($Graphics$Input.button,
+      return !_U.eq(gs.phase,Drawing) ? A2($Graphics$Element.spacer,0,0) : A4($Graphics$Element.container,
+      900,
+      60,
+      $Graphics$Element.middle,
+      A2($Graphics$Element.flow,
+      $Graphics$Element.down,
+      _U.list([_U.cmp($List.length(gs.drawing),2) < 0 || !_U.eq(gs.phase,Drawing) ? A2($Graphics$Element.spacer,0,0) : A2($Graphics$Input.button,
       A2($Signal.message,myMailbox.address,Done),
-      "Done");
+      "DONE")])));
    };
    var upStatePhase = F2(function (act,gs) {
       if (_U.eq(gs.lastAction,act)) return gs; else {
-            var _p24 = act;
-            switch (_p24.ctor)
+            var _p30 = act;
+            switch (_p30.ctor)
             {case "Done": if (_U.cmp($List.length(gs.drawing),2) < 0) return gs; else if (!_U.eq(gs.phase,Drawing)) return gs; else {
                           var score = A2(check,gs.drawing,gs.currentPair.signal);
-                          return _U.update(gs,{phase: Result,scores: A2($List._op["::"],score,gs.scores),totalScore: gs.totalScore + score,lastAction: Done});
+                          return _U.update(gs,
+                          {phase: Result
+                          ,scores: A2($List._op["::"],score,gs.scores)
+                          ,totalScore: ($Basics.toFloat($List.length(gs.pairsVisited)) * gs.totalScore + score) / $Basics.toFloat($List.length(gs.pairsVisited) + 1)
+                          ,lastAction: Done
+                          ,pairsVisited: A2($List._op["::"],gs.currentPair,gs.pairsVisited)});
                        }
                case "Next": if (!_U.eq(gs.phase,Result)) return gs; else {
-                       var _p25 = gs.pairsToVisit;
-                       if (_p25.ctor === "[]") {
+                       var _p31 = gs.pairsToVisit;
+                       if (_p31.ctor === "[]") {
                              return _U.update(gs,{phase: GameOver,drawing: _U.list([])});
                           } else {
-                             return _U.update(gs,
-                             {phase: Drawing
-                             ,pairsVisited: A2($List._op["::"],gs.currentPair,gs.pairsVisited)
-                             ,currentPair: _p25._0
-                             ,pairsToVisit: _p25._1
-                             ,drawing: _U.list([])
-                             ,lastAction: Next});
+                             return _U.update(gs,{phase: Drawing,currentPair: _p31._0,pairsToVisit: _p31._1,drawing: _U.list([]),lastAction: Next});
                           }
                     }
                case "Reset": return _U.update(gs,{drawing: _U.list([]),lastAction: Reset});
+               case "StartOver": return {phase: Drawing
+                                        ,pairsVisited: _U.list([])
+                                        ,pairsToVisit: _U.list([trianglePair,gaussianPair])
+                                        ,currentPair: boxPair
+                                        ,drawing: _U.list([])
+                                        ,totalScore: 0
+                                        ,scores: _U.list([])
+                                        ,lastAction: StartOver};
                default: return gs;}
          }
    });
-   var upState = F2(function (_p26,gs) {    var _p27 = _p26;return A2(upStatePhase,_p27._1,A2(upstateDrawing,_p27._0,gs));});
+   var upState = F2(function (_p32,gs) {    var _p33 = _p32;return A2(upStatePhase,_p33._1,A2(upstateDrawing,_p33._0,gs));});
    var main = function () {
       var stateSignal = A3($Signal.foldp,
       upState,
@@ -12414,24 +12650,21 @@ Elm.FFTDemo.make = function (_elm) {
       $Graphics$Element.flow($Graphics$Element.down),
       $Signal$Extra.combine(_U.list([$Signal.constant(header)
                                     ,A2($Signal.map,graphs,stateSignal)
+                                    ,$Signal.constant(A2($Graphics$Element.spacer,15,15))
+                                    ,A2($Signal.map,resultScore,stateSignal)
+                                    ,A2($Signal.map,resetButton,stateSignal)
+                                    ,A2($Signal.map,doneButton,stateSignal)
+                                    ,A2($Signal.map,nextButton,stateSignal)
+                                    ,$Signal.constant(A2($Graphics$Element.spacer,15,15))
                                     ,A2($Signal.map,
-                                    $Graphics$Element.flow($Graphics$Element.right),
-                                    $Signal$Extra.combine(_U.list([$Signal.constant(A2($Graphics$Element.spacer,30,30))
-                                                                  ,A2($Signal.map,resetButton,stateSignal)])))
-                                    ,A2($Signal.map,
-                                    $Graphics$Element.flow($Graphics$Element.right),
-                                    $Signal$Extra.combine(_U.list([$Signal.constant(A2($Graphics$Element.spacer,30,30))
-                                                                  ,A2($Signal.map,doneButton,stateSignal)])))
-                                    ,A2($Signal.map,
-                                    $Graphics$Element.flow($Graphics$Element.right),
-                                    $Signal$Extra.combine(_U.list([$Signal.constant(A2($Graphics$Element.spacer,30,30))
-                                                                  ,A2($Signal.map,nextButton,stateSignal)])))
-                                    ,A2($Signal.map,scoreDisplay,stateSignal)])));
+                                    A3($Graphics$Element.container,900,300,$Graphics$Element.midTop),
+                                    A2($Signal.map,scoreDisplay,stateSignal))])));
    }();
    return _elm.FFTDemo.values = {_op: _op
                                 ,Done: Done
                                 ,Next: Next
                                 ,Reset: Reset
+                                ,StartOver: StartOver
                                 ,NoOp: NoOp
                                 ,Drawing: Drawing
                                 ,Result: Result
@@ -12447,7 +12680,10 @@ Elm.FFTDemo.make = function (_elm) {
                                 ,doneButton: doneButton
                                 ,resetButton: resetButton
                                 ,nextButton: nextButton
+                                ,startOver: startOver
                                 ,scoreDisplay: scoreDisplay
+                                ,scoreLine: scoreLine
+                                ,resultScore: resultScore
                                 ,upstateDrawing: upstateDrawing
                                 ,upStatePhase: upStatePhase
                                 ,upState: upState
@@ -12473,5 +12709,10 @@ Elm.FFTDemo.make = function (_elm) {
                                 ,boxPair: boxPair
                                 ,trianglePair: trianglePair
                                 ,gaussianPair: gaussianPair
-                                ,check: check};
-};</script></head><body><script type="text/javascript">Elm.fullscreen(Elm.FFTDemo)</script></body></html>
+                                ,impulsePair: impulsePair
+                                ,cosPair: cosPair
+                                ,check: check
+                                ,unJustFloat: unJustFloat
+                                ,percentToColor: percentToColor
+                                ,percentToMessage: percentToMessage};
+};

@@ -31,7 +31,9 @@ Elm.Graphing.make = function (_elm) {
                       ,yInterval: {ctor: "_Tuple2",_0: 0,_1: 10}
                       ,axisWidth: 2
                       ,xTicksEvery: 1
-                      ,yTicksEvery: 1};
+                      ,yTicksEvery: 1
+                      ,xUnits: ""
+                      ,yUnits: ""};
    var lerp = F5(function (x0,x,x1,y0,y1) {    return y0 + (y1 - y0) * ((x - x0) / (x1 - x0));});
    var linearSpace = F2(function (_p0,numPoints) {
       var _p1 = _p0;
@@ -101,20 +103,23 @@ Elm.Graphing.make = function (_elm) {
       var h = ga.height - 2 * ga.margin;
       var w = ga.width - 2 * ga.margin;
       var newCoords = A2($List.map,A3(convertCoords,ga.xInterval,ga.yInterval,{ctor: "_Tuple2",_0: w,_1: h}),data);
-      var lines = function () {
-         var _p21 = pa.plotType;
-         if (_p21.ctor === "Scatter") {
-               return _U.list([]);
-            } else {
-               return A3(makeImpulses,{ctor: "_Tuple2",_0: w,_1: h},newCoords,pa);
-            }
+      var _p21 = function () {
+         var _p22 = pa.plotType;
+         switch (_p22.ctor)
+         {case "Scatter": return {ctor: "_Tuple2",_0: _U.list([]),_1: A3(makeDots,{ctor: "_Tuple2",_0: w,_1: h},newCoords,pa)};
+            case "Impulse": return {ctor: "_Tuple2"
+                                   ,_0: A3(makeImpulses,{ctor: "_Tuple2",_0: w,_1: h},newCoords,pa)
+                                   ,_1: A3(makeDots,{ctor: "_Tuple2",_0: w,_1: h},newCoords,pa)};
+            default: return {ctor: "_Tuple2",_0: _U.list([A2(pathFromCoords,pa,newCoords)]),_1: _U.list([])};}
       }();
-      return A2($Svg.g,_U.list([]),$List.concat(_U.list([lines,A3(makeDots,{ctor: "_Tuple2",_0: w,_1: h},newCoords,pa)])));
+      var lines = _p21._0;
+      var dots = _p21._1;
+      return A2($Svg.g,_U.list([]),$List.concat(_U.list([lines,dots])));
    });
    var yTicks = function (ga) {
-      var _p22 = ga.yInterval;
-      var ymin = _p22._0;
-      var ymax = _p22._1;
+      var _p23 = ga.yInterval;
+      var ymin = _p23._0;
+      var ymax = _p23._1;
       var numticks = $Basics.floor((ymax - ymin) / ga.yTicksEvery);
       var step = ($Basics.toFloat(ga.height) - 2 * $Basics.toFloat(ga.margin)) / ((ymax - ymin) / ga.yTicksEvery);
       var right = ga.width - ga.margin;
@@ -146,9 +151,9 @@ Elm.Graphing.make = function (_elm) {
       return A2($Svg.g,_U.list([]),A2($List.append,lines,labels));
    };
    var xTicks = function (ga) {
-      var _p23 = ga.xInterval;
-      var xmin = _p23._0;
-      var xmax = _p23._1;
+      var _p24 = ga.xInterval;
+      var xmin = _p24._0;
+      var xmax = _p24._1;
       var numticks = $Basics.floor((xmax - xmin) / ga.xTicksEvery);
       var step = ($Basics.toFloat(ga.width) - 2 * $Basics.toFloat(ga.margin)) / $Basics.toFloat(numticks);
       var right = ga.width - ga.margin;
@@ -161,7 +166,7 @@ Elm.Graphing.make = function (_elm) {
          _U.list([$Svg$Attributes.x($Basics.toString(k * step + $Basics.toFloat(left) + 3))
                  ,$Svg$Attributes.y($Basics.toString(bottom + 15))
                  ,$Svg$Attributes.fontFamily("monospace")]),
-         _U.list([$Svg.text($Basics.toString(k * ga.xTicksEvery + xmin))]));
+         _U.list([$Svg.text($String.concat(_U.list([$Basics.toString(k * ga.xTicksEvery + xmin),ga.xUnits])))]));
       },
       A2($List.map,$Basics.toFloat,_U.range(1,numticks)));
       var lines = A2($List.map,
@@ -211,11 +216,11 @@ Elm.Graphing.make = function (_elm) {
    };
    var graph = F2(function (toGraph,graphAttrs) {
       var graphSvg = function (toGraph) {
-         var _p24 = toGraph;
-         if (_p24._0.ctor === "Func") {
-               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(funcPlot,graphAttrs,_p24._1,_p24._0._0)]));
+         var _p25 = toGraph;
+         if (_p25._0.ctor === "Func") {
+               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(funcPlot,graphAttrs,_p25._1,_p25._0._0)]));
             } else {
-               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(dataField,graphAttrs,_p24._1,_p24._0._0)]));
+               return A2($Svg.g,_U.list([$Svg$Attributes.transform(translate(graphAttrs))]),_U.list([A3(dataField,graphAttrs,_p25._1,_p25._0._0)]));
             }
       };
       return A2($Svg.svg,
@@ -234,17 +239,23 @@ Elm.Graphing.make = function (_elm) {
                            return function (i) {
                               return function (j) {
                                  return function (k) {
-                                    return {width: a
-                                           ,height: b
-                                           ,ticks: c
-                                           ,margin: d
-                                           ,xInterval: e
-                                           ,yInterval: f
-                                           ,backgroundColor: g
-                                           ,axisColor: h
-                                           ,axisWidth: i
-                                           ,xTicksEvery: j
-                                           ,yTicksEvery: k};
+                                    return function (l) {
+                                       return function (m) {
+                                          return {width: a
+                                                 ,height: b
+                                                 ,ticks: c
+                                                 ,margin: d
+                                                 ,xInterval: e
+                                                 ,yInterval: f
+                                                 ,backgroundColor: g
+                                                 ,axisColor: h
+                                                 ,axisWidth: i
+                                                 ,xTicksEvery: j
+                                                 ,yTicksEvery: k
+                                                 ,xUnits: l
+                                                 ,yUnits: m};
+                                       };
+                                    };
                                  };
                               };
                            };
@@ -256,12 +267,13 @@ Elm.Graphing.make = function (_elm) {
          };
       };
    };
+   var Line = {ctor: "Line"};
    var Impulse = {ctor: "Impulse"};
    var defaultPlot = {strokeColor: "#000",strokeWidth: "2px",plotType: Impulse,dotColor: "#000"};
    var Scatter = {ctor: "Scatter"};
    var plotType = function (x) {
-      return _U.eq(x,"impulse") ? Impulse : _U.eq(x,"scatter") ? Scatter : _U.crash("Graphing",
-      {start: {line: 257,column: 10},end: {line: 257,column: 21}})("that\'s not a plot type!");
+      return _U.eq(x,"impulse") ? Impulse : _U.eq(x,"scatter") ? Scatter : _U.eq(x,"line") ? Line : _U.crash("Graphing",
+      {start: {line: 263,column: 10},end: {line: 263,column: 21}})("that\'s not a plot type!");
    };
    var Data = function (a) {    return {ctor: "Data",_0: a};};
    var wrapData = function (data) {    return Data(data);};

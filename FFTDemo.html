@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Fourier Transform</title>
+<link href='https://fonts.googleapis.com/css?family=Lato|Droid+Serif|Ubuntu|Passion+One|Patua+One' rel='stylesheet' type='text/css'>
+<link href='Fourier.css' rel='stylesheet' type='text/css'>
+<script src="FFT.js" type="text/javascript"></script>
+
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+    jax: ["input/TeX","input/MathML","input/AsciiMath","output/CommonHTML"],
+    extensions: ["tex2jax.js","mml2jax.js","asciimath2jax.js","MathMenu.js","MathZoom.js","AssistiveMML.js"],
+    TeX: {
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]}
+
+
+});
+
+
+</script>
+
+<script type="text/javascript" 
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+</head>
+
+<body>
+
+
+
+    <div class="page">
+        <div class="wrapper centered">
+                <div class="centered-content">
+                    <div id="FFTDemo" class=" cursor-default noselect"></div>
+                </div>
+        </div>
+    </div>
+
+
+    <div class="centered">
+        <p><span style="color: #999;">Made with &hearts; by <a href="http://catmores.co">Catherine Moresco</a>.</span></p>
+    </div>
+
+</body>
+
+
+<script type = "text/javascript" async>
+    var scrollingGraph = document.getElementById('FFTDemo');
+    var fftdemo = Elm.embed(Elm.FFTDemo, FFTDemo);
+
+    fftdemo.ports.refreshMathJax.subscribe(updatejax);
+
+    function updatejax(){
+        console.log("help");
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+</script>
+</html>
